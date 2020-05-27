@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mappers.people.peopleBookmarkMapper">
+
+	<!-- 즐겨찾기 정보 가져오기 -->
+	<select id="getboardid" parameterType="hashMap" resultType="com.company.dto.PeopleBookmarkDTO">
+		select
+		*
+		from 
+		${sitename}bookmark
+		where
+		userid = #{userid}
+	</select>
+	
+	<!--즐겨찾기된 게시물 가져오기 -->
+	<select id="list" parameterType="hashMap"
+		resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from
+		${sitename}board
+		where
+		boardid = #{boardid}
+	</select>
+	
+	<!-- 즐겨찾기 삭제 -->
+	<delete id="delete" parameterType="hashMap">
+		delete
+		from ${sitename}bookmark
+		where 
+		boardid = #{boardid}
+	</delete>
+</mapper>

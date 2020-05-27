@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mappers.siteMapper">
+
+	<!-- 사이트 목록 -->
+	<select id="list" resultType="com.company.dto.SiteDTO">
+		select
+		siteid, userid, sitename,
+		category, status
+		from site
+		where userid = #{userid}
+	</select>
+
+	<!-- 사이트 등록 -->
+	<insert id="create" parameterType="hashMap">
+		insert into site(userid,
+		sitename, category, status)
+		values(#{userid}, #{sitename}, #{category},
+		#{status})
+	</insert>
+
+	<!-- 사이트의 게시판데이터베이스 생성 -->
+	<update id="createboard" parameterType="hashMap">
+
+		${board}
+	</update>
+
+	<!-- 사이트의 회원데이터베이스 생성 -->
+	<update id="createmember" parameterType="hashMap">
+		${member}
+	</update>
+	
+	<!-- 사이트의 관리자 등록 -->
+	<insert id="management" parameterType="hashMap">
+		insert into ${sitename}(management, userid, userpass)
+		values("true", #{userid}, #{userpass})
+	</insert>
+
+	<!-- 사이트 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete
+		from site
+		where siteid =
+		#{siteid}
+	</delete>
+
+
+	<!-- 사이트의 회원데이터베이스 삭제 -->
+	<update id="deletemember" parameterType="hashMap">
+		${member}
+	</update>
+
+	<!-- 사이트의 게시판데이터베이스 삭제 -->
+	<update id="deleteboard" parameterType="hashMap">
+		${board}
+	</update>
+	
+	<!-- 사이트의 즐겨찾기데이터베이스 삭제 -->
+	<update id="deletebookmark" parameterType="hashMap">
+		${bookmark}
+	</update>
+	
+	<!-- 사이트의 쪽지함데이터베이스 삭제 -->
+	<update id="deletenotebox" parameterType="hashMap">
+		${notebox}
+	</update>
+
+	<!-- 사이트 수정 조회 -->
+	<select id="view" parameterType="int"
+		resultType="com.company.dto.SiteDTO">
+		select
+		siteid, userid, sitename, category, status
+		from site
+		where siteid = #{siteid}
+	</select>
+
+	<!-- 사이트 수정 -->
+	<update id="modifysite" parameterType="hashMap">
+		update site
+		set
+		status =
+		#{status},
+		sitename = #{sitename},
+		category = #{category}
+		where siteid
+		=#{siteid}
+	</update>
+
+	<!-- 사이트의 즐겨찾기데이터베이스 생성 -->
+	<update id="createbookmark" parameterType="hashMap">
+		${bookmark}
+	</update>
+	
+	
+	<!-- 사이트의 쪽지함데이터베이스 생성 -->
+	<update id="createnotebox" parameterType="hashMap">
+		${notebox}
+	</update>
+</mapper>

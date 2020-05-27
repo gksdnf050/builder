@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mappers.people.peopleBoardMapper">
+
+	<!-- 게시물 목록 -->
+	<select id="list" parameterType="hashMap" resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from 
+		${sitename}board
+	</select>
+
+	
+	<!-- 게시물 career카테고리 목록 -->
+	<select id="careerlist" parameterType="hashMap" resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from 
+		${sitename}board
+		where 
+		career=#{value}
+	</select>
+	
+	<!-- 게시물 occupation카테고리 목록 -->
+	<select id="occupationlist" parameterType="hashMap" resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from 
+		${sitename}board
+		where 
+		occupation=#{value}
+	</select>
+	
+	<!-- 게시물 location카테고리 목록 -->
+	<select id="locationlist" parameterType="hashMap" resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from 
+		${sitename}board
+		where 
+		location=#{value}
+	</select>
+
+
+	<!-- 게시물 작성 -->
+	<insert id="write" parameterType="hashMap">
+		insert into
+		${sitename}board(userid, title,
+		career, gender, occupation, date, location, address, money, image, content, deadline)
+		values(#{userid}, #{title}, #{career}, #{gender}, #{occupation}, #{date}, #{location}, #{address}, #{money}, #{image}, #{content}, #{deadline})
+	</insert>
+	
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="hashMap"
+		resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from
+		${sitename}board
+		where
+		boardid = #{boardid}
+	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="hashMap">
+		update ${sitename}board
+		set
+		title = #{title},
+		career = #{career},
+		gender = #{gender},
+		occupation = #{occupation},
+		date = #{date},
+		location = #{location},
+		address = #{address},
+		money = #{money},
+		image = #{image},
+		content = #{content},
+		deadline = #{deadline}
+		where 
+		boardid = #{boardid}
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="hashMap">
+		delete
+		from ${sitename}board
+		where 
+		boardid = #{boardid}
+	</delete>
+	
+	<!-- 즐겨찾기 삭제 -->
+	<delete id="bookmarkdelete" parameterType="hashMap">
+		delete
+		from ${sitename}bookmark
+		where 
+		boardid = #{boardid}
+	</delete>
+	
+	<!-- 게시물 검색 -->
+	<select id="search" parameterType="hashMap" resultType="com.company.dto.PeopleBoardDTO">
+		select
+		*
+		from 
+		${sitename}board
+		where 
+		title LIKE concat('%', #{keyword}, '%') 
+ 		or content LIKE concat('%', #{keyword}, '%')
+
+	</select>
+	
+	<!-- 게시물  즐겨찾기 등록 -->
+	<insert id="regbookmark" parameterType="hashMap">
+		insert into
+		${sitename}bookmark(boardid, userid)
+		values(#{boardid},#{userid})
+	</insert>
+	
+	<!-- 즐겨찾기 등록된 게시물id 가져오기 -->
+	<select id="getbookmarkid" parameterType="hashMap" resultType="Integer" >
+		select
+		boardid
+		from 
+		${sitename}bookmark
+		where 
+		userid = #{userid}
+
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mappers.memberMapper">
+
+	<!-- 회원 가입 -->
+	<insert id="register">
+		insert into member(userid, userpass)
+		values(#{userid}, #{userpass})
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="login" resultType="com.company.dto.MemberDTO">
+		select
+		*
+		from
+		member
+		where userid = #{userid}
+		and userpass = #{userpass}
+	</select>
+	
+	<!-- 회원정보수정 get -->
+	<select id="getModify" resultType="com.company.dto.MemberDTO" parameterType="hashMap">
+		select
+		*
+		from
+		member
+		where userno = #{userno}
+	</select>
+	
+	<!-- 회원정보수정 post -->
+	<update id="postModify" parameterType="hashMap">
+		update member
+		set
+		userid = #{userid},
+		userpass = #{userpass}
+		where 
+		userno = #{userno}
+	</update>
+</mapper>
