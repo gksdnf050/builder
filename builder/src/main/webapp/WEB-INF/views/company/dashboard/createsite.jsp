@@ -16,23 +16,26 @@
   <input type="text" id="sitename" name="sitename"/>
  </p>
    
+
  <p>
   <label for="category">중개상품</label>
-	<select name="category">
+	<select name="category" onchange="changeItem(this)">
     	<option value="product">물건</option>
     	<option value="location">장소</option>
     	<option value="people">사람</option>
 	</select>
  </p>
- 
- <p>
-  <label for="field">필드</label>
-	<select name="field">
-    	<option value="title ">title</option>
-    	<option value="content ">content </option>
-    	<option value="money ">money </option>
+
+
+
+<div id ="sub_category">소분류</div>
+	<select id ="sub_category" name="category">
+    	
 	</select>
- </p>
+
+  
+
+ 
  
  <p>
    <button type="submit" name="status" value="store">저장</button>  <button type="submit" name="status" value="deploy">생성</button>  
@@ -41,4 +44,23 @@
 </form>
 
 </body>
+    <script>
+ function changeItem(e){
+	 var sub = document.getElementById("sub_category");
+	 var select = e.value;
+	 if(select == "people"){
+		 sub.innerHTML = "<option value="first">취업</option><option value="second">알바</option>"
+		 
+	 }
+	 if(select == "product"){
+		 sub.innerHTML = "옷";
+		 
+	 }	
+	 if(select == "location"){
+		 sub.innerHTML = "부동산";
+		 
+	 }	
+	
+ }
+ </script>
 </html>
