@@ -1,25 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-    <!-- Sidebar - Brand -->
+<!-- This is Sidebar which is located at left side -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Logo with sitename -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
+            <!--Logo-->
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3 text-lg">${sitename}<sup>beta</sup></div>
+        <div class="sidebar-brand-text mx-3 text-lg">${sitename}<!-- <sup></sup> --></div>
     </a>
-
     <!-- Divider -->
     <hr class="sidebar-divider my-0" />
-
-    <!-- Nav Item - Dashboard -->
+    <!-- Nav Item - Mainpage -->
     <li class="nav-item active p-y-3 text-center">
-        <a class="nav-link py-3 " href="index.html">
+        <a class="nav-link py-3" href="/people/${sitename}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>모아보기</span></a>
+            <span>메인페이지</span>
+        </a>
     </li>
 
     <!-- Divider -->
@@ -115,4 +113,3 @@
     </div>
 </ul>
 <!-- End of Sidebar -->
-    
