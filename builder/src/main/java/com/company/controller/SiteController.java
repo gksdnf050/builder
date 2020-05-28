@@ -55,9 +55,10 @@ public class SiteController {
 		String userid = m.getUserid();
 		String userpass = m.getUserpass();
 		String sitename = req.getParameter("sitename");
+		String topcategory = req.getParameter("topcategory");
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
-		service.create(userid, userpass, sitename, category, status);
+		service.create(userid, userpass, sitename, category, status, topcategory);
 
 		return "redirect:/dashboard";
 
@@ -96,8 +97,9 @@ public class SiteController {
 		String sitename = req.getParameter("sitename");
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
-
-		service.modify(siteid, sitename, category, status);
+		String topcategory = req.getParameter("topcategory");
+		
+		service.modify(siteid, sitename, category, status, topcategory);
 
 		return "redirect:/dashboard";
 

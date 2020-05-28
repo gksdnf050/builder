@@ -25,7 +25,7 @@ public class SiteDAOImpl implements SiteDAO {
 	
 	//사이트 생성
 	@Override
-	public void create(final String userid, final String userpass, final String sitename, final String category, final String status) {
+	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory) {
 		// TODO Auto-generated method stub
 		 HashMap data = new HashMap();
 		  
@@ -34,6 +34,7 @@ public class SiteDAOImpl implements SiteDAO {
 		 data.put("sitename", sitename);
 		 data.put("category", category);
 		 data.put("status", status);
+		 data.put("topcategory", topcategory);
 		if(status.equals("deploy")) {
 			String member = "create table "+ sitename +"(userno int not null auto_increment, management varchar(50), \r\n" + 
 					"  userid varchar(50) not null,\r\n" + 
@@ -69,7 +70,7 @@ public class SiteDAOImpl implements SiteDAO {
 				sql.update(namespace+".createboard",data);
 			}
 			
-			if(category.equals("people")) {
+			if(category.equals("allba")) {
 				String board = "create table "+sitename+"board(boardid int not null AUTO_INCREMENT PRIMARY KEY,\r\n" + 
 						"regdate date not null default now(),\r\n" + 
 						"userid VARCHAR(50),\r\n" + 
@@ -129,13 +130,14 @@ public class SiteDAOImpl implements SiteDAO {
 	}
 	//사이트 수정post
 	@Override
-	public void modify(int siteid, String sitename, String category, String status) {
+	public void modify(int siteid, String sitename, String category, String status, final String topcategory) {
 		// TODO Auto-generated method stub
 		 HashMap data = new HashMap();
 		  
 		 data.put("siteid",siteid);
 		 data.put("sitename",sitename);
 		 data.put("category",category);
+		 data.put("topcategory",topcategory);
 		 data.put("status",status);
 		 sql.update(namespace + ".modifysite", data);
 		 
@@ -159,7 +161,7 @@ public class SiteDAOImpl implements SiteDAO {
 					sql.update(namespace+".createboard",data);
 				}
 				
-				if(category.equals("people")) {
+				if(category.equals("allba")) {
 					String board = "create table "+sitename+"board(location varchar(50))";
 					data.put("board",board);
 					sql.update(namespace+".createboard",data);

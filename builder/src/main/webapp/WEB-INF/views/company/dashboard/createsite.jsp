@@ -8,18 +8,19 @@
 <title>사이트 생성</title>
   <script>
  function changeItem(e){
-	 var sub = document.getElementById("sub_category");
+
+	 var sub = document.getElementById("category");
 	 var select = e.value;
 	 if(select == "people"){
 		sub.innerHTML = "<select name='category'><option value=''>취업</option><option value='allba'>알바</option></select>"
 		 
 	 }
 	 if(select == "product"){
-		 sub.innerHTML = "옷";
+		 sub.innerHTML = "<select name='category'><option value='clothes'>옷</option></select>";
 		 
 	 }	
 	 if(select == "location"){
-		 sub.innerHTML = "부동산";
+		 sub.innerHTML = "<select name='category'><option value='motel'>숙박</option></select>";
 		 
 	 }	
 	
@@ -37,8 +38,9 @@
    
 
  <p>
-  <label for="category">중개상품</label>
-	<select name="category" onchange="changeItem(this)">
+  <label >중개상품</label>
+	<select name="topcategory" id="topcategory" onchange="changeItem(this)">
+		<option value="">---</option>
     	<option value="product">물건</option>
     	<option value="location">장소</option>
     	<option value="people">사람</option>
@@ -47,7 +49,9 @@
 
 
 
-소분류<div id ="sub_category"></div>
+
+소분류<div id ="category"></div>
+
 	
 
   

@@ -42,7 +42,7 @@
 		base-package="com.company" />
 		<!-- 업로드 패스 설정 -->
 	<bean class="java.lang.String" id="uploadPath">
-		<constructor-arg
-			value="C:\Users\gksdn\git\builder\builder\src\main\webapp\resources" />
+		<constructor-arg value="C:\Users\gksdn\git\builder\builder\src\main\webapp\resources" />
+
 	</bean>
 </beans>
