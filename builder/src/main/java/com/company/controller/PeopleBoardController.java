@@ -61,7 +61,7 @@ public class PeopleBoardController {
 		PeopleMemberDTO m = (PeopleMemberDTO) session.getAttribute("peoplemember");
 		model.addAttribute("sitename", sitename);
 		if (m == null) {
-			return "redirect:/{sitename}/login";
+			return "redirect:/people/{sitename}/login";
 		}
 		return "people/board/write";
 	}
