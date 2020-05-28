@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사이트 생성</title>
+<title>사이트 생성 </title>
   <script>
  function changeItem(e){
 
