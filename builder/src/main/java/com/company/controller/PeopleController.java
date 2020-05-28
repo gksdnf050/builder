@@ -21,5 +21,13 @@ public class PeopleController {
 		return "people/home";
 	}
 	
+	//test
+		@RequestMapping(value = "/{sitename}/test", method = RequestMethod.GET)
+		public String test(@PathVariable("sitename")String sitename, Model model) {
+			model.addAttribute("sitename", sitename);
+			
+			return "people/test";
+		}
+	
 } 
 
