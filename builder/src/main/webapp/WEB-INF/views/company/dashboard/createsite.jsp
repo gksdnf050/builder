@@ -6,6 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>사이트 생성</title>
+  <script>
+ function changeItem(e){
+	 var sub = document.getElementById("sub_category");
+	 var select = e.value;
+	 if(select == "people"){
+		sub.innerHTML = "<select name='category'><option value=''>취업</option><option value='allba'>알바</option></select>"
+		 
+	 }
+	 if(select == "product"){
+		 sub.innerHTML = "옷";
+		 
+	 }	
+	 if(select == "location"){
+		 sub.innerHTML = "부동산";
+		 
+	 }	
+	
+ }
+ </script>
 </head>
 <body>
 <div id="nav"><%@ include file="/WEB-INF/views/company/companynavbar/companynav.jsp" %></div>
@@ -28,10 +47,8 @@
 
 
 
-<div id ="sub_category">소분류</div>
-	<select id ="sub_category" name="category">
-    	
-	</select>
+소분류<div id ="sub_category"></div>
+	
 
   
 
@@ -44,23 +61,4 @@
 </form>
 
 </body>
-    <script>
- function changeItem(e){
-	 var sub = document.getElementById("sub_category");
-	 var select = e.value;
-	 if(select == "people"){
-		 sub.innerHTML = "<option value="first">취업</option><option value="second">알바</option>"
-		 
-	 }
-	 if(select == "product"){
-		 sub.innerHTML = "옷";
-		 
-	 }	
-	 if(select == "location"){
-		 sub.innerHTML = "부동산";
-		 
-	 }	
-	
- }
- </script>
 </html>
