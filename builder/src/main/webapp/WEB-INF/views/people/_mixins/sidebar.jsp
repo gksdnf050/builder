@@ -23,22 +23,23 @@
     <!-- Divider -->
     <hr class="sidebar-divider" />
 
-    <!-- Heading -->
-    <div class="sidebar-heading text-white">
-        대타가 필요할때
+    <!-- Board -->
+    <div class="sidebar-heading">
+        <a href="/people/${sitename}/board" class="text-white">게시판</a>
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>등록된 대타생</span>
+            <span>경력별</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <h6 class="collapse-header">경력별로 확인해보세요!</h6>
+                <a class="collapse-item" href="/people/${sitename}/board?category=career&value=무관">무관</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=career&value=신입">신입</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=career&value=경력">경력</a>
             </div>
         </div>
     </li>
@@ -47,15 +48,19 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>대타생 모집</span>
+            <span>직종별</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <h6 class="collapse-header">직종별로 확인해보세요!</h6>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=매장관리">매장관리</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=서빙주방">서빙주방</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=서비스/미디어">서비스/미디어</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=고객상담/영업/리서치">고객상담/영업/리서치</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=강사교육">강사교육</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=생산/기능/운전/배달">생산/기능/운전/배달</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=사무회계">사무회계</a>
+                <a class="collapse-item" href="/people/${sitename}/board?category=occupation&value=it디자인">it디자인</a>
             </div>
         </div>
     </li>
