@@ -6,6 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>사이트 생성</title>
+  <script>
+ function changeItem(e){
+	 var sub = document.getElementById("category");
+	 var select = e.value;
+	 if(select == "people"){
+		sub.innerHTML = "<select name='category'><option value='employment'>취업</option><option value='allba'>알바</option></select>"
+		 
+	 }
+	 if(select == "product"){
+		 
+		 
+	 }	
+	 if(select == "location"){
+		
+		 
+	 }	
+	
+ }
+ </script>
 </head>
 <body>
 <div id="nav"><%@ include file="/WEB-INF/views/company/companynavbar/companynav.jsp" %></div>
@@ -16,23 +35,25 @@
   <input type="text" id="sitename" name="sitename"/>
  </p>
    
+
  <p>
-  <label for="category">중개상품</label>
-	<select name="category">
+  <label >중개상품</label>
+	<select name="topcategory" id="topcategory" onchange="changeItem(this)">
+		<option value="">---</option>
     	<option value="product">물건</option>
     	<option value="location">장소</option>
     	<option value="people">사람</option>
 	</select>
  </p>
+
+
+
+소분류<div id ="category"></div>
+	
+
+  
+
  
- <p>
-  <label for="field">필드</label>
-	<select name="field">
-    	<option value="title ">title</option>
-    	<option value="content ">content </option>
-    	<option value="money ">money </option>
-	</select>
- </p>
  
  <p>
    <button type="submit" name="status" value="store">저장</button>  <button type="submit" name="status" value="deploy">생성</button>  

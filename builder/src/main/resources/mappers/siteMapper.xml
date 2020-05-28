@@ -16,9 +16,9 @@
 	<!-- 사이트 등록 -->
 	<insert id="create" parameterType="hashMap">
 		insert into site(userid,
-		sitename, category, status)
+		sitename, category, status, topcategory)
 		values(#{userid}, #{sitename}, #{category},
-		#{status})
+		#{status}, #{topcategory})
 	</insert>
 
 	<!-- 사이트의 게시판데이터베이스 생성 -->
@@ -71,7 +71,7 @@
 	<select id="view" parameterType="int"
 		resultType="com.company.dto.SiteDTO">
 		select
-		siteid, userid, sitename, category, status
+		siteid, userid, sitename, category, status, topcategory
 		from site
 		where siteid = #{siteid}
 	</select>
@@ -83,7 +83,8 @@
 		status =
 		#{status},
 		sitename = #{sitename},
-		category = #{category}
+		category = #{category},
+		topcategory = #{topcategory}
 		where siteid
 		=#{siteid}
 	</update>

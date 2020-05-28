@@ -7,7 +7,14 @@ public class SiteDTO {
 	String sitename;
 	String category;
 	String status;
+	String topcategory;
 	
+	public String getTopcategory() {
+		return topcategory;
+	}
+	public void setTopcategory(String topcategory) {
+		this.topcategory = topcategory;
+	}
 	public int getSiteid() {
 		return siteid;
 	}

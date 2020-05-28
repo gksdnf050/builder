@@ -22,10 +22,10 @@ public class SiteServiceImpl implements SiteService {
 	}
 	//사이트 생성
 	@Override
-	public void create(final String userid, final String userpass, final String sitename, final String category, final String status) {
+	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory) {
 		// TODO Auto-generated method stub
 		
-		dao.create(userid, userpass, sitename, category, status);
+		dao.create(userid, userpass, sitename, category, status, topcategory);
 	}
 	//사이트 삭제
 	@Override
@@ -43,9 +43,9 @@ public class SiteServiceImpl implements SiteService {
 	}
 	//사이트 수정post
 	@Override
-	public void modify(int siteid, String sitename, String category, String status) {
+	public void modify(int siteid, String sitename, String category, String status, final String topcategory) {
 		// TODO Auto-generated method stub
-		dao.modify(siteid, sitename, category, status);
+		dao.modify(siteid, sitename, category, status, topcategory);
 	}
 
 }
