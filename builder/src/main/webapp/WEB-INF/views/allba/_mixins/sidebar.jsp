@@ -25,9 +25,8 @@
 
     <!-- Board -->
     <div class="sidebar-heading">
-        <a href="/allba/${sitename}/board" class="text-white">카테고리</a>
+    	<a href="/allba/${sitename}/board" class="text-white ">카테고리</a> 
     </div>
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -63,6 +62,13 @@
                 <a class="collapse-item" href="/allba/${sitename}/board?category=occupation&value=it디자인">it디자인</a>
             </div>
         </div>
+    </li>
+    <li class="nav-item">
+    	<div class="nav-link collapsed">
+        <a href="/allba/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+	    	<span class="text-center">아르바이트 공고 작성</span>
+	    </a> 
+	    </div>
     </li>
 
     <!-- Divider -->
