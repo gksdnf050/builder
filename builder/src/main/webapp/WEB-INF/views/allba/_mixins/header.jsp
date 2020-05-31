@@ -39,3 +39,14 @@
 
 <!-- Page level custom scripts -->
 <script src="/resources/js/demo/datatables-demo.js"></script>
+
+
+<!-- bootstrap-select -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/resources/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="/resources/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="/resources/vendor/bootstrap-select/dist/js/i18n/defaults-KR.min.js"></script>
