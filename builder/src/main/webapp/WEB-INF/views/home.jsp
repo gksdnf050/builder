@@ -44,7 +44,7 @@ body {
 
 </head>
 <body class = 'header'>
-	<h1>hello</h1>
+	<h1>hello!!</h1>
 	
 	<div id="nav"><%@ include file="/WEB-INF/views/company/companynavbar/companynav.jsp" %></div>
 </body>
