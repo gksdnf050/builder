@@ -17,10 +17,16 @@
                 <!-- Main Content -->
                 <div id="content">
                     <!-- This is Topbar-->
-                    <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
-                    <!-- Real Contents Start From here-->
+                    <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>                    
                     <div class="container-fluid"></div>
-                    <!-- Real Contents End -->
+                    
+                    <!---->
+                    <!---->
+                    <!-- Put the contents Here-->
+               		<%@ include file="/" %>
+               		<!---->
+               		<!---->
+
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
