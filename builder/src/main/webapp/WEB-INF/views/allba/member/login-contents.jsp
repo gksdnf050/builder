@@ -1,45 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container">
+<div class="container m-b-5" style="flex:1 0 auto;">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Card Body -->
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                    <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">로그인</h1>
                 </div>
-                <form class="user">
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" />
+
+                <form class="user mb-3" method="post" enctype="multipart/form-data">
+                    <div class="row form-group mb-3">
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">아이디</span>
                         </div>
+                        <div class="col-sm-11 py-2 form-group">
+                            <input name="userid" id="userid" class="form-control form-control-user" placeholder="아이디를 입력해주세요." />
+                        </div>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">비밀번호</span>
+                        </div>
+                        <div class="col-sm-11 py-2 form-group">
+                            <input name="userpass" type="password" id="userpass" class="form-control form-control-user" placeholder="비밀번호를 입력해주세요." />
+                        </div>
+                    </div>
+                    <div class="row form-group mb-5">
+                        <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" />
+                            <button type="submit" id="submit" class="btn btn-primary btn-user btn-block">로그인</button>
                         </div>
+                        <div class="col-sm-3">&nbsp;</div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" />
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" />
-                        </div>
-                    </div>
-                    <a href="login.html" class="btn btn-primary btn-user btn-block">
-                        Register Account
-                    </a>
-                    <hr />
-                    <a href="index.html" class="btn btn-google btn-user btn-block"> <i class="fab fa-google fa-fw"></i> Register with Google </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook </a>
                 </form>
                 <hr />
                 <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                    <font class="small">비밀번호를 까먹으셨나요?</font>
+                    <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                 </div>
                 <div class="text-center">
-                    <a class="small" href="login.html">Already have an account? Login!</a>
+                    <font class="small">아직 아이디가 없으신가요?</font>
+                    <a class="small" href="login.html">회원가입</a>
                 </div>
             </div>
         </div>
