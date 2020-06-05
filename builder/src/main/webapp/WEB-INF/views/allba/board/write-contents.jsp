@@ -8,7 +8,7 @@
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">아르바이트 모집 공고를 작성해보세요!</h1>
                 </div>
 
-                <form class="user mb-3" action="/people/${sitename}/board/write" method="post" enctype="multipart/form-data">
+                <form class="user mb-3" action="/allba/${sitename}/board/write" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
                         <div class="col-sm-1 py-2 text-right p-2">
                             <span class="text-md text-primary">제목</span>
