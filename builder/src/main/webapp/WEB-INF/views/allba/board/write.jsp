@@ -24,9 +24,9 @@
                     </div>
                 </div>
                 <!-- End of Main Content -->
-				
-                <%@ include file="/WEB-INF/views/allba/board/write-contents.jsp" %>
 
+                <%@ include file="/WEB-INF/views/allba/board/write-contents.jsp" %>
+                <!-- 
 				<form action="/allba/${sitename}/board/write" method="post" enctype="multipart/form-data">
 				
 					<input type="hidden" name="userid" value="${peoplemember.getUserid()}" /><br />
@@ -98,10 +98,7 @@
 			
 					<button type="submit">작성</button>
 				
-				</form>
-
-
-
+				</form> -->
 
                 <!-- Footer -->
                 <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>

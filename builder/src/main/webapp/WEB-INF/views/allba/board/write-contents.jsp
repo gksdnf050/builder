@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container">
+<div class="container" style="flex:1 0 auto;">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Card Body -->
@@ -8,53 +8,21 @@
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">아르바이트 모집 공고를 작성해보세요!</h1>
                 </div>
 
-                <form class="user">
+                <form class="user mb-3" action="/allba/${sitename}/board/write" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
-                        <div class="col-sm-1 text-right p-2">
+                        <div class="col-sm-1 py-2 text-right p-2">
                             <span class="text-md text-primary">제목</span>
                         </div>
-                        <div class="col-sm-8 form-group">
-                            <input name="title" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="제목을 입력해주세요." />
+                        <div class="col-sm-11 py-2 form-group">
+                            <input name="title" class="form-control" placeholder="제목을 입력해주세요." />
                         </div>
-                        <div class="col-sm-1 text-right p-2">
-                            <span class="text-md text-primary">시급</span>
-                        </div>
-                        <div class="col-sm-2 form-group">
-                            <input name="money" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="시급을 입력하세요." />
-                        </div>
-                    </div>
 
-                    <div class="row form-group mb-3">
-                        <div class="col-sm-1 text-right p-2">
-                            <span class="text-md text-primary">경력</span>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <select name="career" id="" class="custom-select">
-                                    <option value="무관">무관</option>
-                                    <option value="신입">신입</option>
-                                    <option value="경력">경력</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-1 text-right p-2">
-                            <span class="text-md text-primary">성별</span>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <select name="gender" id="" class="custom-select">
-                                    <option value="남자">남자</option>
-                                    <option value="여자">여자</option>
-                                    <option value="all">all</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-1 text-right p-2">
+                        <div class="col-sm-1 py-2 text-right p-2">
                             <span class="text-md text-primary">모집 직종</span>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-5" py-2>
                             <div class="">
-                                <select name="occupation" id="" class="custom-select">
+                                <select name="occupation" class="custom-select">
                                     <option value="매장관리">매장관리</option>
                                     <option value="서빙주방">서빙주방</option>
                                     <option value="서비스/미디어">서비스/미디어</option>
@@ -66,25 +34,37 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-1 text-right p-2">
-                            <span class="text-md text-primary">근무 기간</span>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">경력</span>
                         </div>
-                        <div class="col-sm-2">
-                            <div class="">
-                                <select name="location" id="" class="custom-select">
-                                    <option value="서울">서울</option>
-                                    <option value="부산">부산</option>
-                                    <option value="인천">인천</option>
+                        <div class="col-sm-5" py-2>
+                            <div class="form-group">
+                                <select name="career" id="" class="custom-select">
+                                    <option value="무관">무관</option>
+                                    <option value="신입">신입</option>
+                                    <option value="경력">경력</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row my-auto form-group">
-                        <div class="col-sm-1 text-right p-2">
-                            <span class="text-md text-primary">지역</span>
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">모집 성별</span>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-5" py-2>
+                            <div class="form-group">
+                                <select name="gender" id="" class="custom-select">
+                                    <option value="남자">남자</option>
+                                    <option value="여자">여자</option>
+                                    <option value="all">all</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">근무 기간</span>
+                        </div>
+                        <div class="col-sm-5" py-2>
                             <div class="">
                                 <select name="date" id="" class="custom-select">
                                     <option value="1일">1일</option>
@@ -97,47 +77,68 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-1 text-right p-2">
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">마감날짜</span>
+                        </div>
+                        <div class="col-sm-5 py-2 form-group">
+                            <input type="date" class="custom-select" name="deadline" />
+                        </div>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">이미지</span>
+                        </div>
+                        <div class="col-sm-5 py-2 form-group">
+                            <input type="file" class="custom-select" name="file" />
+                        </div>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">지역</span>
+                        </div>
+                        <div class="col-sm-5" py-2>
+                            <div class="">
+                                <select name="location" id="" class="custom-select">
+                                    <option value="서울">서울</option>
+                                    <option value="부산">부산</option>
+                                    <option value="인천">인천</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">시급</span>
+                        </div>
+                        <div class="col-sm-5 py-2 form-group">
+                            <input name="money" type="text" class="form-control" placeholder="시급을 입력하세요." />
+                        </div>
+                        <div class="col-sm-1 py-2 text-right p-2">
                             <span class="text-md text-primary">주소</span>
                         </div>
-                        <div class="col-sm-8 form-group">
-                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="상세 주소를 입력해주세요." />
+                        <div class="col-sm-11 py-2 form-group">
+                            <input class="form-control" name="address" placeholder="상세 주소를 입력해주세요." />
+                        </div>
+                        <div class="col-sm-1 py-2 text-right p-2">
+                            <span class="text-md text-primary">모집 내용</span>
+                        </div>
+                        <div class="col-sm-11 py-2 form-group">
+                            <textarea class="form-control" name="content" placeholder="모집 내용을 작성해주세요." cols="50" rows="5"></textarea>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" />
-                        </div>
+                    <div class="row form-group mb-5">
+                        <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" />
+                            <button type="submit" class="btn btn-primary btn-user btn-block">등록하기</button>
                         </div>
+                        <div class="col-sm-3">&nbsp;</div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" />
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" />
-                        </div>
-                    </div>
-                    <a href="login.html" class="btn btn-primary btn-user btn-block">
-                        Register Account
-                    </a>
-                    <hr />
-                    <a href="index.html" class="btn btn-google btn-user btn-block"> <i class="fab fa-google fa-fw"></i> Register with Google </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook </a>
                 </form>
                 <hr />
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                 </div>
                 <div class="text-center">
                     <a class="small" href="login.html">Already have an account? Login!</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
