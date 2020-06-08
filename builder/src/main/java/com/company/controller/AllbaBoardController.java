@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +25,7 @@ import com.company.utils.AllbaUploadFileUtils;
 @RequestMapping("/allba/*")
 public class AllbaBoardController {
 
-	@Inject
+	@inject
 	AllbaBoardService service;
 
 	@Resource(name = "uploadPath")
@@ -95,6 +95,7 @@ public class AllbaBoardController {
 			throws Exception {
 
 		AllbaBoardDTO dto = service.view(sitename, boardid);
+		System.out.println(dto.getUserid());
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("view", dto);
 		return "allba/board/view";

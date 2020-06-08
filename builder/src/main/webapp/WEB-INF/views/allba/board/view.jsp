@@ -29,6 +29,7 @@ ${view.content}<br />
 마감일 ${view.deadline}<br/>
 
 <a href="/allba/${sitename}/notebox/apply?boardid=${view.getBoardid()}&touserid=${view.getUserid()}">지원하기</a> <br/>
+${view.userid}
 <c:if test="${view.getUserid() eq allbamember.getUserid()}">
 <a href="/allba/${sitename}/board/modify?boardid=${view.getBoardid()}">수정</a>  <a href="/allba/${sitename}/board/delete?boardid=${view.getBoardid()}">삭제</a>
 </c:if>
