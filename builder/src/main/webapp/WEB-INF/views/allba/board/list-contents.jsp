@@ -10,7 +10,21 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">${dtos.getTitle()}</h2>
-                                <p class="ml-auto btn btn-sm btn-outline-white bg-warning text-white">즐겨찾기</p>                            
+                                <p class="ml-auto btn btn-sm btn-outline-white bg-warning text-white">
+                                    <c:if test="${bi != NULL}">
+                                        <c:if test="${empty bi}">
+                                            <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                        </c:if>
+                                        <c:forEach items="${bi}" var="bi">
+                                            <c:if test="${bi != dtos.getBoardid()}">
+                                                <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${bi == NULL}">
+                                        <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                    </c:if>                                
+                                </p>                            
                             </div>
                             
                                 <p class="mt-2 card-text text-truncate" style=" white-space: nowrap;">
