@@ -1,36 +1,37 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시물 조회</title>
-</head>
-<body>
-등록시간 ${view.regdate}<br/>
-${view.title}<br />
-지원자격<br/>
-경력 ${view.career}<br/>
-성별 ${view.gender}<br/>
+<html lang="en">
+    <head>
+        <!-- This is Header. icluding css, js, something like that  -->
+        <%@ include file="/WEB-INF/views/allba/_mixins/header.jsp" %>
+    </head>
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!--  This is Sidebar. -->
+            <%@ include file="/WEB-INF/views/allba/_mixins/sidebar.jsp" %>
 
-모집내용<br/>
-모집직종 ${view.occupation}<br/>
+            <!--  This is Contents. & Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- This is Topbar-->
+                    <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
 
-근무조건<br/>
-근무기간 ${view.date}<br/>
-근무지역 ${view.location}<br/>
-근무주소 ${view.address}<br/>
-시급 ${view.money}<br/>
+                    <div class="container-fluid">
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">아르바이트 모집공고 <font class="font-italic font-weight-light text-primary text-sm text-blue-">!</font></h1>
+                    </div>
+                </div>
+                <!-- End of Main Content -->
 
-<label>내용</label><br/>
-${view.content}<br />
-<img src = "${view.image}"/><br/>
+                <%@ include file="/WEB-INF/views/allba/board/view-contents.jsp" %>
 
-마감일 ${view.deadline}<br/>
-
-<a href="/allba/${sitename}/notebox/apply?boardid=${view.getBoardid()}&touserid=${view.getUserid()}">지원하기</a> <br/>
-<c:if test="${view.getUserid() eq allbamember.getUserid()}">
-<a href="/allba/${sitename}/board/modify?boardid=${view.getBoardid()}">수정</a>  <a href="/allba/${sitename}/board/delete?boardid=${view.getBoardid()}">삭제</a>
-</c:if>
-</body>
+                <!-- Footer -->
+                <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+    </body>
 </html>
