@@ -81,7 +81,7 @@ if(val == "location"){
 							</ul>
 				</div>
 			</section>
-					
+			
 			<section id="one" class="wrapper style1 fullscreen fade-up">
 				<div class="inner">
 					<h1>중개 상품을 선택하세요!</h1>
