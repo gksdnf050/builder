@@ -60,7 +60,7 @@ body {
     }
 
     .login-form{
-        margin-top: 70%;
+        margin-top: 50%;
     }
 }
 
