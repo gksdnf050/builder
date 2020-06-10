@@ -38,17 +38,17 @@ body {
 
 @media screen and (max-width: 450px) {
     .login-form{
-        margin-top: 10%;
+        margin-top: 50%;
     }
 }
 
 @media screen and (min-width: 768px){
     .main{
-        margin-left: 30%; 
+        margin-left: 20%; 
     }
 
     .sidenav{
-        width: 30%;
+        width: 20%;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -56,7 +56,7 @@ body {
     }
 
     .register-form{
-        margin-top: 70%;
+        margin-top: 30%;
     }
 }
 
