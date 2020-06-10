@@ -3533,7 +3533,7 @@ input, select, textarea {
 		position: fixed;
 		text-align: right;
 		top: 0;
-		width: 30%
+		width: 18em;
 		z-index: 10000;
 	}
 
@@ -3757,7 +3757,7 @@ input, select, textarea {
 				height: 0.2em;
 				position: absolute;
 				right: 0;
-				width: 30%;
+				width: 18em;
 			}
 
 			#sidebar nav a:before {
@@ -3810,7 +3810,7 @@ input, select, textarea {
 				padding: 0;
 				text-align: center;
 				top: 0;
-				width: 30%;
+				width: 18em;
 			}
 
 				#sidebar > .inner {
