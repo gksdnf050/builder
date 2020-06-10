@@ -24,7 +24,6 @@ body {
     background-color: #333;
     overflow-x: hidden;
     padding-top: 20px;
-    
 }
 
 
@@ -48,11 +47,11 @@ body {
 
 @media screen and (min-width: 768px){
     .main{
-        margin-left: 30%; 
+        margin-left: 20%; 
     }
 
     .sidenav{
-        width: 30%;
+        width: 20%;
         position: fixed;
         z-index: 1;
         top: 0;
