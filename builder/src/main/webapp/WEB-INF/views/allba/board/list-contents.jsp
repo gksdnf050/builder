@@ -13,16 +13,16 @@
                                 <p class="ml-auto btn btn-sm btn-outline-white bg-warning text-white">
                                     <c:if test="${bi != NULL}">
                                         <c:if test="${empty bi}">
-                                            <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                            <a class="text-white" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
                                         </c:if>
                                         <c:forEach items="${bi}" var="bi">
                                             <c:if test="${bi != dtos.getBoardid()}">
-                                                <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                                <a class="text-white" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
                                             </c:if>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                        <a class="text-white" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
                                     </c:if>                                
                                 </p>                            
                             </div>
