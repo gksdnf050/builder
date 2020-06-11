@@ -83,7 +83,7 @@ public class AllbaBoardController {
 		}
 
 		dto.setImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-
+		
 		service.write(sitename, dto);
 		return "redirect:/allba/{sitename}/board";
 

@@ -123,7 +123,7 @@
                         <div class="col-sm-11 py-2 form-group">
                             <textarea class="form-control" name="content" placeholder="모집 내용을 작성해주세요." cols="50" rows="5"></textarea>
                         </div>
-                        <input type="hidden" name="userid" value="${peoplemember.getUserid()}" />
+                        <input type="hidden" name="userid" value="${allbamember.getUserid()}" />
                     </div>
                     <div class="row form-group mb-5">
                         <div class="col-sm-3">&nbsp;</div>

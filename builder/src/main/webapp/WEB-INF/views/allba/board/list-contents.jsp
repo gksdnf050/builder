@@ -12,14 +12,17 @@
                                 <h2 class="text-primary">${dtos.getTitle()}</h2>
                                 <p class="ml-auto btn btn-sm btn-outline-white bg-warning text-white">
                                     <c:if test="${bi != NULL}">
-                                        <c:if test="${empty bi}">
-                                            <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
-                                        </c:if>
+                                     
+                                        <c:set var="loop_flag" value="false" />
                                         <c:forEach items="${bi}" var="bi">
-                                            <c:if test="${bi != dtos.getBoardid()}">
-                                                <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                            <c:if test="${bi == dtos.getBoardid()}">
+                                             <c:set var="loop_flag" value="true" />
+                                               
                                             </c:if>
                                         </c:forEach>
+                                         <c:if test="${not loop_flag }">
+                                         <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
+                                         </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
                                         <a href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}">즐겨찾기</a>
