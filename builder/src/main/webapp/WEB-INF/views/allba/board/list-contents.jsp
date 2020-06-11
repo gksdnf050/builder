@@ -9,7 +9,11 @@
                         <!-- <rect width="100%" height="100%" fill="#55595c" /> -->                        
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
-                                <h2 class="text-primary">${dtos.getTitle()}</h2>
+                                <h2 class="text-primary">
+                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.getBoardid()}">
+                                        ${dtos.getTitle()}
+                                    </a>
+                                </h2>
                                 <p class="ml-auto btn btn-sm btn-outline-white bg-warning text-white">
                                     <c:if test="${bi != NULL}">
                                         <c:if test="${empty bi}">
