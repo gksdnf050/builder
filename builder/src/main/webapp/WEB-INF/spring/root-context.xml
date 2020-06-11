@@ -43,7 +43,7 @@
 		<!-- 업로드 패스 설정 -->
 	<bean class="java.lang.String" id="uploadPath">
 		<constructor-arg
-			value="../../resources"/>
+			value="/Users/cha2hyun/git/builder/builder/src/main/webapp/resources/"/>
 			
 	</bean>
 </beans>
