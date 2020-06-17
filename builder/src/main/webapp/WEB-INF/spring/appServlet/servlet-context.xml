@@ -27,19 +27,16 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="com.company" />
-
-	
+		base-package="com.company" /> 
 
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**"
 		location="/resources/imgUpload/" />
-		
-	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
+	
 </beans:beans>

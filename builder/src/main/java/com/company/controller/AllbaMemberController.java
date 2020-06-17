@@ -45,7 +45,7 @@ public class AllbaMemberController {
 		} else {
 			session.setAttribute("allbamember", login);
 		}
-
+		
 		return "redirect:/allba/{sitename}";
 	}
 

@@ -5,15 +5,45 @@
 <mapper namespace="com.company.mappers.allba.allbaBoardMapper">
 
 	<!-- 게시물 목록 -->
-	<select id="list" parameterType="hashMap" resultType="com.company.dto.AllbaBoardDTO">
+	<select id="list" parameterType="hashMap" resultType="HashMap">
 		select
 		*
 		from 
 		${sitename}board
 	</select>
 
+	<!-- 카케고리별 게시물 목록 -->
+	<select id="categorylist" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from 
+		${sitename}board
+		where
+		${category} = #{value}
+	</select>
 	
-	<!-- 게시물 career카테고리 목록 -->
+	<!-- 필드 목록 가져오기 -->
+	<select id="fieldlist" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}field
+		where
+		depth = "1"
+	</select>
+	
+	<!-- 필드 선택목록 가져오기 -->
+	<select id="selectlist" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}field
+		where
+		depth = "2"
+	</select>
+	
+<!--  
+	
 	<select id="careerlist" parameterType="hashMap" resultType="com.company.dto.AllbaBoardDTO">
 		select
 		*
@@ -23,7 +53,7 @@
 		career=#{value}
 	</select>
 	
-	<!-- 게시물 occupation카테고리 목록 -->
+	
 	<select id="occupationlist" parameterType="hashMap" resultType="com.company.dto.AllbaBoardDTO">
 		select
 		*
@@ -33,7 +63,7 @@
 		occupation=#{value}
 	</select>
 	
-	<!-- 게시물 location카테고리 목록 -->
+	
 	<select id="locationlist" parameterType="hashMap" resultType="com.company.dto.AllbaBoardDTO">
 		select
 		*
@@ -42,19 +72,38 @@
 		where 
 		location=#{value}
 	</select>
-
+-->
 
 	<!-- 게시물 작성 -->
-	<insert id="write" parameterType="hashMap">
+<!--  	<insert id="write" parameterType="hashMap">
 		insert into
 		${sitename}board(userid, title,
-		career, gender, occupation, date, location, address, money, image, content, deadline)
+		경력, gender, 직종, date, 지역, address, money, image, content, deadline)
 		values(#{userid}, #{title}, #{career}, #{gender}, #{occupation}, #{date}, #{location}, #{address}, #{money}, #{image}, #{content}, #{deadline})
+	</insert> -->
+	
+	<!-- 게시물 작성 -->
+	<insert id="write" parameterType="hashMap">
+		insert into ${sitename}board(${list})
+		values(#{str})
 	</insert>
+	<select id="boardid" resultType="int">
+		select
+		max(boardid)
+		from
+		${sitename}board
+	</select>
+	<update id="writeupdate" parameterType="hashMap">
+		update ${sitename}board
+		set
+		${list} = #{str}
+		where 
+		boardid = #{boardid}
+	</update>
 	
 	<!-- 게시물 조회 -->
 	<select id="view" parameterType="hashMap"
-		resultType="com.company.dto.AllbaBoardDTO">
+		resultType="HashMap">
 		select
 		*
 		from
@@ -67,17 +116,7 @@
 	<update id="modify" parameterType="hashMap">
 		update ${sitename}board
 		set
-		title = #{title},
-		career = #{career},
-		gender = #{gender},
-		occupation = #{occupation},
-		date = #{date},
-		location = #{location},
-		address = #{address},
-		money = #{money},
-		image = #{image},
-		content = #{content},
-		deadline = #{deadline}
+		${list} = #{str}
 		where 
 		boardid = #{boardid}
 	</update>
@@ -99,7 +138,7 @@
 	</delete>
 	
 	<!-- 게시물 검색 -->
-	<select id="search" parameterType="hashMap" resultType="com.company.dto.AllbaBoardDTO">
+	<select id="search" parameterType="hashMap" resultType="HashMap">
 		select
 		*
 		from 

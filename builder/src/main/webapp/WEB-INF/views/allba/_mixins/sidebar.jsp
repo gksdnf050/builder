@@ -25,35 +25,41 @@
 
     <!-- Board -->
     <div class="sidebar-heading">
-    	<a href="/allba/${sitename}/board" class="text-white ">카테고리</a> 
+        <a href="/allba/${sitename}/board" class="text-white">카테고리</a>
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-           <i class="fas fa-fw fa-align-justify"></i>
+        <a class="nav-link collapsed" href="/allba/${sitename}/board">
+            <i class="fas fa-fw fa-align-justify"></i>
             <span>전체보기</span>
         </a>
     </li>
-    
-    
+
     <!-- Nav Item - Pages Collapse Menu -->
+<c:forEach var = "category" items="${category}">
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>경력별</span>
+            <span>${category.categoryname}</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">경력별로 확인해보세요!</h6>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=무관">무관</a>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=신입">신입</a>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=경력">경력</a>
+                <h6 class="collapse-header"></h6>
+                
+		<c:forEach var = "detail" items="${detail}">
+			<c:if test = "${detail.parent  eq category.categoryname}">
+                <a class="collapse-item" href="/allba/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
+            </c:if>
+        </c:forEach>
+               
             </div>
         </div>
     </li>
+</c:forEach>
 
+  
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+<!--    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>직종별</span>
@@ -72,12 +78,13 @@
             </div>
         </div>
     </li>
+    -->
     <li class="nav-item">
-    	<div class="nav-link collapsed">
-        <a href="/allba/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-	    	<span class="text-center">아르바이트 공고 작성</span>
-	    </a> 
-	    </div>
+        <div class="nav-link collapsed">
+            <a href="/allba/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                <span class="text-center">아르바이트 공고 작성</span>
+            </a>
+        </div>
     </li>
 
     <!-- Divider -->
@@ -107,40 +114,40 @@
     <!-- Divider -->
     <hr class="sidebar-divider" />
 
-	<c:choose>             			
-	<c:when test="${allbamember.getManagement() eq 'true'}">
-		<!-- Heading -->
-	    <div class="sidebar-heading text-white">
-	        관리자페이지
-	    </div>
-	
-	    <!-- Nav Item - Pages Collapse Menu -->
-	    <li class="nav-item">
-	        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-	            <i class="fas fa-fw fa-folder"></i>
-	            <span>홈페이지관리</span>
-	        </a>
-	        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-	            <div class="bg-white py-2 collapse-inner rounded">
-	                <h6 class="collapse-header">Login Screens:</h6>
-	                <a class="collapse-item" href="login.html">Login</a>
-	                <a class="collapse-item" href="register.html">Register</a>
-	                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-	                <div class="collapse-divider"></div>
-	                <h6 class="collapse-header">Other Pages:</h6>
-	                <a class="collapse-item" href="404.html">404 Page</a>
-	                <a class="collapse-item" href="blank.html">Blank Page</a>
-	            </div>
-	        </div>
-	    </li>
-	
-	    <!-- Divider -->
-	    <hr class="sidebar-divider d-none d-md-block" />
-	</c:when>
-	<c:otherwise>
-	</c:otherwise>
-	</c:choose>
-    
+    <c:choose>
+        <c:when test="${allbamember.getManagement() eq 'true'}">
+            <!-- Heading -->
+            <div class="sidebar-heading text-white">
+                관리자페이지
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>홈페이지관리</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <!--    <h6 class="collapse-header">Login Screens:</h6>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a> -->
+                        <a class="collapse-item" href="/allba/${sitename}/manage/registercategory">카테고리 등록</a>
+                        <a class="collapse-item" href="/allba/${sitename}/manage/registerfield">필드 등록</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block" />
+        </c:when>
+        <c:otherwise> </c:otherwise>
+    </c:choose>
 
     <!-- Sidebar Toggler (Sidebar) -
             <div class="text-center d-none d-md-inline">

@@ -78,8 +78,8 @@
 <body>
 <%@ include file="/WEB-INF/views/allba/allbanavbar/allbanav.jsp"%>
 <c:forEach items="${dtos}" var="dtos">
- ${dtos.location} <a href="/allba/${sitename}/view?boardid=${dtos.getBoardid()}"> ${dtos.getTitle()} </a> ${dtos.money} ${dtos.regdate}
-<a href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"> 삭제 </a>
+<a href="/allba/${sitename}/view?boardid=${dtos.boardid}"> ${dtos.title} </a> 
+<a href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}"> 삭제 </a>
 </c:forEach>
 </body>
 </html>

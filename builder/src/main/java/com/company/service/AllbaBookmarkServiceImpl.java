@@ -1,13 +1,13 @@
 package com.company.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.company.dao.AllbaBookmarkDAO;
-import com.company.dto.AllbaBoardDTO;
 import com.company.dto.AllbaBookmarkDTO;
 
 @Service
@@ -24,7 +24,7 @@ public class AllbaBookmarkServiceImpl implements AllbaBookmarkService {
 
 	// 즐겨찾기 게시물 가져오기
 	@Override
-	public AllbaBoardDTO list(String sitename, int boardid) {
+	public Map<String,String> list(String sitename, int boardid) {
 		// TODO Auto-generated method stub
 		return dao.list(sitename, boardid);
 	}

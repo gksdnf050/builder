@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container m-b-5" style="flex:1 0 auto;">
+<div class="container m-b-5" style="flex: 1 0 auto;">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Card Body -->
@@ -10,17 +10,17 @@
 
                 <form class="user mb-3" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
-                        <div class="col-sm-1 py-2 text-right p-2">
+                        <div class="col-sm-2 py-3 text-right p-2">
                             <span class="text-md text-primary">아이디</span>
                         </div>
-                        <div class="col-sm-11 py-2 form-group">
+                        <div class="col-sm-10 py-2 form-group">
                             <input name="userid" id="userid" class="form-control form-control-user" placeholder="아이디를 입력해주세요." />
                         </div>
 
-                        <div class="col-sm-1 py-2 text-right p-2">
+                        <div class="col-sm-2 py-3 text-right p-2">
                             <span class="text-md text-primary">비밀번호</span>
                         </div>
-                        <div class="col-sm-11 py-2 form-group">
+                        <div class="col-sm-10 py-2 form-group">
                             <input name="userpass" type="password" id="userpass" class="form-control form-control-user" placeholder="비밀번호를 입력해주세요." />
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="text-center">
                     <font class="small">아직 아이디가 없으신가요?</font>
-                    <a class="small" href="login.html">회원가입</a>
+                    <a class="small" href="register.html">회원가입</a>
                 </div>
             </div>
         </div>

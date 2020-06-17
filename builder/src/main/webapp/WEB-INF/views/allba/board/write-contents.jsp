@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container" style="flex:1 0 auto;">
+<div class="container" style="flex: 1 0 auto;">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Card Body -->
@@ -7,10 +7,88 @@
                 <div class="text-center">
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">아르바이트 모집 공고를 작성해보세요!</h1>
                 </div>
-
+				
                 <form class="user mb-3" action="/allba/${sitename}/board/write" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
-                        <div class="col-sm-1 py-2 text-right p-2">
+                    	  <c:forEach items="${fieldlist}" var="fieldlist">
+                    	  
+                    	  	<c:if test="${fieldlist.fieldtype eq 'hidden'}"> 
+                    	  		<input type="hidden" name="userid" value="${allbamember.getUserid()}" />
+                    	  	</c:if>
+                    	  	
+                  			<c:if test="${fieldlist.fieldtype eq 'title'}"> 
+                  			 	<div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">제목</span>
+                        		</div>
+                        		<div class="col-sm-11 py-2 form-group">
+                           			 <input name="${fieldlist.fieldname}" class="form-control" placeholder="제목을 입력해주세요." />
+                        		</div>
+                  			</c:if>
+                  			
+                        	<c:if test="${fieldlist.fieldtype eq 'text'}"> 
+                        		<div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">${fieldlist.fieldname}</span>
+                        		</div>
+                        		<div class="col-sm-5 py-2 form-group">
+                           			 <input name="${fieldlist.fieldname}" type="text" class="form-control" placeholder="입력하세요." />
+                        		</div> 
+                        	</c:if>
+                        	
+                        	<c:if test="${fieldlist.fieldtype eq 'select'}"> 
+                        		 <div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">${fieldlist.fieldname}</span>
+                        		</div>
+                        		<div class="col-sm-5" py-2>
+                            		<div class="">                           		                    
+                                		<select name="${fieldlist.fieldname}" class="custom-select">
+                                			<c:forEach items="${selectlist}" var="selectlist">
+                                				<c:if test="${selectlist.parent eq fieldlist.fieldname}"> 
+                                    				<option value="${selectlist.fieldname}">${selectlist.fieldname}</option>
+                                    			</c:if>
+                                    		</c:forEach>
+                                		</select>                                			                                		
+                            		</div>
+                        		</div>
+                    	  	</c:if>
+                        	
+                        	<c:if test="${fieldlist.fieldtype eq 'address'}"> 
+                        		 <div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">주소</span>
+                       		 	</div>
+                        		<div class="col-sm-5 py-2 form-group">
+                            		<input type="text" class="form-control" name="address" placeholder="상세 주소를 입력해주세요." />
+                        		</div> 
+                        	</c:if>
+                        	
+                        	<c:if test="${fieldlist.fieldtype eq 'file'}"> 
+                        		 <div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">파일</span>
+                        		</div>
+                        		<div class="col-sm-5 py-2 form-group">
+                            		<input type="file" class="custom-select" name="file" />
+                        		</div> 
+                        	</c:if>
+                        	
+                        	<c:if test="${fieldlist.fieldtype eq 'content'}"> 
+                        		<div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">모집 내용</span>
+                        		</div>
+                        		<div class="col-sm-11 py-2 form-group">
+                            		<textarea class="form-control" name="content" placeholder="모집 내용을 작성해주세요." cols="50" rows="5"></textarea>
+                        		</div>
+                        	</c:if>
+                        	
+                        	<c:if test="${fieldlist.fieldtype eq 'date'}"> 
+                        		<div class="col-sm-1 py-2 text-right p-2">
+                            		<span class="text-md text-primary">마감날짜</span>
+                        		</div>
+                        		<div class="col-sm-5 py-2 form-group">
+                            		<input type="date" class="custom-select" name="deadline" />
+                        		</div>
+                        	</c:if>
+                        	
+                    	  </c:forEach>
+                    <!--     <div class="col-sm-1 py-2 text-right p-2">
                             <span class="text-md text-primary">제목</span>
                         </div>
                         <div class="col-sm-11 py-2 form-group">
@@ -22,7 +100,7 @@
                         </div>
                         <div class="col-sm-5" py-2>
                             <div class="">
-                                <select name="occupation" class="custom-select">
+                                <select name="직종" class="custom-select">
                                     <option value="매장관리">매장관리</option>
                                     <option value="서빙주방">서빙주방</option>
                                     <option value="서비스/미디어">서비스/미디어</option>
@@ -40,7 +118,7 @@
                         </div>
                         <div class="col-sm-5" py-2>
                             <div class="form-group">
-                                <select name="career" id="" class="custom-select">
+                                <select name="경력" id="" class="custom-select">
                                     <option value="무관">무관</option>
                                     <option value="신입">신입</option>
                                     <option value="경력">경력</option>
@@ -97,7 +175,7 @@
                         </div>
                         <div class="col-sm-5" py-2>
                             <div class="">
-                                <select name="location" id="" class="custom-select">
+                                <select name="지역" id="" class="custom-select">
                                     <option value="서울">서울</option>
                                     <option value="부산">부산</option>
                                     <option value="인천">인천</option>
@@ -123,7 +201,8 @@
                         <div class="col-sm-11 py-2 form-group">
                             <textarea class="form-control" name="content" placeholder="모집 내용을 작성해주세요." cols="50" rows="5"></textarea>
                         </div>
-                    </div>
+                        <input type="hidden" name="userid" value="${allbamember.getUserid()}" /> -->
+                    </div> 
                     <div class="row form-group mb-5">
                         <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">

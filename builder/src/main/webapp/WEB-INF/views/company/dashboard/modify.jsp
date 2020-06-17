@@ -31,7 +31,7 @@ if(val == "product"){
 }	
 if(val == "location"){
 	sub.innerHTML = "<select name='category'><option value='employment' <c:if test="${sitedto.getCategory() eq 'motel'}"> selected </c:if>>숙박</option></select>";
-	 
+	
 }
 
 }
@@ -56,7 +56,7 @@ if(val == "location"){
  }
  </script>
 </head>
-	<form method = "post">
+	<form action="/dashboard/createsite" method = "post">
 		<section id="sidebar">
 			<div class="inner">
 				<nav>
@@ -70,7 +70,7 @@ if(val == "location"){
 
 		<!-- Wrapper -->
 		<div id="wrapper">
-
+		
 				<!-- Intro -->
 			<section id="intro" class="wrapper style1 fullscreen fade-up">
 				<div class="inner">
@@ -118,4 +118,3 @@ if(val == "location"){
 
 </body>
 </html>
-

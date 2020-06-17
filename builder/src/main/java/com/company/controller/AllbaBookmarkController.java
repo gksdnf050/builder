@@ -2,6 +2,7 @@ package com.company.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.dto.AllbaBoardDTO;
 import com.company.dto.AllbaBookmarkDTO;
 import com.company.dto.AllbaMemberDTO;
 import com.company.service.AllbaBookmarkService;
@@ -32,7 +32,7 @@ public class AllbaBookmarkController {
 			AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
 			
 			List<AllbaBookmarkDTO> bookmarkdto = service.getbookmark(sitename,m.getUserid());
-			List<AllbaBoardDTO> dto = new ArrayList<AllbaBoardDTO>();
+			List<Map<String,String>> dto = new ArrayList<Map<String,String>>();
 			for(AllbaBookmarkDTO i: bookmarkdto) {
 				dto.add(service.list(sitename, i.getBoardid()));
 			}
@@ -49,6 +49,6 @@ public class AllbaBookmarkController {
 
 			service.delete(sitename, boardid);
 
-			return "redirect:/allba/{sitename}/bookmark";
+			return "redirect:/allba/{sitename}/board";
 		}
 }

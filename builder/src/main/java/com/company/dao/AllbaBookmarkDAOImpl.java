@@ -2,13 +2,13 @@ package com.company.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.company.dto.AllbaBoardDTO;
 import com.company.dto.AllbaBookmarkDTO;
 
 @Repository
@@ -32,7 +32,7 @@ public class AllbaBookmarkDAOImpl implements AllbaBookmarkDAO {
 
 	//즐겨찾기 게시물 가져오기
 	@Override
-	public AllbaBoardDTO list(String sitename, int boardid) {
+	public Map<String,String> list(String sitename, int boardid) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
