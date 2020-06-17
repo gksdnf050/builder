@@ -25,7 +25,7 @@ import com.company.utils.AllbaUploadFileUtils;
 @Controller
 @RequestMapping("/allba/*")
 public class AllbaBoardController {
- 
+  
 	@Inject
 	AllbaBoardService service;
 
