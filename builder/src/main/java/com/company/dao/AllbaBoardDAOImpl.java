@@ -2,13 +2,13 @@ package com.company.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.company.dto.AllbaBoardDTO;
 
 @Repository
 public class AllbaBoardDAOImpl implements AllbaBoardDAO {
@@ -24,29 +24,47 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 
 	//게시물 목록
 	@Override
-	public List<AllbaBoardDTO> list(final String sitename, final String category, final String value) {
+	public List<Map<String,String>> list(final String sitename, final String category, final String value) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
+		
 		data.put("sitename", sitename);
 		data.put("value",value);
 		if(category == null) {
 
 			return sql.selectList(namespace + ".list",data);
-		}else if(category.equals("career")){
-
-			return sql.selectList(namespace + ".careerlist",data);
-		}else if(category.equals("occupation")){
-
-			return sql.selectList(namespace + ".occupationlist",data);
-		}else if(category.equals("location")) {
-			return sql.selectList(namespace + ".locationlist",data);
 		}else {
-			return null;
+			data.put("category",category);
+			return sql.selectList(namespace + ".categorylist",data);
 		}
 	}
 
 	//게시물 작성
-		@Override
+	@Override
+	public void write(String sitename, List<String> list, String[] str) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename",sitename);
+		data.put("str", str[0]);
+		data.put("list", list.get(0));
+		
+		sql.insert(namespace + ".write", data); 
+		
+		int boardid = sql.selectOne(namespace + ".boardid",data);
+		
+		for(int i = 1; i < list.size(); i++) {
+			HashMap map2 = new HashMap();
+			map2.put("sitename", sitename);
+			map2.put("str", str[i]);
+			map2.put("list", list.get(i));
+			map2.put("boardid", boardid);
+			sql.update(namespace + ".writeupdate",map2);
+		}
+		
+		
+	}
+
+/*		@Override
 		public void write(final String sitename, final AllbaBoardDTO dto) {
 			// TODO Auto-generated method stub
 			
@@ -55,11 +73,11 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 			data.put("sitename", sitename);
 			data.put("userid", dto.getUserid());
 			data.put("title", dto.getTitle());
-			data.put("career", dto.getCareer());
+			data.put("career", dto.get경력());
 			data.put("gender", dto.getGender());
-			data.put("occupation", dto.getOccupation());
+			data.put("occupation", dto.get직종());
 			data.put("date", dto.getDate());
-			data.put("location", dto.getLocation());
+			data.put("location", dto.get지역());
 			data.put("address", dto.getAddress());
 			data.put("money", dto.getMoney());
 			data.put("image", dto.getImage());
@@ -67,10 +85,10 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 			data.put("deadline", dto.getDeadline());
 			sql.insert(namespace + ".write", data); 
 		}
-
+ */
 	//게시물 조회/수정 get
 	@Override
-	public AllbaBoardDTO view(final String sitename, final int boardid) {
+	public Map<String,String> view(final String sitename, final int boardid) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
@@ -79,25 +97,20 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 	}
 	//게시물 수정post
 	@Override
-	public void modify(String sitename, AllbaBoardDTO dto) {
+	public void modify(String sitename, final List<String> list, final String[] str, int boardid) {
 		// TODO Auto-generated method stub
-		HashMap data = new HashMap();
+
 		
-		data.put("sitename", sitename);
-		data.put("boardid", dto.getBoardid());
-		data.put("title", dto.getTitle());
-		data.put("career", dto.getCareer());
-		data.put("gender", dto.getGender());
-		data.put("occupation", dto.getOccupation());
-		data.put("date", dto.getDate());
-		data.put("location", dto.getLocation());
-		data.put("address", dto.getAddress());
-		data.put("money", dto.getMoney());
-		data.put("image", dto.getImage());
-		data.put("content", dto.getContent());
-		data.put("deadline", dto.getDeadline());
+		for(int i = 0; i < list.size(); i++) {
+			HashMap data = new HashMap();
+			data.put("sitename", sitename);
+			data.put("str", str[i]);
+			data.put("list", list.get(i));
+			data.put("boardid", boardid);
+			sql.update(namespace + ".modify", data); 
+		}
 	
-		 sql.update(namespace + ".modify", data); 
+		 
 	}
 	//게시물 삭제
 	@Override
@@ -113,7 +126,7 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 	}
 	//게시물 검색
 	@Override
-	public List<AllbaBoardDTO> search(String sitename, String keyword) {
+	public  List<Map<String,String>> search(String sitename, String keyword) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
@@ -143,6 +156,22 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 		
 		return sql.selectList(namespace + ".getbookmarkid",data);
 		
+	}
+	//필드 목록 가져오기
+	@Override
+	public List<Map<String, String>> fieldlist(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		return sql.selectList(namespace + ".fieldlist",data);
+	}
+	//필드 선택목록 가져오기
+	@Override
+	public List<Map<String, String>> selectlist(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		return sql.selectList(namespace + ".selectlist",data);
 	}
 
 }

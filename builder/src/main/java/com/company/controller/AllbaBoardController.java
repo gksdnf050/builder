@@ -1,7 +1,9 @@
 package com.company.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.company.dto.AllbaBoardDTO;
 import com.company.dto.AllbaMemberDTO;
 import com.company.service.AllbaBoardService;
 import com.company.utils.AllbaUploadFileUtils;
@@ -40,7 +41,8 @@ public class AllbaBoardController {
 
 		String category = req.getParameter("category");
 		String value = req.getParameter("value");
-		List<AllbaBoardDTO> dto = service.list(sitename, category, value);
+
+		List<Map<String, String>> dto = service.list(sitename, category, value);
 
 		if (m != null) {
 			List<Integer> bi = service.getbookmarkid(sitename, m.getUserid());
@@ -59,6 +61,10 @@ public class AllbaBoardController {
 			throws Exception {
 		HttpSession session = req.getSession();
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
+		model.addAttribute("fieldlist", fieldlist);
+		model.addAttribute("selectlist", selectlist);
 		model.addAttribute("sitename", sitename);
 		if (m == null) {
 			return "redirect:/allba/{sitename}/login";
@@ -68,9 +74,23 @@ public class AllbaBoardController {
 
 	// 게시물 작성post
 	@RequestMapping(value = "/{sitename}/board/write", method = RequestMethod.POST)
-	public String postWrite(@PathVariable("sitename") String sitename, AllbaBoardDTO dto, MultipartFile file)
+	public String postWrite(@PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)
 			throws Exception {
-
+		int temp = 0;
+		String[] str;
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<String> list = new ArrayList();
+		str = new String[fieldlist.size()];
+		for (Map<String, String> i : fieldlist) {
+			list.add(i.get("fieldname"));
+		}
+		for (int i = 0; i < fieldlist.size(); i++) {
+			if (list.get(i).equals("image")) {
+				temp = i;
+				continue;
+			}
+			str[i] = req.getParameter(list.get(i));
+		}
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -82,9 +102,10 @@ public class AllbaBoardController {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
-		dto.setImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		
-		service.write(sitename, dto);
+		str[temp] = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+
+		service.write(sitename, list, str);
+
 		return "redirect:/allba/{sitename}/board";
 
 	}
@@ -94,9 +115,13 @@ public class AllbaBoardController {
 	public String getView(@PathVariable("sitename") String sitename, @RequestParam("boardid") int boardid, Model model)
 			throws Exception {
 
-		AllbaBoardDTO dto = service.view(sitename, boardid);
+		Map<String, String> dto = service.view(sitename, boardid);
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("view", dto);
+		model.addAttribute("fieldlist", fieldlist);
+		model.addAttribute("selectlist", selectlist);
 		return "allba/board/view";
 	}
 
@@ -105,20 +130,40 @@ public class AllbaBoardController {
 	public String getModify(@PathVariable("sitename") String sitename, @RequestParam("boardid") int boardid,
 			Model model) throws Exception {
 
-		AllbaBoardDTO dto = service.view(sitename, boardid);
+		Map<String, String> dto = service.view(sitename, boardid);
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("view", dto);
+		model.addAttribute("fieldlist", fieldlist);
+		model.addAttribute("selectlist", selectlist);
 		return "allba/board/modify";
 	}
 
 	// 게시물 수정post
 	@RequestMapping(value = "/{sitename}/board/modify", method = RequestMethod.POST)
-	public String postModify(@PathVariable("sitename") String sitename, AllbaBoardDTO dto, MultipartFile file,
-			HttpServletRequest req) throws Exception {
+	public String postModify(@PathVariable("sitename") String sitename, @RequestParam("boardid") int boardid,
+			MultipartFile file, HttpServletRequest req) throws Exception {
+		int temp = 0;
+		String[] str;
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<String> list = new ArrayList();
+		str = new String[fieldlist.size()];
+		for (Map<String, String> i : fieldlist) {
+
+			list.add(i.get("fieldname"));
+		}
+		for (int i = 0; i < fieldlist.size(); i++) {
+			if (list.get(i).equals("image")) {
+				temp = i;
+				continue;
+			}
+			str[i] = req.getParameter(list.get(i));
+		}
 		// 새로운 파일이 등록되었는지 확인
 		if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			// 기존 파일을 삭제
-			new File(uploadPath + req.getParameter("iamge")).delete();
+			new File(uploadPath + req.getParameter("image")).delete();
 
 			// 새로 첨부한 파일을 등록
 			String imgUploadPath = uploadPath + File.separator + "imgUpload";
@@ -126,15 +171,15 @@ public class AllbaBoardController {
 			String fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(),
 					file.getBytes(), ymdPath);
 
-			dto.setImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			str[temp] = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 
 		} else { // 새로운 파일이 등록되지 않았다면
 			// 기존 이미지를 그대로 사용
-			dto.setImage(req.getParameter("image"));
+			str[temp] = req.getParameter("image");
 
 		}
 
-		service.modify(sitename, dto);
+		service.modify(sitename, list, str, boardid);
 
 		return "redirect:/allba/{sitename}/board";
 	}
@@ -152,13 +197,25 @@ public class AllbaBoardController {
 	// 게시물 검색
 	@RequestMapping(value = "/{sitename}/board/search", method = RequestMethod.GET)
 	public String getSearch(@PathVariable("sitename") String sitename, @RequestParam("keyword") String keyword,
-			Model model) throws Exception {
+			Model model, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession();
+		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
 
-		List<AllbaBoardDTO> dto = service.search(sitename, keyword);
+		String category = req.getParameter("category");
+		String value = req.getParameter("value");
+
+		List<Map<String, String>> dto = service.search(sitename, keyword);
+
+		if (m != null) {
+			List<Integer> bi = service.getbookmarkid(sitename, m.getUserid());
+			model.addAttribute("bi", bi);
+		}
+
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("dtos", dto);
+		
 
-		return "allba/board/searchresult";
+		return "allba/board/list";
 	}
 
 	// 게시물 즐겨찾기 등록
@@ -177,6 +234,5 @@ public class AllbaBoardController {
 		}
 
 	}
-
 
 }

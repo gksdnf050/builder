@@ -10,27 +10,27 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.getBoardid()}">
-                                        ${dtos.getTitle()}
+                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.boardid}">
+                                        ${dtos.title}
                                     </a>
                                 </h2>
                                 <p class="ml-auto">
                                     <c:if test="${bi != NULL}">                                    
                                         <c:set var="loop_flag" value="false" />
                                             <c:forEach items="${bi}" var="bi">
-                                                <c:if test="${bi == dtos.getBoardid()}">
+                                                <c:if test="${bi == dtos.boardid}">
                                                     <c:set var="loop_flag" value="true" />
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"><i class="fas fa-star"></i></a>
+                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}"><i class="fas fa-star"></i></a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
                                     </c:if>
                                                                     
                                 </p>                            
@@ -39,8 +39,8 @@
                                 ${dtos.content}
                             </p>                            
                             <div class="d-flex justify-content-between align-items-left">                                
-                                <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dtos.location} </button>
-                                <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dtos.money}원</button>
+                                <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dtos.get("지역")}</button>
+                                <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dtos.get("시급")}원</button>
                                 <small class="ml-auto text-muted"> ${dtos.regdate}</small>
                             </div>
                         </div>

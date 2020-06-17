@@ -21,6 +21,24 @@
 		#{status}, #{topcategory})
 	</insert>
 
+	<!-- 사이트의 카테고리데이터베이스 생성 -->
+	<update id="createsitecategory" parameterType="hashMap">
+		${sitecategory}
+	</update>
+	<!-- 사이트의 기본카테고리 등록 -->
+	<insert id="insertcategory" parameterType="hashMap">
+		insert into ${sitename}category(categoryname, depth, parent)
+		values(#{categoryname}, #{depth_category}, #{parent_category})
+	</insert>
+	<!--  사이트의 게시판 필드 데이터베이스 생성 -->
+	<update id="createsitefield" parameterType="hashMap">
+		${sitefield}
+	</update>
+	<!-- 사이트의 기본게시판 필드 등록 -->
+	<insert id="insertfield" parameterType="hashMap">
+		insert into ${sitename}field(fieldname, fieldtype, depth, parent)
+		values(#{fieldname},#{fieldtype}, #{depth}, #{parent})
+	</insert>
 	<!-- 사이트의 게시판데이터베이스 생성 -->
 	<update id="createboard" parameterType="hashMap">
 
@@ -46,6 +64,14 @@
 		#{siteid}
 	</delete>
 
+	<!-- 사이트의 게시판 필드 데이터베이스 삭제 -->
+	<update id="deletesitefield" parameterType="hashMap">
+		${sitefield}
+	</update>
+	<!-- 사이트의 카테고리데이터베이스 삭제 -->
+	<update id="deletesitecategory" parameterType="hashMap">
+		${sitecategory}
+	</update>
 
 	<!-- 사이트의 회원데이터베이스 삭제 -->
 	<update id="deletemember" parameterType="hashMap">
