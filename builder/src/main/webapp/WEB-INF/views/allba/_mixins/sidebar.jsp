@@ -24,28 +24,31 @@
     <hr class="sidebar-divider" />
 
     <!-- Board -->
-    <div class="sidebar-heading">
-        <a href="/allba/${sitename}/board" class="text-white">카테고리</a>
-    </div>
+      <div class="sidebar-heading">
+        <a href="/allba/${sitename}/board" class="text-white">메뉴</a>
+    </div> 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+  <!--    <li class="nav-item">
         <a class="nav-link collapsed" href="/allba/${sitename}/board">
             <i class="fas fa-fw fa-align-justify"></i>
             <span>전체보기</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
-<c:forEach var = "category" items="${category}">
+
     <li class="nav-item">
+    	
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>${category.categoryname}</span>
+            <span>채용정보</span>
         </a>
+         
+        <c:forEach var = "category" items="${category}">
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header"></h6>
-                
+        <span>${category.categoryname}</span>
 		<c:forEach var = "detail" items="${detail}">
 			<c:if test = "${detail.parent  eq category.categoryname}">
                 <a class="collapse-item" href="/allba/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
@@ -54,8 +57,24 @@
                
             </div>
         </div>
+        </c:forEach>
+        
     </li>
-</c:forEach>
+	 <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>이벤트</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Q&A게시판</span>
+        </a>
+    </li>
 
   
     <!-- Nav Item - Utilities Collapse Menu -->
@@ -88,28 +107,28 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider" />
+ <!--     <hr class="sidebar-divider" /> -->
 
     <!-- Heading -->
-    <div class="sidebar-heading text-white">
+   <!--   <div class="sidebar-heading text-white">
         고객지원
-    </div>
+    </div>  -->
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+<!--      <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>이벤트</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+ <!--    <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Q&A게시판</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider" />

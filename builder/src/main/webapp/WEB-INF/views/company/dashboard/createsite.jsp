@@ -38,6 +38,8 @@
 						<ul>
 							<li><a href="#intro">사이트 이름 설정</a></li>
 							<li><a href="#one">중개 상품 설정</a></li>
+							<li><a href="#two">이메일 입력</a></li>
+							<li><a href="#three">로고 </a></li>
 						</ul>
 					</nav>
 				</div>
@@ -70,15 +72,42 @@
     	<option value="people">사람</option>
 	</select>
  </p>
-  </p>
 소분류<div id ="category"></div>
- <p>
-							
-							 <p>
-   <button type="submit" name="status" value="store">저장</button>  <button type="submit" name="status" value="deploy">생성</button>  
- </p>
+						<p></p>
+							<ul class="actions">
+								<li><a href="#two" class="button scrolly">다음으로 </a></li>
+							</ul>
 						</div>
 					</section>
+					
+					<section id="two" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>이메일!</h1>
+						<p><label for=""/>
+							<input type="text" id="" name="" /></p>
+						
+						<ul class="actions">
+								<li><a href="#three" class="button scrolly">다음으로 </a></li>
+						</ul>
+						</div>
+					</section>
+					
+					
+					
+					
+					
+					<section id="three" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>로고!</h1>
+						
+							<p><label for=""/>
+							<input type="file" id="" name="" /></p>
+						<p>
+   <button type="submit" name="status" value="store">저장</button>  <button type="submit" name="status" value="deploy">생성</button>  
+ </p>	
+ 						</div>
+					</section>
+					 
 					</div>
 					
 	
