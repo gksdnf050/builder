@@ -23,14 +23,14 @@
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                                <a class="text-warning text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"><i class="fas fa-star"></i></a>
+                                                <a class="text-warning text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"><i class="fas fa-star"></i></a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                        <a class="text-warning text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
                                     </c:if>
                                                                     
                                 </p>                            
