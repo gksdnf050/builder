@@ -24,35 +24,61 @@
     <hr class="sidebar-divider" />
 
     <!-- Board -->
-    <div class="sidebar-heading">
-        <a href="/allba/${sitename}/board" class="text-white">카테고리</a>
-    </div>
+      <div class="sidebar-heading">
+        <a href="/allba/${sitename}/board" class="text-white">메뉴</a>
+    </div> 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+  <!--    <li class="nav-item">
         <a class="nav-link collapsed" href="/allba/${sitename}/board">
             <i class="fas fa-fw fa-align-justify"></i>
             <span>전체보기</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
+
     <li class="nav-item">
+    	
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>경력별</span>
+            <span>채용정보</span>
         </a>
+         
+        <c:forEach var = "category" items="${category}">
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">경력별로 확인해보세요!</h6>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=무관">무관</a>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=신입">신입</a>
-                <a class="collapse-item" href="/allba/${sitename}/board?category=career&value=경력">경력</a>
+                <h6 class="collapse-header"></h6>
+        <span>${category.categoryname}</span>
+		<c:forEach var = "detail" items="${detail}">
+			<c:if test = "${detail.parent  eq category.categoryname}">
+                <a class="collapse-item" href="/allba/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
+            </c:if>
+        </c:forEach>
+               
             </div>
         </div>
+        </c:forEach>
+        
+    </li>
+	 <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>이벤트</span>
+        </a>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+    <!-- Nav Item - Tables -->
     <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Q&A게시판</span>
+        </a>
+    </li>
+
+  
+    <!-- Nav Item - Utilities Collapse Menu -->
+<!--    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>직종별</span>
@@ -71,6 +97,7 @@
             </div>
         </div>
     </li>
+    -->
     <li class="nav-item">
         <div class="nav-link collapsed">
             <a href="/allba/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
@@ -80,28 +107,28 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider" />
+ <!--     <hr class="sidebar-divider" /> -->
 
     <!-- Heading -->
-    <div class="sidebar-heading text-white">
+   <!--   <div class="sidebar-heading text-white">
         고객지원
-    </div>
+    </div>  -->
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+<!--      <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>이벤트</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+ <!--    <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Q&A게시판</span>
         </a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
@@ -121,14 +148,16 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
+                    <!--    <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a> -->
+                        <a class="collapse-item" href="/allba/${sitename}/manage/registercategory">카테고리 등록</a>
+                        <a class="collapse-item" href="/allba/${sitename}/manage/registerfield">필드 등록</a>
                     </div>
                 </div>
             </li>

@@ -117,8 +117,6 @@
 <title>게시물 작성</title>
 </head>
 <body>
-
-
 	<form action="/people/${sitename}/board/write" method="post" enctype="multipart/form-data">
 	
 		<input type="hidden" name="userid" value="${peoplemember.getUserid()}" /><br />
@@ -182,14 +180,11 @@
 			
 		<label>내용</label>
 			<textarea cols="50" rows="5" name="content"></textarea><br />
-
 	
 		<label>마감날짜</label>
 			<input type="date" name="deadline"/> <br/>
 			
-
 <button type="submit">작성</button>
-
 </form>
 </body>
 </html>

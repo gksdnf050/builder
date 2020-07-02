@@ -16,13 +16,11 @@
 	height: 50px;
 	background: #fcc;
 }
-
 .one {
 	width: 600px;
 	height: 100%;
 	margin: 0 auto;
 }
-
 .one>li {
 	float: left;
 	width: 20%;
@@ -30,21 +28,17 @@
 	text-align: center;
 	position: relative;
 }
-
 .one>li:hover .two {
 	left: 0;
 }
-
 .one>li a {
 	display: block;
 }
-
 .one>li a:hover {
 	bakground: #B21016;
 	color: #fff;
 	font-weight: bold;
 }
-
 .two {
 	position: absolute;
 	top: 50px;
@@ -52,15 +46,12 @@
 	background: #ccc;
 	width: 120%;
 }
-
 .two>li {
 	position: relative;
 }
-
 .two>li:hover .three {
 	left: 100%;
 }
-
 .three {
 	position: absolute;
 	top: 0;
@@ -68,7 +59,6 @@
 	left: -9999px;
 	width: 200%;
 }
-
 .three>li a:hover {
 	backgorund: #085820;
 	color: #fff;
@@ -78,8 +68,8 @@
 <body>
 <%@ include file="/WEB-INF/views/allba/allbanavbar/allbanav.jsp"%>
 <c:forEach items="${dtos}" var="dtos">
- ${dtos.location} <a href="/allba/${sitename}/view?boardid=${dtos.getBoardid()}"> ${dtos.getTitle()} </a> ${dtos.money} ${dtos.regdate}
-<a href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"> 삭제 </a>
+<a href="/allba/${sitename}/view?boardid=${dtos.boardid}"> ${dtos.title} </a> 
+<a href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}"> 삭제 </a>
 </c:forEach>
 </body>
 </html>
