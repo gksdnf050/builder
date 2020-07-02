@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+ 
 </head>
 <body>
  <script>
@@ -23,8 +22,38 @@
 	 }	
 	
  }
- </script>
+
  
+ </script>
+
+<form action="/allba/${sitename}/manage/registercategory" method="post">
+ <c:forEach items='${category}' var='category' varStatus='status'>
+
+ 		<div>
+ 		${category.categoryname}  
+ 		</div> 
+ 		
+ 		<input type="text" name="categoryname${status.count}" />
+ 		<input type="hidden" name="parent${status.count}" value="${category.categoryname}"/>
+ 		<input type="hidden" name="depth${status.count}" value="2" /> 
+ 		<button type="submit">등록하기</button>
+ 		<div>
+ 		<c:forEach items='${detail}' var='detail'>
+ 		
+ 			<c:if test='${detail.parent eq category.categoryname}'>
+ 				 ${detail.categoryname}
+ 			</c:if>
+ 			
+ 		</c:forEach>
+ 		</div>
+
+ </c:forEach>
+ <input type="text" name="categoryname" />
+ <input type="hidden" name="depth" value="1" /> 
+ <button type="submit">등록하기</button>
+</form>
+
+ <!--  
 	<form action="/allba/${sitename}/manage/registercategory" method="post">
 		카테고리 이름<input type="text" name="categoryname" /> 
 		카테고리 레벨 <select name="depth" id="depth" onchange="changeItem(this)">
@@ -38,6 +67,6 @@
 				<button type="submit">등록하기</button>
 	</form>
 	
-	
+	-->
 </body>
 </html>

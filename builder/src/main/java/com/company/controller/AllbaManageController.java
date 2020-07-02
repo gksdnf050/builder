@@ -27,6 +27,7 @@ public class AllbaManageController {
 
 		List<Map<String, String>> category = service.category(sitename);
 		List<Map<String, String>> detail = service.detailcategory(sitename);
+		
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("category", category);
 		model.addAttribute("detail", detail);
@@ -37,11 +38,29 @@ public class AllbaManageController {
 	// 카테고리 등록post
 	@RequestMapping(value = "/{sitename}/manage/registercategory", method = RequestMethod.POST)
 	public String postRegistercategory(@PathVariable("sitename") String sitename, Model model, HttpServletRequest req) {
+		boolean flag = false;
+		List<Map<String, String>> category = service.category(sitename);
+		List<Map<String, String>> detail = service.detailcategory(sitename);
+		for(int i = 1; i < category.size()+1; i++) {
+			
+			if(req.getParameter("categoryname"+i).equals("")) {
+				continue;
+			}
+			else {
+				flag = true;
+				service.registercategory(sitename, req.getParameter("categoryname"+i), req.getParameter("depth"+i),
+						req.getParameter("parent"+i));
+				break;
 
-		service.registercategory(sitename, req.getParameter("categoryname"), req.getParameter("depth"),
-				req.getParameter("parent"));
+			}
+		}
+		
+		if(!flag) {
+			service.registercategory(sitename, req.getParameter("categoryname"), req.getParameter("depth"),
+					req.getParameter("parent"));
+		}
 
-		return "/allba/manage/registercategory";
+		return "redirect:/allba/{sitename}/manage/registercategory";
 	}
 
 	// 필드 등록get
@@ -63,7 +82,7 @@ public class AllbaManageController {
 		service.registerfield(sitename, req.getParameter("fieldname"), req.getParameter("depth"), req.getParameter("fieldtype"),
 				req.getParameter("parent"));
 		
-		return "/allba/manage/registerfield";
+		return "redirect:/allba/{sitename}/manage/registerfield";
 	}
 
 }
