@@ -16,7 +16,7 @@
 	
 	<!--즐겨찾기된 게시물 가져오기 -->
 	<select id="list" parameterType="hashMap"
-		resultType="com.company.dto.AllbaBoardDTO">
+		resultType="HashMap">
 		select
 		*
 		from

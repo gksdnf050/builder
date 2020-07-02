@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mappers.allba.allbaManageMapper">
+
+	<!-- 상위카테고리 가져오기 -->
+	<select id="category" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}category
+		where depth ='1'
+	</select>
+	<!-- 하위카테고리 목록 -->
+	<select id="detailcategory" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}category
+		where depth ='2'
+	</select>
+	
+	<!-- 카테고리 등록 -->
+	<insert id="registercategory" parameterType="hashMap">
+		insert into ${sitename}category(categoryname, depth, parent)
+		values(#{categoryname}, #{depth}, #{parent})
+	</insert>
+	
+	<!-- 필드 목록 가져오기 -->
+	<select id="fieldlist" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}field
+		where
+		depth = "1"
+	</select>
+	
+	<!-- 필드 등록 -->
+	<insert id="registerfield" parameterType="hashMap">
+		insert into ${sitename}field(fieldname, depth, fieldtype, parent)
+		values(#{fieldname}, #{depth}, #{fieldtype}, #{parent})
+	</insert>
+	<update id="add" parameterType="hashMap">
+		${add}
+	</update>
+</mapper>
