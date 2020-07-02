@@ -21,7 +21,7 @@ import com.company.service.AllbaManageService;
 @Controller
 @RequestMapping("/allba/*")
 public class AllbaController {
-	 
+	  
 	@Inject
 	AllbaManageService service;
 	//allba사이트 홈
