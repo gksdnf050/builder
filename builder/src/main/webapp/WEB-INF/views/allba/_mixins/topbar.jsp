@@ -50,9 +50,9 @@
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                    Alerts Center
-                </h6>
+                <span class="dropdown-header">
+                    지원한 알바생 목록
+                </span>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
@@ -100,8 +100,9 @@
             <!-- Dropdown - Messages -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">
-                    Message Center
+                    내가 지원한 공고
                 </h6>
+                <%@ include file="/WEB-INF/views/allba/notebox/receivenotebox.jsp" %>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="" />
@@ -152,57 +153,55 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <c:if test="${allbamember != null}">
-               		<span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, 
-               			<font class="text-primary">
-               			<c:choose>             			
-	               			<c:when test="${allbamember.getManagement() eq 'true'}">
-								Admin
-							</c:when>
-	               			<c:otherwise>
-	               				${allbamember.userid}
-	               			</c:otherwise>
-               			</c:choose>
-               			
-               			</font>
-              		</span>           
-				</c:if>
-				<c:if test="${allbamember == null}">
-					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><font class="text-primary">로그인하세요</font></span>
-				</c:if>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                        >Hello,
+                        <font class="text-primary">
+                            <c:choose>
+                                <c:when test="${allbamember.getManagement() eq 'true'}">
+                                    Admin
+                                </c:when>
+                                <c:otherwise>
+                                    ${allbamember.userid}
+                                </c:otherwise>
+                            </c:choose>
+                        </font>
+                    </span>
+                </c:if>
+                <c:if test="${allbamember == null}">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><font class="text-primary">로그인하세요</font></span>
+                </c:if>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" />
             </a>
             <!-- Dropdown - User Information -->
-	            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-	            
-					<c:if test="${allbamember == null}">
-		                <a class="dropdown-item" href="/allba/${sitename}/login">
-		                	<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-							Login
-		                </a>
-					</c:if>
-					
-            		<c:if test="${allbamember != null}">
-		                <a class="dropdown-item" href="#">
-		                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-		                    Somethings
-		                </a>
-		                <a class="dropdown-item" href="/allba/${sitename}/modify">
-		                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-		                    Edit
-		                </a>
-		                <a class="dropdown-item" href="/allba/${sitename}/bookmark">
-		                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-		                   Favorites
-		                </a>
-		                <div class="dropdown-divider"></div>
-		                <a class="dropdown-item" href="/allba/${sitename}/logout">
-		                <!-- <a class="dropdown-item" href="/allba/${sitename}/logout" data-toggle="modal" data-target="#logoutModal">-->
-		                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-		                    Logout
-		                </a>
-	                </c:if>
-	            </div>
-           
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <c:if test="${allbamember == null}">
+                    <a class="dropdown-item" href="/allba/${sitename}/login">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Login
+                    </a>
+                </c:if>
+
+                <c:if test="${allbamember != null}">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Somethings
+                    </a>
+                    <a class="dropdown-item" href="/allba/${sitename}/modify">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Edit
+                    </a>
+                    <a class="dropdown-item" href="/allba/${sitename}/bookmark">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Favorites
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/allba/${sitename}/logout">
+                        <!-- <a class="dropdown-item" href="/allba/${sitename}/logout" data-toggle="modal" data-target="#logoutModal">-->
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </c:if>
+            </div>
         </li>
     </ul>
 </nav>
