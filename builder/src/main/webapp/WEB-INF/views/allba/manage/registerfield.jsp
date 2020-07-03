@@ -1,47 +1,38 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
- <script>
- function changeItem(e){
-	 var parent = document.getElementById("parent");
-	 var fieldtype = document.getElementById("fieldtype");
-	 var select = e.value;
-	 if(select == "1"){
-		 fieldtype.innerHTML = "<option value='select'>select</option><option value='text'>text</option>"
-		 parent.innerHTML = "<option value=''>--</option>"
-	 }
-	 if(select == "2"){
-		 parent.innerHTML = "<c:forEach items='${fieldlist}' var='fieldlist'><option value='${fieldlist.fieldname}'>${fieldlist.fieldname}</option></c:forEach>";
-		 fieldtype.innerHTML = "<option value=''>--</option>"
-	 }	
-	
- }
- </script>
- 
-	<form action="/allba/${sitename}/manage/registerfield" method="post">
-		필드 이름<input type="text" name="fieldname" /> 
-		필드 레벨 <select name="depth" id="depth" onchange="changeItem(this)">
-					<option value="">--</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-				</select> 
-		필드 타입 	<select name="fieldtype" id="fieldtype">
-					
-				</select>
-		상위 카테고리<select name="parent" id="parent">
-					
-				</select>
-				
-				<button type="submit">등록하기</button>
-	</form>
-	
-	
-</body>
+<html lang="en">
+    <head>
+        <!-- This is Header. icluding css, js, something like that  -->
+        <%@ include file="/WEB-INF/views/allba/_mixins/header.jsp" %>
+    </head>
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!--  This is Sidebar. -->
+            <%@ include file="/WEB-INF/views/allba/_mixins/sidebar.jsp" %>
+
+            <!--  This is Contents. & Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- This is Topbar-->
+                    <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
+
+                    <div class="container-fluid">
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">아르바이트 필드 작성하기 <font class="font-italic font-weight-light text-primary text-sm text-blue-">BETA</font></h1>
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+
+                <%@ include file="/WEB-INF/views/allba/manage/registerfield-contents.jsp" %>
+                
+
+                <!-- Footer -->
+                <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+    </body>
 </html>
