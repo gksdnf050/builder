@@ -45,5 +45,12 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 		// TODO Auto-generated method stub
 		dao.registerfield(sitename ,fieldname, depth, fieldtype, parent);
 	}
+	
+	// 필드 선택목록 가져오기
+		@Override
+		public List<Map<String, String>> selectlist(String sitename) {
+			// TODO Auto-generated method stub
+			return dao.selectlist(sitename);
+		}
 
 }

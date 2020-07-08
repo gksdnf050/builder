@@ -36,7 +36,15 @@
 		where
 		depth = "1"
 	</select>
-	
+	<!-- 필드 선택목록 가져오기 -->
+	<select id="selectlist" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from
+		${sitename}field
+		where
+		depth = "2"
+	</select>
 	<!-- 필드 등록 -->
 	<insert id="registerfield" parameterType="hashMap">
 		insert into ${sitename}field(fieldname, depth, fieldtype, parent)

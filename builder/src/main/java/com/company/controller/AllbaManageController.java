@@ -67,10 +67,11 @@ public class AllbaManageController {
 	@RequestMapping(value = "/{sitename}/manage/registerfield", method = RequestMethod.GET)
 	public String getRegisterfield(@PathVariable("sitename") String sitename, Model model) {
 		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
-		// List<Map<String, String>> selectlist = service.selectlist(sitename);
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
 
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("fieldlist", fieldlist);
+		model.addAttribute("selectlist",selectlist);
 
 		return "/allba/manage/registerfield";
 	}
@@ -78,11 +79,44 @@ public class AllbaManageController {
 	// 필드 등록post
 	@RequestMapping(value = "/{sitename}/manage/registerfield", method = RequestMethod.POST)
 	public String postRegisterfield(@PathVariable("sitename") String sitename, Model model, HttpServletRequest req) {
+		boolean flag = false;
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
+		for(int i = 1; i < fieldlist.size()+1; i++) {
+			if(req.getParameter("fieldname"+i).equals("") || req.getParameter("fieldname"+i) == null) {
+				
+				continue;
+			}
+			else {
+				flag = true;
+				service.registerfield(sitename, req.getParameter("fieldname"+i), req.getParameter("depth"+i),req.getParameter("fieldtype"+i),
+						req.getParameter("parent"+i));
+				break;
+
+			}
+		}
 		
-		service.registerfield(sitename, req.getParameter("fieldname"), req.getParameter("depth"), req.getParameter("fieldtype"),
-				req.getParameter("parent"));
+		if(!flag) {
+			service.registerfield(sitename, req.getParameter("fieldname"), req.getParameter("depth"), req.getParameter("fieldtype"),
+					req.getParameter("parent"));
+		}
+		
 		
 		return "redirect:/allba/{sitename}/manage/registerfield";
+	}
+	
+	//이벤트 페이지 get
+	@RequestMapping(value = "/{sitename}/event", method = RequestMethod.GET)
+	public String eventList() {
+		
+		return "/allba/event/eventList";
+	}
+	
+	//q&a 페이지 get
+	@RequestMapping(value="/{sitename}/qna", method = RequestMethod.GET)
+	public String qnaList() {
+		
+		return "/allba/qna/qnaList";
 	}
 
 }
