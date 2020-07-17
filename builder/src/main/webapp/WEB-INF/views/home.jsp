@@ -96,7 +96,7 @@ body {
 
 </head>
 <body class="header">
-	<div id="nav"><%@ include file="/WEB-INF/views/company/companynavbar/companynav.jsp" %></div>
+	<div id="nav"><%@ include file="./company/companynavbar/companynav.jsp" %></div>
 
 <h1>중고나라, 알바천국, 호텔스컴바인</h1>
 <h1> 직접 운영하세요!</h1>  

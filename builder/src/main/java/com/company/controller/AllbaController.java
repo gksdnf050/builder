@@ -19,14 +19,15 @@ import com.company.service.AllbaManageService;
 
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping("/{c}/*")
 public class AllbaController {
 	  
 	@Inject
 	AllbaManageService service;
 	//allba사이트 홈
 	@RequestMapping(value = "/{sitename}", method = RequestMethod.GET)
-	public String home(@PathVariable("sitename")String sitename, Model model, HttpServletRequest req) {
+	public String home(@PathVariable("c")String c, @PathVariable("sitename")String sitename, Model model, HttpServletRequest req) {
+		System.out.println(c);
 		model.addAttribute("sitename", sitename);
 		List<Map<String,String>> category = service.category(sitename);
 		List<Map<String,String>> detail = service.detailcategory(sitename);

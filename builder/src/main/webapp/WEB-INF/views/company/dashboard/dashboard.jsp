@@ -139,14 +139,14 @@ body {
             	</div>
 			</c:when>
 			<c:when
-				test="${dtos.getStatus() eq 'deploy' && dtos.getCategory() eq 'location'}">
+				test="${dtos.getStatus() eq 'deploy' && dtos.getCategory() eq 'clothes'}">
 
 				
 				<div class="card">
                 	<h2 style = "text-align : center">${dtos.getSitename()}</h2>
-                	<h5 style = "text-align : center">장소</h5>
+                	<h5 style = "text-align : center">물건</h5>
                 	<div style= "text-align : center">
-                		<button class='btn btn-success' style = "width : 48%" style = "float : left" onclick = "location.href ='/location/${dtos.getSitename()}'">접속</button>
+                		<button class='btn btn-success' style = "width : 48%" style = "float : left" onclick = "location.href ='/clothes/${dtos.getSitename()}'">접속</button>
                 		<button class='btn btn-danger' style = "width : 48%" style = "float : right" onclick = "location.href ='/dashboard/deletesite?siteid=${dtos.getSiteid()}&status=${dtos.getStatus()}&sitename=${dtos.getSitename()}'">삭제</button>
                 	</div>
             	</div>

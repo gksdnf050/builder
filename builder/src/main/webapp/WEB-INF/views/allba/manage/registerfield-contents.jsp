@@ -18,7 +18,7 @@
             <!-- Card Body -->
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">카테고리를 등록하세요</h1>
+                    <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">필드를 등록하세요</h1>
                 </div>
 
                 
@@ -33,7 +33,7 @@
                                 <span class="text-md text-primary">${fieldlist.fieldname}</span>
                             </div>
                             <c:if test ="${fieldlist.fieldtype ne 'select'}">
-                        		<input type="hidden" name="fieldname${status.count}"/>
+                        		<input type="hidden" name="fieldname${status.count}"/><a href="/allba/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a>
                         	</c:if>
                             <c:if test="${fieldlist.fieldtype eq 'select' }">
                             <div class="col-sm-4 py-2 form-group">
@@ -41,7 +41,7 @@
                                 <input type="hidden" name="parent${status.count}" value="${fieldlist.fieldname}" />
                                 <input type="hidden" name="depth${status.count}" value="2" />
                                  <input type="hidden" name="fieldtype${status.count}" value="" />
-                                <button type="submit" class="btn btn-primary">등록하기</button>
+                                <button type="submit" class="btn btn-primary">등록하기</button><a href="/allba/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a>
                             </div>
                             <div class="col-sm-2 py-2 text-right p-2">
                                 <span class="text-md text-primary">${fieldlist.fieldname} 선택 목록 : </span>

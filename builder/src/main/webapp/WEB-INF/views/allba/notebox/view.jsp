@@ -8,7 +8,7 @@
 </head>
 <body>
 		
-		지원자: ${dto.fromuserid }
+		메시지 보낸사람: ${dto.fromuserid }
 		제목: ${dto.title }
 		내용: ${dto.content }
 		

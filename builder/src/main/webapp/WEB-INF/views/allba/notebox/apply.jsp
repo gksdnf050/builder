@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지원하기</title>
+<title>메세지보내기</title>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 			<textarea cols="50" rows="5" name="content"></textarea><br />
 
 
-<button type="submit">지원하기</button>
+<button type="submit">메세지보내기</button>
 </form>
 
 </body>

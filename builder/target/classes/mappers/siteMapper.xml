@@ -16,9 +16,9 @@
 	<!-- 사이트 등록 -->
 	<insert id="create" parameterType="hashMap">
 		insert into site(userid,
-		sitename, category, status, topcategory)
+		sitename, category, status, topcategory, siteemail)
 		values(#{userid}, #{sitename}, #{category},
-		#{status}, #{topcategory})
+		#{status}, #{topcategory}, #{siteemail})
 	</insert>
 
 	<!-- 사이트의 카테고리데이터베이스 생성 -->
@@ -120,6 +120,14 @@
 		${bookmark}
 	</update>
 	
+	<!-- 사이트의 이벤트데이터베이스 생성 -->
+	<update id="createevent" parameterType="hashMap">
+		${event}
+	</update>
+	<!-- 사이트의 이벤트데이터베이스 삭제 -->
+	<update id="deleteevent" parameterType="hashMap">
+		${event}
+	</update>
 	
 	<!-- 사이트의 쪽지함데이터베이스 생성 -->
 	<update id="createnotebox" parameterType="hashMap">

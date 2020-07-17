@@ -58,7 +58,8 @@ public class SiteController {
 		String topcategory = req.getParameter("topcategory");
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
-		service.create(userid, userpass, sitename, category, status, topcategory);
+		String siteemail = req.getParameter("siteemail");
+		service.create(userid, userpass, sitename, category, status, topcategory,siteemail);
 
 		return "redirect:/dashboard";
 

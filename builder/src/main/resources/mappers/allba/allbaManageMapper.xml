@@ -53,4 +53,54 @@
 	<update id="add" parameterType="hashMap">
 		${add}
 	</update>
+	
+	
+	<!-- 필드 삭제 -->
+	<delete id="deletefield" parameterType="hashMap">
+		delete
+		from ${sitename}field
+		where 
+		fieldid = #{fieldid}
+	</delete>
+		<delete id="deletefield2" parameterType="hashMap">
+		delete
+		from ${sitename}field
+		where 
+		parent = #{fieldname}
+	</delete>
+	<update id="deletefield3" parameterType="hashMap">
+		${delete}
+	</update>
+	
+	
+	<!-- 카테고리 삭제 -->
+	<delete id="deletecategory" parameterType="hashMap">
+		delete
+		from ${sitename}category
+		where 
+		categoryid = #{categoryid}
+	</delete>
+	<delete id="deletecategory2" parameterType="hashMap">
+		delete
+		from ${sitename}category
+		where 
+		parent = #{categoryname}
+	</delete>
+	
+	<!-- 이메일 가져오기 -->
+	<select id="getsiteemail" resultType="String">
+		select
+		siteemail
+		from
+		site
+		where sitename =#{sitename}
+	</select>
+	
+	
+	
+	<!-- 이벤트 등록 -->
+	<insert id="registerevent" parameterType="hashMap">
+		insert into ${sitename}event(file, title)
+		values(#{file}, #{title})
+	</insert>
 </mapper>

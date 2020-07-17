@@ -85,4 +85,55 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 		sql.insert(namespace + ".registerfield", data);
 	}
 
+	//필드삭제
+	@Override
+	public void deletefield(String sitename, int fieldid, String fieldname) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		
+		data.put("sitename", sitename);
+		data.put("fieldid", fieldid);
+		data.put("fieldname", fieldname);
+		sql.delete(namespace + ".deletefield", data);
+		sql.delete(namespace + ".deletefield2", data);
+		String delete = "ALTER TABLE " + sitename+"board drop "+fieldname;
+		data.put("delete", delete);
+		sql.delete(namespace + ".deletefield3",data);
+	}
+	//카테고리 삭제
+	@Override
+	public void deletecategory(String sitename, int categoryid, String categoryname) {
+		// TODO Auto-generated method stub
+		
+		HashMap data = new HashMap();
+		
+		data.put("sitename", sitename);
+		data.put("categoryid", categoryid);
+		data.put("categoryname", categoryname);
+		
+		sql.delete(namespace + ".deletecategory", data);
+		sql.delete(namespace + ".deletecategory2", data);
+	}
+
+	@Override
+	public String getsiteemail(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		return sql.selectOne(namespace + ".getsiteemail", data);
+	}
+	//이벤트 등록
+	@Override
+	public void registerevent(String sitename, String file, String title) {
+		// TODO Auto-generated method stub
+
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("file", file);
+		data.put("title", title);
+		
+		sql.insert(namespace + ".registerevent", data);
+		
+	}
+
 }

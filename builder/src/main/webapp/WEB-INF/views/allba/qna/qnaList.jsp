@@ -10,7 +10,7 @@
 qna 페이지
 
 
-<a href="">1대1 문의하기</a>
+<a href="/allba/${sitename}/qna/question">1대1 문의하기</a>
  <c:if test="${allbamember.getManagement() eq 'true'}">   
  <a href="">qna 등록</a>
  </c:if>

@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-이벤트 페이지
-${title} ${file}
-
-
- <c:if test="${allbamember.getManagement() eq 'true'}">   
- <a href="/allba/${sitename}/event/register">이벤트 등록</a>
- </c:if>
+${siteemail}로 문의주세요
 </body>
 </html>

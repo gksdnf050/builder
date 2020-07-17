@@ -23,7 +23,7 @@ import com.company.service.AllbaBoardService;
 import com.company.utils.AllbaUploadFileUtils;
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping(value = "/{allba}/*")
 public class AllbaBoardController {
   
 	@Inject

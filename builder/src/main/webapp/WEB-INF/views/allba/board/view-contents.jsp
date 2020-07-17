@@ -40,7 +40,7 @@
 
 
 <a
-	href="/allba/${sitename}/notebox/apply?boardid=${view.boardid}&touserid=${view.userid}">지원하기</a>
+	href="/allba/${sitename}/notebox/apply?boardid=${view.boardid}&touserid=${view.userid}">메시지 보내기</a>
 
 <c:if test="${view.userid eq allbamember.userid}">
 	<a href="/allba/${sitename}/board/modify?boardid=${view.boardid}">수정</a>
