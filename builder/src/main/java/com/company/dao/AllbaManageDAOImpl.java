@@ -136,4 +136,64 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 		
 	}
 
+	@Override
+	public void change(String sitename, List<String> vals, List<Map<String, String>> selectlist) {
+		// TODO Auto-generated method stub
+		HashMap<String,String> map = new HashMap();
+		map.put("sitename",sitename);
+		sql.delete(namespace+".delete2",map);
+		HashMap<String,String> data2 = new HashMap();
+		data2.put("sitename",sitename);
+		data2.put("fieldname","userid");
+		data2.put("fieldtype","hidden");
+		data2.put("depth","1");
+		data2.put("parent","");
+		sql.insert(namespace + ".change", data2);
+		
+		data2.put("fieldname","title");
+		data2.put("fieldtype","title");
+		data2.put("depth","1");
+		data2.put("parent","");
+		sql.insert(namespace + ".change", data2);
+		
+		for(String a : vals) {
+			HashMap<String,String> data = new HashMap();
+			data.put("sitename",sitename);
+			String[] temp = a.substring(1, a.length()-1).split(",");
+			for(int i = 1; i < temp.length; i++) {
+				temp[i] = temp[i].trim();
+			}
+			for(String i: temp) {
+				
+				String[]temp2 = i.split("=");
+				
+				if(temp2.length>1) {
+					data.put(temp2[0], temp2[1]);
+				}else {
+					data.put(temp2[0],"");
+				} 
+				
+			}
+			sql.insert(namespace + ".change", data);
+		}
+		
+		
+		data2.put("fieldname","content");
+		data2.put("fieldtype","content");
+		data2.put("depth","1");
+		data2.put("parent","");
+		sql.insert(namespace + ".change", data2);
+		
+		for(Map<String,String> list:selectlist) {
+			HashMap<String,String> data = new HashMap();
+			data.put("sitename",sitename);
+			data.put("fieldname",list.get("fieldname"));
+			data.put("fieldtype",list.get("fieldtype"));
+			data.put("depth",list.get("depth"));
+			data.put("parent",list.get("parent"));
+			sql.insert(namespace + ".change", data);
+		}
+		
+	}
+
 }

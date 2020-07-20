@@ -84,5 +84,6 @@ public class AllbaBoardServiceImpl implements AllbaBoardService {
 	
 	
 	
+	
 
 }

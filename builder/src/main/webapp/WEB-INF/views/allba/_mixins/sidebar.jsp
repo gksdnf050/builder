@@ -83,7 +83,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/${c}/${sitename}/qna">
             <i class="fas fa-fw fa-table"></i>
-            <span>Q&A게시판</span>
+            <span>Q&A</span>
         </a>
     </li>
 
@@ -160,6 +160,7 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a> -->
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registercategory">카테고리 등록</a>
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registerfield">필드 등록</a>
+                        <a class="collapse-item" href="/${c}/${sitename}/manage/changefield">순서 변경</a>
                     </div>
                 </div>
             </li>

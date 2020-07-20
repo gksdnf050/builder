@@ -121,8 +121,8 @@ public class SiteDAOImpl implements SiteDAO {
 						"address varchar(50), \r\n" + 
 						"시급 varchar(50),\r\n" + 
 						"image varchar(300),\r\n" + 
-						"content varchar(300),\r\n" + 
-						"deadline date)";
+						"deadline date,\r\n" + 
+						"content varchar(300))";
 				data.put("board",board);
 				sql.update(namespace+".createboard",data);
 				
@@ -145,8 +145,8 @@ public class SiteDAOImpl implements SiteDAO {
 				String sitefield = "create table "+sitename+"field(fieldid int not null auto_increment, fieldname varchar(50), fieldtype varchar(50), depth varchar(50), parent varchar(50),  primary key(fieldid))";
 				data.put("sitefield",sitefield);
 				sql.update(namespace+".createsitefield",data);
-				String fieldname[] = {"userid","title","경력","성별","직종","기간","지역","address","시급","image","content","deadline","매장관리","서빙주방","무관","신입","경력자","남","여","ALL","서울","부산","인천","1일","1주일이내","1주일~1개월","1개월~3개월"};
-				String fieldtype[] = {"hidden","title","select","select","select","select","select","address","text","file","content","date","","","","","","","","","","","","","","",""};
+				String fieldname[] = {"userid","title","경력","성별","직종","기간","지역","address","시급","image","deadline","content","매장관리","서빙주방","무관","신입","경력자","남","여","ALL","서울","부산","인천","1일","1주일이내","1주일~1개월","1개월~3개월"};
+				String fieldtype[] = {"hidden","title","select","select","select","select","select","address","text","file","date","content","","","","","","","","","","","","","","",""};
 				String depth[] = {"1","1","1","1","1","1","1","1","1","1","1","1","2","2","2","2","2","2","2","2","2","2","2","2","2","2","2"};
 				String parent[] = {"","","","","","","","","","","","","직종","직종","경력","경력","경력","성별","성별","성별","지역","지역","지역","기간","기간","기간","기간"};
 				for(int i = 0; i < fieldname.length; i++) {

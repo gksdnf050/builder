@@ -14,4 +14,5 @@ public interface AllbaManageDAO {
 	public void deletecategory(final String sitename, final int categoryid, final String categoryname);
 	public String getsiteemail(final String sitename);
 	public void registerevent(final String sitename, final String file, final String title);
+	public void change(final String sitename, final List<String> vals, final List<Map<String, String>> selectlist);
 }

@@ -103,4 +103,16 @@
 		insert into ${sitename}event(file, title)
 		values(#{file}, #{title})
 	</insert>
+	
+	
+	<!--순서 바꾸기-->
+	<delete id="delete2" >
+		delete
+		from ${sitename}field
+	</delete> 
+	<insert id="change" parameterType="hashMap">
+		insert into
+		${sitename}field(fieldname, fieldtype, depth, parent)
+		values(#{fieldname},#{fieldtype},#{depth}, #{parent})
+	</insert>
 </mapper>

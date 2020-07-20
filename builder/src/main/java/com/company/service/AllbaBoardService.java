@@ -18,4 +18,5 @@ public interface AllbaBoardService {
 	public List<Integer> getbookmarkid(final String sitename, final String userid);
 	public List<Map<String,String>> fieldlist(final String sitename);
 	public List<Map<String,String>> selectlist(final String sitename);
+
 }

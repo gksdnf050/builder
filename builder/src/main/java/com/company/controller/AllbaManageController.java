@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.company.service.AllbaManageService;
@@ -178,6 +180,28 @@ public class AllbaManageController {
 		model.addAttribute("sitename", sitename);
 		return "/allba/qna/qna";
 	}
+	
+	// change
+		@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.GET)
+		public String changefield(@PathVariable("sitename") String sitename, Model model) {
+			
+			List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+			model.addAttribute("fieldlist",fieldlist);
+			model.addAttribute("sitename", sitename);
+			return "/allba/manage/change";
+		}
+		
+		//리스트 바꾸기
+		@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.POST)
+		@ResponseBody
+		public void changefield(@PathVariable("sitename") String sitename, Model model, @RequestParam(value="main[]") List<String> vals)
+				throws Exception {
+			List<Map<String, String>> selectlist = service.selectlist(sitename);
+			service.change(sitename,vals,selectlist);
+
+			
+			
+		}
 /*
 	// 1대1 문의
 	@RequestMapping(value = "/{sitename}/qna/question", method = RequestMethod.GET)

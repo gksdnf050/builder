@@ -180,4 +180,6 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 		return sql.selectList(namespace + ".selectlist",data);
 	}
 
+	
+
 }

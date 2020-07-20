@@ -84,4 +84,10 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 		dao.registerevent(sitename, file, title);
 	}
 
+	@Override
+	public void change(String sitename, List<String> vals, List<Map<String, String>> selectlist) {
+		// TODO Auto-generated method stub
+		dao.change(sitename, vals, selectlist);
+	}
+
 }
