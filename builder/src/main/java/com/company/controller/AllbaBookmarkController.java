@@ -20,7 +20,7 @@ import com.company.dto.AllbaMemberDTO;
 import com.company.service.AllbaBookmarkService;
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping("/{c}/*")
 public class AllbaBookmarkController {
 	@Inject
 	AllbaBookmarkService service;
@@ -49,6 +49,6 @@ public class AllbaBookmarkController {
 
 			service.delete(sitename, boardid);
 
-			return "redirect:/allba/{sitename}/board";
+			return "redirect:/{c}/{sitename}/board";
 		}
 }

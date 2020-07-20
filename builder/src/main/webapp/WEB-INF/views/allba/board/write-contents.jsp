@@ -8,7 +8,7 @@
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">아르바이트 모집 공고를 작성해보세요!</h1>
                 </div>
 				
-                <form class="user mb-3" action="/allba/${sitename}/board/write" method="post" enctype="multipart/form-data">
+                <form class="user mb-3" action="/${c}/${sitename}/board/write" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
                     	  <c:forEach items="${fieldlist}" var="fieldlist">
                     	  

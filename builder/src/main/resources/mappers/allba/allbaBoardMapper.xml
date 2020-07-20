@@ -12,7 +12,7 @@
 		${sitename}board
 	</select>
 
-	<!-- 카케고리별 게시물 목록 -->
+	<!-- 카테고리별 게시물 목록 -->
 	<select id="categorylist" parameterType="hashMap" resultType="HashMap">
 		select
 		*
@@ -20,6 +20,15 @@
 		${sitename}board
 		where
 		${category} = #{value}
+	</select>
+	<!-- 카테고리별 게시물 목록2 -->
+	<select id="categorylist2" parameterType="hashMap" resultType="HashMap">
+		select
+		*
+		from 
+		${sitename}board
+		where
+		category = #{category} and detailcategory = #{value}
 	</select>
 	
 	<!-- 필드 목록 가져오기 -->

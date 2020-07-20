@@ -3,7 +3,7 @@
 <!-- This is Sidebar which is located at left side -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Logo with sitename -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/allba/${sitename}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/${c}/${sitename}">
         <div class="sidebar-brand-icon rotate-n-15">
             <!--Logo-->
             <i class="fas fa-laugh-wink"></i>
@@ -14,7 +14,7 @@
     <hr class="sidebar-divider my-0" />
     <!-- Nav Item - Mainpage -->
     <li class="nav-item active p-y-3 text-center">
-        <a class="nav-link py-3" href="/allba/${sitename}">
+        <a class="nav-link py-3" href="/${c}/${sitename}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>메인페이지</span>
         </a>
@@ -24,7 +24,7 @@
 
     <!-- Board -->
     <div class="sidebar-heading">
-        <a href="/allba/${sitename}/board" class="text-white">채용정보</a>
+        <a href="/${c}/${sitename}/board" class="text-white">채용정보</a>
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
     <!--    <li class="nav-item">
@@ -48,7 +48,7 @@
                     <h6 class="collapse-header"></h6>
                     <c:forEach var="detail" items="${detail}">
                         <c:if test="${detail.parent  eq category.categoryname}">
-                            <a class="collapse-item" href="/allba/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
+                            <a class="collapse-item" href="/${c}/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
                         </c:if>
                     </c:forEach>
                 </div>
@@ -58,7 +58,7 @@
 
     <li class="nav-item">
         <div class="nav-link collapsed">
-            <a href="/allba/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+            <a href="/${c}/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
                 <span class="text-center">아르바이트 공고 작성</span>
             </a>
         </div>
@@ -69,11 +69,11 @@
 
     <!-- Board -->
     <div class="sidebar-heading">
-        <a href="/allba/${sitename}/board" class="text-white">기타메뉴</a>
+        <a href="/${c}/${sitename}/board" class="text-white">기타메뉴</a>
     </div>
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="/allba/${sitename}/event">
+        <a class="nav-link" href="/${c}/${sitename}/event">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>이벤트</span>
         </a>
@@ -81,7 +81,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="/allba/${sitename}/qna">
+        <a class="nav-link" href="/${c}/${sitename}/qna">
             <i class="fas fa-fw fa-table"></i>
             <span>Q&A게시판</span>
         </a>
@@ -158,8 +158,8 @@
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
                         <a class="collapse-item" href="blank.html">Blank Page</a> -->
-                        <a class="collapse-item" href="/allba/${sitename}/manage/registercategory">카테고리 등록</a>
-                        <a class="collapse-item" href="/allba/${sitename}/manage/registerfield">필드 등록</a>
+                        <a class="collapse-item" href="/${c}/${sitename}/manage/registercategory">카테고리 등록</a>
+                        <a class="collapse-item" href="/${c}/${sitename}/manage/registerfield">필드 등록</a>
                     </div>
                 </div>
             </li>

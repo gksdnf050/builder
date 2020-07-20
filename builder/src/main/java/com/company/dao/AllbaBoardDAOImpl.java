@@ -24,18 +24,24 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 
 	//게시물 목록
 	@Override
-	public List<Map<String,String>> list(final String sitename, final String category, final String value) {
+	public List<Map<String,String>> list(final String sitename, final String category, final String value, final String c) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		
 		data.put("sitename", sitename);
 		data.put("value",value);
 		if(category == null) {
+			
 
 			return sql.selectList(namespace + ".list",data);
 		}else {
 			data.put("category",category);
-			return sql.selectList(namespace + ".categorylist",data);
+			if(c.equals("clothes")) {
+				return sql.selectList(namespace + ".categorylist2",data);
+			}else if(c.equals("allba")){
+				return sql.selectList(namespace + ".categorylist",data);
+			}
+			else return null;
 		}
 	}
 

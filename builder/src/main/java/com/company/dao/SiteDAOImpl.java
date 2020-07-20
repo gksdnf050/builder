@@ -72,7 +72,7 @@ public class SiteDAOImpl implements SiteDAO {
 				sql.update(namespace+".createboard",data);	
 			}
 			if(category.equals("clothes")) {
-				String board = "create table "+sitename+"board(boardid INT NOT NULL AUTO_INCREMENT PRIMARY KEY, regdate date not null default now(), userid VARCHAR(50), title varchar(50), image varchar(300))";
+				String board = "create table "+sitename+"board(boardid INT NOT NULL AUTO_INCREMENT PRIMARY KEY, regdate date not null default now(), userid VARCHAR(50), title varchar(50), image varchar(300), category varchar(50), detailcategory varchar(50))";
 				data.put("board",board);
 				sql.update(namespace+".createboard",data);
 				
@@ -95,10 +95,10 @@ public class SiteDAOImpl implements SiteDAO {
 				String sitefield = "create table "+sitename+"field(fieldid int not null auto_increment, fieldname varchar(50), fieldtype varchar(50), depth varchar(50), parent varchar(50),  primary key(fieldid))";
 				data.put("sitefield",sitefield);
 				sql.update(namespace+".createsitefield",data);
-				String fieldname[] = {"userid","title","image"};
-				String fieldtype[] = {"hidden","title","file"};
-				String depth[] = {"1","1","1"};
-				String parent[] = {"","",""};
+				String fieldname[] = {"userid","title","image","category","detailcategory"};
+				String fieldtype[] = {"hidden","title","file","select","select"};
+				String depth[] = {"1","1","1","1","1"};
+				String parent[] = {"","","","",""};
 				for(int i = 0; i < fieldname.length; i++) {
 					data.put("fieldname",fieldname[i]);
 					data.put("fieldtype",fieldtype[i]);

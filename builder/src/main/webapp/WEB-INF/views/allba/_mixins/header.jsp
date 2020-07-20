@@ -6,7 +6,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
-<title>3LEE1CHAE - Allba Template</title>
+<title>3LEE1CHAE - Template</title>
 
 <!-- Custom fonts for this template-->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />

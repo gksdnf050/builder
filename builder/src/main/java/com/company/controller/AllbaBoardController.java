@@ -23,7 +23,7 @@ import com.company.service.AllbaBoardService;
 import com.company.utils.AllbaUploadFileUtils;
 
 @Controller
-@RequestMapping(value = "/{allba}/*")
+@RequestMapping("/{c}/*")
 public class AllbaBoardController {
   
 	@Inject
@@ -34,7 +34,7 @@ public class AllbaBoardController {
 
 	// 게시물 목록
 	@RequestMapping(value = "/{sitename}/board", method = RequestMethod.GET)
-	public String list(@PathVariable("sitename") String sitename, Model model, HttpServletRequest req)
+	public String list(@PathVariable("c")String c, @PathVariable("sitename") String sitename, Model model, HttpServletRequest req)
 			throws Exception {
 		HttpSession session = req.getSession();
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
@@ -42,7 +42,7 @@ public class AllbaBoardController {
 		String category = req.getParameter("category");
 		String value = req.getParameter("value");
 
-		List<Map<String, String>> dto = service.list(sitename, category, value);
+		List<Map<String, String>> dto = service.list(sitename, category, value,c);
 
 		if (m != null) {
 			List<Integer> bi = service.getbookmarkid(sitename, m.getUserid());
@@ -67,14 +67,14 @@ public class AllbaBoardController {
 		model.addAttribute("selectlist", selectlist);
 		model.addAttribute("sitename", sitename);
 		if (m == null) {
-			return "redirect:/allba/{sitename}/login";
+			return "redirect:/{c}/{sitename}/login";
 		}
 		return "allba/board/write";
 	}
 
 	// 게시물 작성post
 	@RequestMapping(value = "/{sitename}/board/write", method = RequestMethod.POST)
-	public String postWrite(@PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)
+	public String postWrite(@PathVariable("c")String c, @PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)
 			throws Exception {
 		int temp = 0;
 		String[] str;
@@ -105,8 +105,8 @@ public class AllbaBoardController {
 		str[temp] = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 
 		service.write(sitename, list, str);
-
-		return "redirect:/allba/{sitename}/board";
+		System.out.println(c);
+		return "redirect:/{c}/{sitename}/board";
 
 	}
 
@@ -181,7 +181,7 @@ public class AllbaBoardController {
 
 		service.modify(sitename, list, str, boardid);
 
-		return "redirect:/allba/{sitename}/board";
+		return "redirect:/{c}/{sitename}/board";
 	}
 
 	// 게시물 삭제
@@ -191,7 +191,7 @@ public class AllbaBoardController {
 
 		service.delete(sitename, boardid);
 
-		return "redirect:/allba/{sitename}/board";
+		return "redirect:/{c}/{sitename}/board";
 	}
 
 	// 게시물 검색
@@ -226,11 +226,11 @@ public class AllbaBoardController {
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
 
 		if (m == null) {
-			return "redirect:/allba/{sitename}/login";
+			return "redirect:/{c}/{sitename}/login";
 		} else {
 
 			service.regbookmark(sitename, boardid, m.getUserid());
-			return "redirect:/allba/{sitename}/board";
+			return "redirect:/{c}/{sitename}/board";
 		}
 
 	}

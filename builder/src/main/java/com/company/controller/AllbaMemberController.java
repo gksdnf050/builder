@@ -15,7 +15,7 @@ import com.company.dto.AllbaMemberDTO;
 import com.company.service.AllbaMemberService;
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping("/{c}/*")
 public class AllbaMemberController {
 
 	@Inject

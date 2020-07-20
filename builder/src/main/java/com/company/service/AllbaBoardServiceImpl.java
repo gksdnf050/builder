@@ -16,10 +16,10 @@ public class AllbaBoardServiceImpl implements AllbaBoardService {
 	private AllbaBoardDAO dao;
 	//게시물 목록
 	@Override
-	public List<Map<String,String>> list(final String sitename, final String category, final String value) {
+	public List<Map<String,String>> list(final String sitename, final String category, final String value, final String c) {
 		// TODO Auto-generated method stub
 		
-		return dao.list(sitename, category, value);
+		return dao.list(sitename, category, value, c);
 	}
 	//게시물 작성
 	@Override

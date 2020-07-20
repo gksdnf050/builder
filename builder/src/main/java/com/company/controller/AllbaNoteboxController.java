@@ -19,7 +19,7 @@ import com.company.dto.AllbaNoteboxDTO;
 import com.company.service.AllbaNoteboxService;
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping("/{c}/*")
 public class AllbaNoteboxController {
 
 	@Inject

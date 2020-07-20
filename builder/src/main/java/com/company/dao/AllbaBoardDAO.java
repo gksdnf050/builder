@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface AllbaBoardDAO {
 
-	public List<Map<String,String>> list(final String sitename, final String category, final String value);
+	public List<Map<String,String>> list(final String sitename, final String category, final String value, final String c);
 	//public void write(final String sitename, final AllbaBoardDTO dto);
 	public void write(final String sitename, final List<String> list, final String[] str);
 	public Map<String,String> view(final String sitename, final int boardid);

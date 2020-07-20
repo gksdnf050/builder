@@ -27,11 +27,11 @@ public class AllbaController {
 	//allba사이트 홈
 	@RequestMapping(value = "/{sitename}", method = RequestMethod.GET)
 	public String home(@PathVariable("c")String c, @PathVariable("sitename")String sitename, Model model, HttpServletRequest req) {
-		System.out.println(c);
 		model.addAttribute("sitename", sitename);
 		List<Map<String,String>> category = service.category(sitename);
 		List<Map<String,String>> detail = service.detailcategory(sitename);
 		HttpSession session = req.getSession();
+		session.setAttribute("c", c);
 		session.setAttribute("category", category);
 		session.setAttribute("detail", detail);
 		

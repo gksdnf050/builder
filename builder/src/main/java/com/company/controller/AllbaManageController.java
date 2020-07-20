@@ -19,7 +19,7 @@ import com.company.service.AllbaManageService;
 import com.company.utils.AllbaUploadFileUtils;
 
 @Controller
-@RequestMapping("/allba/*")
+@RequestMapping("/{c}/*")
 public class AllbaManageController {
 	@Resource(name = "uploadPath")
 	private String uploadPath;
