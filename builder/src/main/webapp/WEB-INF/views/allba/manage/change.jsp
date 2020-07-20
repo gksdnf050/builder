@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- ####이부분 꼭 넣어줘야댐 #####-->
+        <!-- ####이부분 꼭 넣어줘야댐 #####-->
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
@@ -48,7 +48,10 @@
 	                'main' : arr
 	            },
 	            type: 'POST',
-	            url: '/allba/${sitename}/manage/changefield'
+	            url: '/allba/${sitename}/manage/changefield',
+	            success : function(data) {
+	              alert("변경완료.");
+	            }
 	        });
        /* $.ajax({
             cache : false,

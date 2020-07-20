@@ -25,7 +25,7 @@ import com.company.utils.AllbaUploadFileUtils;
 public class AllbaManageController {
 	@Resource(name = "uploadPath")
 	private String uploadPath;
-	
+
 	@Inject
 	AllbaManageService service;
 
@@ -149,10 +149,10 @@ public class AllbaManageController {
 
 	// 이벤트 등록 페이지 post
 	@RequestMapping(value = "/{sitename}/event/register", method = RequestMethod.POST)
-	public String posteventRegister(@PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)throws Exception {
-		System.out.println( req.getSession().getServletContext().getRealPath("/"));
+	public String posteventRegister(@PathVariable("sitename") String sitename, HttpServletRequest req,
+			MultipartFile file) throws Exception {
+		System.out.println(req.getSession().getServletContext().getRealPath("/"));
 
-		 
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -166,8 +166,7 @@ public class AllbaManageController {
 
 		String file2 = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		String title = req.getParameter("title");
-		
-		
+
 		service.registerevent(sitename, file2, title);
 		return "redirect:/allba/{sitename}/event/register";
 	}
@@ -180,37 +179,39 @@ public class AllbaManageController {
 		model.addAttribute("sitename", sitename);
 		return "/allba/qna/qna";
 	}
-	
+
 	// change
-		@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.GET)
-		public String changefield(@PathVariable("sitename") String sitename, Model model) {
-			
-			List<Map<String, String>> fieldlist = service.fieldlist(sitename);
-			model.addAttribute("fieldlist",fieldlist);
-			model.addAttribute("sitename", sitename);
-			return "/allba/manage/change";
-		}
-		
-		//리스트 바꾸기
-		@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.POST)
-		@ResponseBody
-		public void changefield(@PathVariable("sitename") String sitename, Model model, @RequestParam(value="main[]") List<String> vals)
-				throws Exception {
-			List<Map<String, String>> selectlist = service.selectlist(sitename);
-			service.change(sitename,vals,selectlist);
+	@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.GET)
+	public String changefield(@PathVariable("sitename") String sitename, Model model) {
 
-			
-			
-		}
-/*
-	// 1대1 문의
-	@RequestMapping(value = "/{sitename}/qna/question", method = RequestMethod.GET)
-	public String question(@PathVariable("sitename") String sitename, Model model) {
+		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
+		model.addAttribute("fieldlist", fieldlist);
+		model.addAttribute("sitename", sitename);
+		return "/allba/manage/change";
+	}
 
-		String siteemail = service.getsiteemail(sitename);
-		model.addAttribute("siteemail", siteemail);
+	// 리스트 바꾸기
+	@RequestMapping(value = "/{sitename}/manage/changefield", method = RequestMethod.POST)
 
-		return "/allba/qna/question";
-	} */
+	public String changefield(@PathVariable("sitename") String sitename, Model model,
+			@RequestParam(value = "main[]") List<String> vals) throws Exception {
+		List<Map<String, String>> selectlist = service.selectlist(sitename);
+		service.change(sitename, vals, selectlist);
+
+		return "redirect:/allba/{sitename}/manage/changefield";
+
+	}
+	/*
+	 * // 1대1 문의
+	 * 
+	 * @RequestMapping(value = "/{sitename}/qna/question", method =
+	 * RequestMethod.GET) public String question(@PathVariable("sitename") String
+	 * sitename, Model model) {
+	 * 
+	 * String siteemail = service.getsiteemail(sitename);
+	 * model.addAttribute("siteemail", siteemail);
+	 * 
+	 * return "/allba/qna/question"; }
+	 */
 
 }
