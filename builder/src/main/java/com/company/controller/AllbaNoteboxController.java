@@ -59,6 +59,9 @@ public class AllbaNoteboxController {
 
 		HttpSession session = req.getSession();
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
+		if (m == null) {
+			return "redirect:/{c}/{sitename}/login";
+		}
 		List<AllbaNoteboxDTO> dto = service.receivenotebox(sitename, m.getUserid());
 		
 		model.addAttribute("dto", dto);

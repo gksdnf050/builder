@@ -173,10 +173,12 @@ public class AllbaManageController {
 	// q&a 페이지 get
 	@RequestMapping(value = "/{sitename}/qna", method = RequestMethod.GET)
 	public String qnaList(@PathVariable("sitename") String sitename, Model model) {
+		String siteemail = service.getsiteemail(sitename);
+		model.addAttribute("siteemail", siteemail);
 		model.addAttribute("sitename", sitename);
-		return "/allba/qna/qnaList";
+		return "/allba/qna/qna";
 	}
-
+/*
 	// 1대1 문의
 	@RequestMapping(value = "/{sitename}/qna/question", method = RequestMethod.GET)
 	public String question(@PathVariable("sitename") String sitename, Model model) {
@@ -185,6 +187,6 @@ public class AllbaManageController {
 		model.addAttribute("siteemail", siteemail);
 
 		return "/allba/qna/question";
-	}
+	} */
 
 }

@@ -11,6 +11,7 @@
 		메시지 보낸사람: ${dto.fromuserid }
 		제목: ${dto.title }
 		내용: ${dto.content }
-		
+	<!--  
+		<a href="${c}/${sitename}/notebox/reply/?touserid=${dto.userid}&formuserid=${dto.fromuserid}">답장하기</a> -->
 </body>
 </html>
