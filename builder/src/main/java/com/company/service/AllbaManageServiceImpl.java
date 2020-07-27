@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.company.dao.AllbaManageDAO;
+import com.company.dto.EventDTO;
 
 @Service
 public class AllbaManageServiceImpl implements AllbaManageService {
@@ -77,7 +78,8 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 		// TODO Auto-generated method stub
 		return dao.getsiteemail(sitename);
 	}
-	//이벤트 틍록
+
+	// 이벤트 틍록
 	@Override
 	public void registerevent(String sitename, String file, String title) {
 		// TODO Auto-generated method stub
@@ -88,6 +90,33 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 	public void change(String sitename, List<String> vals, List<Map<String, String>> selectlist) {
 		// TODO Auto-generated method stub
 		dao.change(sitename, vals, selectlist);
+	}
+
+	// 이벤트 목록
+	@Override
+	public List<EventDTO> listevent(String sitename) {
+		// TODO Auto-generated method stub
+		return dao.listevent(sitename);
+	}
+
+	// 이벤트 조회
+	@Override
+	public EventDTO viewevent(String sitename, int eventid) {
+		// TODO Auto-generated method stub
+		return dao.viewevent(sitename, eventid);
+	}
+
+	// 이벤트삭제
+	@Override
+	public void eventdelete(String sitename, int eventid) {
+		// TODO Auto-generated method stub
+		dao.eventdelete(sitename, eventid);
+	}
+	//이벤트 수정 post
+	@Override
+	public void posteventmodify(String sitename, EventDTO dto) {
+		// TODO Auto-generated method stub
+		dao.posteventmodify(sitename, dto);
 	}
 
 }

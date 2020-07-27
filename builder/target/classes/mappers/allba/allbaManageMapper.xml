@@ -104,6 +104,40 @@
 		values(#{file}, #{title})
 	</insert>
 	
+	<!-- 이벤트 목록 -->
+	<select id="listevent" parameterType="hashMap" resultType="com.company.dto.EventDTO">
+		select
+		*
+		from 
+		${sitename}event
+	</select>
+	
+	<!-- 이벤트 조회 -->
+	<select id="viewevent" parameterType="hashMap" resultType="com.company.dto.EventDTO">
+		select
+		*
+		from 
+		${sitename}event
+		where
+		eventid = #{eventid}
+	</select>
+	
+	<!-- 이벤트 삭제 -->
+	<delete id="eventdelete" parameterType="hashMap">
+		delete
+		from ${sitename}event
+		where 
+		eventid = #{eventid}
+	</delete>
+	
+	<!-- 이벤트 수정 -->
+	<update id="eventmodify" parameterType="hashMap">
+		update ${sitename}event
+		set
+		title = #{dto.title},
+		file = #{dto.file}
+		where eventid =#{dto.eventid}
+	</update>
 	
 	<!--순서 바꾸기-->
 	<delete id="delete2" >

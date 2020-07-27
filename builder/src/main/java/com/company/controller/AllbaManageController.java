@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.company.dto.EventDTO;
 import com.company.service.AllbaManageService;
 import com.company.utils.AllbaUploadFileUtils;
 
@@ -136,7 +136,76 @@ public class AllbaManageController {
 	@RequestMapping(value = "/{sitename}/event", method = RequestMethod.GET)
 	public String eventList(@PathVariable("sitename") String sitename, Model model) {
 		model.addAttribute("sitename", sitename);
+
+		List<EventDTO> list = service.listevent(sitename);
+		model.addAttribute("list", list);
 		return "/allba/event/eventList";
+	}
+
+	// 이벤트 조회
+	@RequestMapping(value = "/{sitename}/event/view", method = RequestMethod.GET)
+	public String eventview(@PathVariable("sitename") String sitename, @RequestParam("eventid") int eventid,
+			Model model) {
+		model.addAttribute("sitename", sitename);
+
+		EventDTO dto = service.viewevent(sitename, eventid);
+
+		model.addAttribute("dto", dto);
+		return "/allba/event/eventview";
+	}
+
+	// 이벤트 수정get
+	@RequestMapping(value = "/{sitename}/event/modify", method = RequestMethod.GET)
+	public String eventmodify(@PathVariable("sitename") String sitename, @RequestParam("eventid") int eventid,
+			Model model) {
+		model.addAttribute("sitename", sitename);
+
+		EventDTO dto = service.viewevent(sitename, eventid);
+
+		model.addAttribute("dto", dto);
+		return "/allba/event/eventmodify";
+	}
+	
+	// 이벤트 수정post
+		@RequestMapping(value = "/{sitename}/event/modify", method = RequestMethod.POST)
+		public String posteventmodify(@PathVariable("sitename") String sitename, HttpServletRequest req,
+				 MultipartFile file) throws Exception{
+			EventDTO dto = new EventDTO();
+			
+			dto.setEventid(Integer.parseInt(req.getParameter("eventid")));
+			dto.setTitle(req.getParameter("title"));
+			if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+				// 기존 파일을 삭제
+				new File(uploadPath + req.getParameter("file")).delete();
+
+				// 새로 첨부한 파일을 등록
+				String imgUploadPath = uploadPath + File.separator + "imgUpload";
+				String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
+				String fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(),
+						file.getBytes(), ymdPath);
+
+				dto.setFile(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+
+			} else { // 새로운 파일이 등록되지 않았다면
+				// 기존 이미지를 그대로 사용
+				 dto.setFile(req.getParameter("file"));
+
+			}  
+			service.posteventmodify(sitename, dto);
+
+			
+			return "redirect:/allba/{sitename}/event";
+		}
+
+	// 이벤트 삭제
+	@RequestMapping(value = "/{sitename}/event/delete", method = RequestMethod.GET)
+	public String eventdelete(@PathVariable("sitename") String sitename, @RequestParam("eventid") int eventid,
+			Model model) {
+		model.addAttribute("sitename", sitename);
+
+		service.eventdelete(sitename, eventid);
+
+		return "redirect:/allba/{sitename}/event";
 	}
 
 	// 이벤트 등록 페이지 get
@@ -168,7 +237,7 @@ public class AllbaManageController {
 		String title = req.getParameter("title");
 
 		service.registerevent(sitename, file2, title);
-		return "redirect:/allba/{sitename}/event/register";
+		return "redirect:/allba/{sitename}/event";
 	}
 
 	// q&a 페이지 get

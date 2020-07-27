@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.company.dto.EventDTO;
+
 @Repository
 public class AllbaManageDAOImpl implements AllbaManageDAO {
 
@@ -194,6 +196,48 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 			sql.insert(namespace + ".change", data);
 		}
 		
+	}
+
+	//이벤트 목록
+	@Override
+	public List<EventDTO> listevent(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap<String,String> map = new HashMap();
+		map.put("sitename",sitename);
+		
+		return sql.selectList(namespace + ".listevent",map);
+	}
+
+	//이벤트 조회
+	@Override
+	public EventDTO viewevent(String sitename, int eventid) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("eventid", eventid);
+		
+		return sql.selectOne(namespace + ".viewevent", data);
+	}
+	//이벤트 삭제
+	@Override
+	public void eventdelete(String sitename, int eventid) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("eventid", eventid);
+		
+		sql.delete(namespace + ".eventdelete", data);
+	}
+
+	//이벤트수정post
+	@Override
+	public void posteventmodify(String sitename, EventDTO dto) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("dto", dto);
+		
+		sql.update(namespace+".eventmodify", data);
 	}
 
 }

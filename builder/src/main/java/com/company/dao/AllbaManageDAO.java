@@ -3,6 +3,8 @@ package com.company.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.company.dto.EventDTO;
+
 public interface AllbaManageDAO {
 	public List<Map<String,String>> category(final String sitename);
 	public List<Map<String,String>> detailcategory(final String sitename);
@@ -15,4 +17,8 @@ public interface AllbaManageDAO {
 	public String getsiteemail(final String sitename);
 	public void registerevent(final String sitename, final String file, final String title);
 	public void change(final String sitename, final List<String> vals, final List<Map<String, String>> selectlist);
+	public List<EventDTO> listevent(final String sitename);
+	public EventDTO viewevent(final String sitename, final int eventid);
+	public void eventdelete(final String sitename, final int eventid);
+	public void posteventmodify(final String sitename, final EventDTO dto);
 }

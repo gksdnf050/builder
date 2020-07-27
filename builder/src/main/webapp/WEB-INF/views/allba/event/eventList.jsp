@@ -8,7 +8,14 @@
 </head>
 <body>
 이벤트 페이지
-${title} ${file}
+<br/>
+<c:forEach items="${list}" var="list">
+
+<a href="/allba/${sitename}/event/view?eventid=${list.eventid}">${list.title}</a>
+
+<img src="${list.file}">
+</c:forEach>
+
 
 
  <c:if test="${allbamember.getManagement() eq 'true'}">   
