@@ -20,13 +20,14 @@
                     <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
 
                     <div class="container-fluid">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">이벤트 list <font class="font-italic font-weight-light text-primary text-sm text-blue-">!<c:if test="${allbamember.getManagement() eq 'true'}">   
-<a href="/allba/${sitename}/event/register">
-<button class="btn btn-primary btn-user ">이벤트 등록 + 
-</button></a></c:if></font></h1>
-        
- 
- 
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">
+                            이벤트 list
+                            <font class="font-italic font-weight-light text-primary text-sm text-blue-"
+                                >!<c:if test="${allbamember.getManagement() eq 'true'}">
+                                    <a href="/allba/${sitename}/event/register"> <button class="btn btn-primary btn-user">이벤트 등록 +</button></a></c:if
+                                ></font
+                            >
+                        </h1>
                     </div>
                 </div>
                 <!-- End of Main Content -->

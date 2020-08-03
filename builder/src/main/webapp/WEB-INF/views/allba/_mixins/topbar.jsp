@@ -90,9 +90,8 @@
             </div>
         </li>
 
-            
         <!-- Nav Item - Messages -->
-        
+
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
@@ -104,12 +103,11 @@
                 <h6 class="dropdown-header">
                     내가 지원한 공고
                 </h6>
-                
-                
+
                 <a class="dropdown-item text-center small text-gray-500" href="/allba/${sitename}/notebox/receivenotebox">자세하보기</a>
             </div>
         </li>
-		
+
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->

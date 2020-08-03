@@ -26,7 +26,6 @@
                 <!-- End of Main Content -->
 
                 <%@ include file="/WEB-INF/views/allba/manage/registercategory-contents.jsp" %>
-                
 
                 <!-- Footer -->
                 <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>

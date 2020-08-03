@@ -26,7 +26,6 @@
                 <!-- End of Main Content -->
 
                 <%@ include file="/WEB-INF/views/allba/bookmark/list-contents.jsp" %>
-                
 
                 <!-- Footer -->
                 <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>
