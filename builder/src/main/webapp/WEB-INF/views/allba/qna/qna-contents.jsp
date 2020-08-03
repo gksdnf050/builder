@@ -7,14 +7,12 @@
                 <div class="text-center">
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">질문이 있으신가요?</h1>
                 </div>
-             
-                    <div class="row form-group mb-3">
-                        <div class="col-sm-12 py-3 text-center p-2">
-                            <span class="text-lg text-primary">
-                            ${siteemail} 로 이메일 남겨주세요!</span>
-                            </div>
-                            </div>
-             
+
+                <div class="row form-group mb-3">
+                    <div class="col-sm-12 py-3 text-center p-2">
+                        <span class="text-lg text-primary"> ${siteemail} 로 이메일 남겨주세요!</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
