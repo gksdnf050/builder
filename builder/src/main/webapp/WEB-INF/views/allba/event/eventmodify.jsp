@@ -1,22 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
- <form action="/allba/${sitename}/event/modify" method="post" enctype="multipart/form-data">
- 						
- 						<input type="hidden" name="eventid" value="${dto.eventid}"/>
- 						제목<input type="text" name="title" value="${dto.title}"/>
- 						파일<img src="${dto.file}">
-                        <input type="file" name="file" value="${dto.file}"/>
-                        		
- 
-  <button type="submit">수정하기</button>
- </form>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- This is Header. icluding css, js, something like that  -->
+        <%@ include file="/WEB-INF/views/allba/_mixins/header.jsp" %>
+    </head>
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!--  This is Sidebar. -->
+            <%@ include file="/WEB-INF/views/allba/_mixins/sidebar.jsp" %>
+
+            <!--  This is Contents. & Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content" style="flex: none;">
+                    <!-- This is Topbar-->
+                    <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
+
+                    <div class="container-fluid">
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">이벤트 modify <font class="font-italic font-weight-light text-primary text-sm text-blue-">!</font></h1>
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+
+                <%@ include file="/WEB-INF/views/allba/event/eventmodify-contents.jsp" %>
+
+                <!-- Footer -->
+                <%@ include file="/WEB-INF/views/allba/_mixins/footer.jsp" %>
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+    </body>
 </html>
