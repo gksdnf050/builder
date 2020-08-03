@@ -23,8 +23,7 @@
                         <div class="col-sm-10 py-2 form-group">
                             <input type="password" id="userpass" name="userpass" value="${mo.userpass}" class="form-control form-control-user" placeholder="새로운 비밀번호를 입력해주세요." />
                         </div>
-                    </div>
-                  </p>
+                    </div>                  
                   <input type="hidden" id="userno" name="userno" value="${mo.userno}" />
                   <p>
                     <div class="row form-group mb-5">
