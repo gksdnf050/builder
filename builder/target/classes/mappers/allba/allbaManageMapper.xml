@@ -149,4 +149,15 @@
 		${sitename}field(fieldname, fieldtype, depth, parent)
 		values(#{fieldname},#{fieldtype},#{depth}, #{parent})
 	</insert>
+	
+	<!-- 로고 가져오기 -->
+	<select id="getlogo" parameterType="hashMap" resultType="String">
+		select
+		logo
+		from 
+		site
+		where
+		sitename = #{sitename}
+	</select>
+	
 </mapper>

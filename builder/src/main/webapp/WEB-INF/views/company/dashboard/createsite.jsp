@@ -31,15 +31,15 @@
  </script>
 </head>
 <body>
-<form method = "post">
+<form method = "post" enctype="multipart/form-data">
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
 						<ul>
 							<li><a href="#intro">사이트 이름 설정</a></li>
-							<li><a href="#one">이메일 입력</a></li>
-							<li><a href="#two">중개 상품 설정</a></li>
-							
+							<li><a href="#one">로고 등록</a></li>
+							<li><a href="#two">이메일 설정</a></li>
+							<li><a href="#three">중개 상품 설정</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -60,18 +60,29 @@
 						</div>
 					</section>
 					
-						<section id="one" class="wrapper style1 fullscreen fade-up">
+					<section id="one" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-						<h1>이메일을 적어주세요!</h1>
+						<h1>로고를 등록해주세요!</h1>
 						<p>
-							<input type="text" id="siteemail" name="siteemail" /></p>
+							<input type="file" id="logo" name="file" /></p>
 							<ul class="actions">
 								<li><a href="#two" class="button scrolly">다음으로 </a></li>
 							</ul>
 						</div>
 					</section>
 					
-					<section id="two" class="wrapper style1 fullscreen fade-up">
+						<section id="two" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+						<h1>이메일을 적어주세요!</h1>
+						<p>
+							<input type="text" id="siteemail" name="siteemail" /></p>
+							<ul class="actions">
+								<li><a href="#three" class="button scrolly">다음으로 </a></li>
+							</ul>
+						</div>
+					</section>
+					
+					<section id="three" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>중개 상품을 선택하세요!</h1>
 							 <p>

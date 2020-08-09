@@ -119,4 +119,10 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 		dao.posteventmodify(sitename, dto);
 	}
 
+	@Override
+	public String getlogo(String sitename) {
+		// TODO Auto-generated method stub
+		return dao.getlogo(sitename);
+	}
+
 }

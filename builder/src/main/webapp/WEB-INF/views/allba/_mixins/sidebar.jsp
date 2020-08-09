@@ -161,6 +161,7 @@
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registercategory">카테고리 등록</a>
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registerfield">필드 등록</a>
                         <a class="collapse-item" href="/${c}/${sitename}/manage/changefield">순서 변경</a>
+                    
                     </div>
                 </div>
             </li>

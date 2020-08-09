@@ -22,10 +22,10 @@ public class SiteServiceImpl implements SiteService {
 	}
 	//사이트 생성
 	@Override
-	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory, final String siteemail) {
+	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory, final String siteemail, final String logo) {
 		// TODO Auto-generated method stub
 		
-		dao.create(userid, userpass, sitename, category, status, topcategory, siteemail);
+		dao.create(userid, userpass, sitename, category, status, topcategory, siteemail, logo);
 	}
 	//사이트 삭제
 	@Override

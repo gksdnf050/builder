@@ -1,7 +1,9 @@
 package com.company.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,13 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.company.dto.MemberDTO;
 import com.company.dto.SiteDTO;
 import com.company.service.SiteService;
+import com.company.utils.AllbaUploadFileUtils;
 
 @Controller
 public class SiteController {
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 
 	@Inject
 	SiteService service;
@@ -48,10 +54,22 @@ public class SiteController {
 
 	// 사이트 만들기 post요청
 	@RequestMapping(value = "/dashboard/createsite", method = RequestMethod.POST)
-	public String postCreateSite(HttpServletRequest req, Model model) throws Exception {
+	public String postCreateSite(HttpServletRequest req, MultipartFile file) throws Exception {
 		HttpSession session = req.getSession();
 		MemberDTO m = (MemberDTO) session.getAttribute("member");
 
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if (file != null) {
+			fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
+					ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		String logo = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		
 		String userid = m.getUserid();
 		String userpass = m.getUserpass();
 		String sitename = req.getParameter("sitename");
@@ -59,7 +77,7 @@ public class SiteController {
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
 		String siteemail = req.getParameter("siteemail");
-		service.create(userid, userpass, sitename, category, status, topcategory,siteemail);
+		service.create(userid, userpass, sitename, category, status, topcategory, siteemail, logo);
 
 		return "redirect:/dashboard";
 
@@ -99,7 +117,7 @@ public class SiteController {
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
 		String topcategory = req.getParameter("topcategory");
-		
+
 		service.modify(siteid, sitename, category, status, topcategory);
 
 		return "redirect:/dashboard";

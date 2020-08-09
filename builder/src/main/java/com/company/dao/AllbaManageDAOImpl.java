@@ -240,4 +240,14 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 		sql.update(namespace+".eventmodify", data);
 	}
 
+	@Override
+	public String getlogo(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		
+		
+		return sql.selectOne(namespace + ".getlogo", data);
+	}
+
 }

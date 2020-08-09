@@ -8,7 +8,21 @@ public class SiteDTO {
 	String category;
 	String status;
 	String topcategory;
+	String siteemail;
+	String logo;
 	
+	public String getSiteemail() {
+		return siteemail;
+	}
+	public void setSiteemail(String siteemail) {
+		this.siteemail = siteemail;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
 	public String getTopcategory() {
 		return topcategory;
 	}

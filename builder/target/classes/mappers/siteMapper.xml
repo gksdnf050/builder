@@ -16,9 +16,9 @@
 	<!-- 사이트 등록 -->
 	<insert id="create" parameterType="hashMap">
 		insert into site(userid,
-		sitename, category, status, topcategory, siteemail)
+		sitename, category, status, topcategory, siteemail, logo)
 		values(#{userid}, #{sitename}, #{category},
-		#{status}, #{topcategory}, #{siteemail})
+		#{status}, #{topcategory}, #{siteemail}, #{logo})
 	</insert>
 
 	<!-- 사이트의 카테고리데이터베이스 생성 -->

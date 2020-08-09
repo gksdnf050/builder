@@ -165,37 +165,36 @@ public class AllbaManageController {
 		model.addAttribute("dto", dto);
 		return "/allba/event/eventmodify";
 	}
-	
+
 	// 이벤트 수정post
-		@RequestMapping(value = "/{sitename}/event/modify", method = RequestMethod.POST)
-		public String posteventmodify(@PathVariable("sitename") String sitename, HttpServletRequest req,
-				 MultipartFile file) throws Exception{
-			EventDTO dto = new EventDTO();
-			
-			dto.setEventid(Integer.parseInt(req.getParameter("eventid")));
-			dto.setTitle(req.getParameter("title"));
-			if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-				// 기존 파일을 삭제
-				new File(uploadPath + req.getParameter("file")).delete();
+	@RequestMapping(value = "/{sitename}/event/modify", method = RequestMethod.POST)
+	public String posteventmodify(@PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)
+			throws Exception {
+		EventDTO dto = new EventDTO();
 
-				// 새로 첨부한 파일을 등록
-				String imgUploadPath = uploadPath + File.separator + "imgUpload";
-				String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
-				String fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(),
-						file.getBytes(), ymdPath);
+		dto.setEventid(Integer.parseInt(req.getParameter("eventid")));
+		dto.setTitle(req.getParameter("title"));
+		if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			// 기존 파일을 삭제
+			new File(uploadPath + req.getParameter("file")).delete();
 
-				dto.setFile(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			// 새로 첨부한 파일을 등록
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
+			String fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(),
+					file.getBytes(), ymdPath);
 
-			} else { // 새로운 파일이 등록되지 않았다면
-				// 기존 이미지를 그대로 사용
-				 dto.setFile(req.getParameter("file"));
+			dto.setFile(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 
-			}  
-			service.posteventmodify(sitename, dto);
+		} else { // 새로운 파일이 등록되지 않았다면
+			// 기존 이미지를 그대로 사용
+			dto.setFile(req.getParameter("file"));
 
-			
-			return "redirect:/allba/{sitename}/event";
 		}
+		service.posteventmodify(sitename, dto);
+
+		return "redirect:/allba/{sitename}/event";
+	}
 
 	// 이벤트 삭제
 	@RequestMapping(value = "/{sitename}/event/delete", method = RequestMethod.GET)
@@ -220,7 +219,6 @@ public class AllbaManageController {
 	@RequestMapping(value = "/{sitename}/event/register", method = RequestMethod.POST)
 	public String posteventRegister(@PathVariable("sitename") String sitename, HttpServletRequest req,
 			MultipartFile file) throws Exception {
-		System.out.println(req.getSession().getServletContext().getRealPath("/"));
 
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
@@ -270,6 +268,37 @@ public class AllbaManageController {
 		return "redirect:/allba/{sitename}/manage/changefield";
 
 	}
+/*
+	// 배너,광고 등록get
+	@RequestMapping(value = "/{sitename}/manage/registerbanner", method = RequestMethod.GET)
+	public String getbanner(@PathVariable("sitename") String sitename, Model model) {
+		model.addAttribute("sitename", sitename);
+
+		return "/allba/manage/registerbanner";
+	}
+
+	// 배너,광고 등록 post
+	@RequestMapping(value = "/{sitename}/manage/registerbanner", method = RequestMethod.POST)
+	public String postbanner(@PathVariable("sitename") String sitename, HttpServletRequest req,
+			MultipartFile file) throws Exception {
+
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if (file != null) {
+			fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
+					ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		String file2 = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		String title = req.getParameter("title");
+
+		service.registerevent(sitename, file2, title);
+		return "redirect:/allba/{sitename}/manage/";
+	} */
 	/*
 	 * // 1대1 문의
 	 * 

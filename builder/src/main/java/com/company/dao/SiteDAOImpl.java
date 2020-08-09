@@ -25,7 +25,7 @@ public class SiteDAOImpl implements SiteDAO {
 	
 	//사이트 생성
 	@Override
-	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory, final String siteemail) {
+	public void create(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory, final String siteemail, final String logo) {
 		// TODO Auto-generated method stub
 		 HashMap data = new HashMap();
 		  
@@ -36,6 +36,7 @@ public class SiteDAOImpl implements SiteDAO {
 		 data.put("status", status);
 		 data.put("topcategory", topcategory);
 		 data.put("siteemail", siteemail);
+		 data.put("logo", logo);
 		if(status.equals("deploy")) {
 			String member = "create table "+ sitename +"(userno int not null auto_increment, management varchar(50), \r\n" + 
 					"  userid varchar(50) not null,\r\n" + 

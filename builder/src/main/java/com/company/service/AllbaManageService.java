@@ -30,4 +30,5 @@ public interface AllbaManageService {
 	public EventDTO viewevent(final String sitename, final int eventid);
 	public void eventdelete(final String sitename, final int eventid);
 	public void posteventmodify(final String sitename, final EventDTO dto);
+	public String getlogo(final String sitename);
 }

@@ -30,11 +30,12 @@ public class AllbaController {
 		model.addAttribute("sitename", sitename);
 		List<Map<String,String>> category = service.category(sitename);
 		List<Map<String,String>> detail = service.detailcategory(sitename);
+		String logo = service.getlogo(sitename);
 		HttpSession session = req.getSession();
 		session.setAttribute("c", c);
 		session.setAttribute("category", category);
 		session.setAttribute("detail", detail);
-		
+		session.setAttribute("logo", logo);
 		return "allba/home";
 	}
 	
