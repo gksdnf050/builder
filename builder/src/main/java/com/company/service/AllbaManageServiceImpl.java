@@ -124,5 +124,23 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 		// TODO Auto-generated method stub
 		return dao.getlogo(sitename);
 	}
+	//배너등록
+	@Override
+	public void registerbanner(String sitename, String banner) {
+		// TODO Auto-generated method stub
+		dao.registerbanner(sitename, banner);
+	}
+	//배너 리스트
+	@Override
+	public List listbanner(String sitename) {
+		// TODO Auto-generated method stub
+		return dao.listbanner(sitename);
+	}
+
+	@Override
+	public void bannerdelete(String sitename, int bannerid) {
+		// TODO Auto-generated method stub
+		dao.bannerdelete(sitename, bannerid);
+	}
 
 }

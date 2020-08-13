@@ -249,5 +249,38 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 		
 		return sql.selectOne(namespace + ".getlogo", data);
 	}
+	//배너 등록
+	@Override
+	public void registerbanner(String sitename, String banner) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("banner", banner);
+		
+		
+		
+		
+		sql.insert(namespace + ".registerbanner", data);
+	}
+
+	//배너 목록
+	@Override
+	public List listbanner(String sitename) {
+		// TODO Auto-generated method stub
+		HashMap<String,String> map = new HashMap();
+		map.put("sitename",sitename);
+		
+		return sql.selectList(namespace + ".listbanner",map);
+	}
+	//배너 삭제
+	@Override
+	public void bannerdelete(String sitename, int bannerid) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("bannerid", bannerid);
+		
+		sql.delete(namespace + ".bannerdelete", data);
+	}
 
 }

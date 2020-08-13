@@ -22,4 +22,7 @@ public interface AllbaManageDAO {
 	public void eventdelete(final String sitename, final int eventid);
 	public void posteventmodify(final String sitename, final EventDTO dto);
 	public String getlogo(final String sitename);
+	public void registerbanner(final String sitename, final String banner);
+	public List listbanner(final String sitename);
+	public void bannerdelete(final String sitename, final int bannerid);
 }

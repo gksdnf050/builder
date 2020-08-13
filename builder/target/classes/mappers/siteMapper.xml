@@ -50,6 +50,11 @@
 		${member}
 	</update>
 	
+	<!-- 사이트의 회원데이터베이스 생성 -->
+	<update id="createbanner" parameterType="hashMap">
+		${banner}
+	</update>
+	
 	<!-- 사이트의 관리자 등록 -->
 	<insert id="management" parameterType="hashMap">
 		insert into ${sitename}(management, userid, userpass)
@@ -91,6 +96,11 @@
 	<!-- 사이트의 쪽지함데이터베이스 삭제 -->
 	<update id="deletenotebox" parameterType="hashMap">
 		${notebox}
+	</update>
+	
+	<!-- 사이트의 쪽지함데이터베이스 삭제 -->
+	<update id="deletebanner" parameterType="hashMap">
+		${banner}
 	</update>
 
 	<!-- 사이트 수정 조회 -->

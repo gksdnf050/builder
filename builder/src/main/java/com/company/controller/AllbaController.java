@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.company.service.AllbaBoardService;
 import com.company.service.AllbaManageService;
 
 
@@ -24,6 +25,10 @@ public class AllbaController {
 	  
 	@Inject
 	AllbaManageService service;
+	
+	@Inject
+	AllbaBoardService service2;
+	
 	//allba사이트 홈
 	@RequestMapping(value = "/{sitename}", method = RequestMethod.GET)
 	public String home(@PathVariable("c")String c, @PathVariable("sitename")String sitename, Model model, HttpServletRequest req) {
@@ -31,11 +36,19 @@ public class AllbaController {
 		List<Map<String,String>> category = service.category(sitename);
 		List<Map<String,String>> detail = service.detailcategory(sitename);
 		String logo = service.getlogo(sitename);
+		List list = service.listbanner(sitename);
+		List<Map<String, String>> dto = service2.list(sitename, null, null,c);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("dto",dto);
+		
 		HttpSession session = req.getSession();
 		session.setAttribute("c", c);
 		session.setAttribute("category", category);
 		session.setAttribute("detail", detail);
 		session.setAttribute("logo", logo);
+		
+		
 		return "allba/home";
 	}
 	

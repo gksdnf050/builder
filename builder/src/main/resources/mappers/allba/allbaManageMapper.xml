@@ -160,4 +160,28 @@
 		sitename = #{sitename}
 	</select>
 	
+	<!-- 배너 등록 -->
+	<insert id="registerbanner" parameterType="hashMap">
+		insert into ${sitename}banner(file)
+		values(#{banner})
+	</insert>
+	
+	
+	<!-- 배너 목록 -->
+	<select id="listbanner" parameterType="hashMap"  resultType="com.company.dto.BannerDTO">
+		select
+		*
+		from 
+		${sitename}banner
+	</select>
+	
+	
+	<!-- 배너 삭제 -->
+	<delete id="bannerdelete" parameterType="hashMap">
+		delete
+		from ${sitename}banner
+		where 
+		bannerid = #{bannerid}
+	</delete>
+	
 </mapper>

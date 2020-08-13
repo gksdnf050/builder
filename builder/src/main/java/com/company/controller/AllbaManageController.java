@@ -268,12 +268,16 @@ public class AllbaManageController {
 		return "redirect:/allba/{sitename}/manage/changefield";
 
 	}
-/*
+
 	// 배너,광고 등록get
 	@RequestMapping(value = "/{sitename}/manage/registerbanner", method = RequestMethod.GET)
 	public String getbanner(@PathVariable("sitename") String sitename, Model model) {
+		
 		model.addAttribute("sitename", sitename);
 
+		List list = service.listbanner(sitename);
+		model.addAttribute("list", list);
+		
 		return "/allba/manage/registerbanner";
 	}
 
@@ -285,7 +289,7 @@ public class AllbaManageController {
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
-
+		
 		if (file != null) {
 			fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
 					ymdPath);
@@ -293,12 +297,26 @@ public class AllbaManageController {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
-		String file2 = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		String title = req.getParameter("title");
+		String banner = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		
+		
+		service.registerbanner(sitename, banner);
+		return "redirect:/allba/{sitename}/manage/registerbanner";
+	} 
+	
+	// 배너 삭제
+		@RequestMapping(value = "/{sitename}/manage/deletebanner", method = RequestMethod.GET)
+		public String bannerdelete(@PathVariable("sitename") String sitename, @RequestParam("bannerid") int bannerid,
+				Model model) {
+			model.addAttribute("sitename", sitename);
 
-		service.registerevent(sitename, file2, title);
-		return "redirect:/allba/{sitename}/manage/";
-	} */
+			service.bannerdelete(sitename, bannerid);
+
+			return "redirect:/allba/{sitename}/manage/registerbanner";
+		}
+	
+	
+	
 	/*
 	 * // 1대1 문의
 	 * 

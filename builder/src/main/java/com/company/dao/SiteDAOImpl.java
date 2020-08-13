@@ -65,6 +65,10 @@ public class SiteDAOImpl implements SiteDAO {
 			data.put("notebox",notebox);
 			sql.update(namespace+".createnotebox",data);
 			
+			String banner = "create table "+sitename+"banner(bannerid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,file varchar(300))";
+			data.put("banner",banner);
+			sql.update(namespace+".createbanner",data);
+			
 			
 			
 			if(category.equals("product")) {
@@ -178,6 +182,7 @@ public class SiteDAOImpl implements SiteDAO {
 			String sitecategory = "drop table "+ sitename+"category";
 			String sitefield = "drop table "+ sitename+"field";
 			String event = "drop table "+ sitename+"event";
+			String banner = "drop table "+ sitename+"banner";
 			
 			 data.put("member",member);
 			 data.put("board",board);
@@ -186,6 +191,7 @@ public class SiteDAOImpl implements SiteDAO {
 			 data.put("sitecategory",sitecategory);
 			 data.put("sitefield",sitefield);
 			 data.put("event",event);
+			 data.put("banner",banner);
 			 
 			sql.delete(namespace+".deletemember",data);
 			sql.delete(namespace+".deleteboard",data);
@@ -194,6 +200,7 @@ public class SiteDAOImpl implements SiteDAO {
 			sql.delete(namespace+".deletesitecategory",data);
 			sql.delete(namespace+".deletesitefield",data);
 			sql.delete(namespace+".deleteevent",data);
+			sql.delete(namespace+".deletebanner",data);
 			
 		}else {
 			

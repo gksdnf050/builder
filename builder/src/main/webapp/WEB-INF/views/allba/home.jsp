@@ -23,7 +23,57 @@
                     <!---->
                     <!---->
                     <!-- Put the contents Here-->
-               		<%@ include file="/WEB-INF/views/allba/main/contents.jsp" %>
+                    	
+                    	로고 <br/>
+                    	<img src="${logo}"> <br/>
+                    	
+                    	배너 <br/>
+                    	<c:forEach items="${list}" var="list">
+  								<img src="${list.file}">
+   
+ 						 </c:forEach>  <br/>
+ 						 
+ 						 
+ 						 공고 <br/>
+ 						
+ 						  <c:forEach items="${dto}" var="dto">
+                
+                                    <a href="/allba/${sitename}/board/view?boardid=${dto.boardid}">
+                                        ${dto.title}
+                                    </a>
+                               
+                                               <br/>   
+                                             
+                           
+                                ${dto.content}<br/> 
+                                             ${dto.address}<br/> 
+                                              
+                                                   
+                             ${dto.get("지역")}<br/> 
+                             ${dto.get("시급")}<br/>      
+                              ${dto.regdate}<br/> 
+                                
+                    
+            			</c:forEach>
+ 						 
+ 						 카테고리 <br/>
+ 						  <c:forEach var="category" items="${category}">
+           
+              			 ${category.categoryname} <br/>
+            
+
+           
+                    <c:forEach var="detail" items="${detail}">
+                        <c:if test="${detail.parent  eq category.categoryname}">
+                            <a class="collapse-item" href="/${c}/${sitename}/board?category=${category.categoryname}&value=${detail.categoryname}">${detail.categoryname}</a>
+                        </c:if>
+                    </c:forEach> 
+                    <br/>
+               
+       			 </c:forEach>
+ 						 
+               		<!--  contents.jsp include 하는 부분 뺌 -->
+               		
                		<!---->
                		<!---->
                 </div>
