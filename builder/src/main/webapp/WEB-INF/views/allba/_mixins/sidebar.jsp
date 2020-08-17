@@ -6,7 +6,7 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/${c}/${sitename}">
         <div class="sidebar-brand-icon rotate-n-15">
             <!--Logo-->
-            <i class="fas fa-laugh-wink"></i>
+            <img src="${logo}" /> <br />
         </div>
         <div class="sidebar-brand-text mx-3 text-lg">${sitename}<!-- <sup></sup> --></div>
     </a>
@@ -161,7 +161,7 @@
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registercategory">카테고리 등록</a>
                         <a class="collapse-item" href="/${c}/${sitename}/manage/registerfield">필드 등록</a>
                         <a class="collapse-item" href="/${c}/${sitename}/manage/changefield">순서 변경</a>
-                    	<a class="collapse-item" href="/${c}/${sitename}/manage/registerbanner">배너 등록</a>
+                        <a class="collapse-item" href="/${c}/${sitename}/manage/registerbanner">배너 등록</a>
                     </div>
                 </div>
             </li>
