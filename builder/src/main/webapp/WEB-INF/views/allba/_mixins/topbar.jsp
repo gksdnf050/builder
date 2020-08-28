@@ -101,10 +101,10 @@
             <!-- Dropdown - Messages -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">
-                    내가 지원한 공고
+                   메세지함
                 </h6>
 
-                <a class="dropdown-item text-center small text-gray-500" href="/allba/${sitename}/notebox/receivenotebox">자세하보기</a>
+                <a class="dropdown-item text-center small text-gray-500" href="/${c}/${sitename}/notebox/receivenotebox">자세하보기</a>
             </div>
         </li>
 
@@ -136,7 +136,7 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <c:if test="${allbamember == null}">
-                    <a class="dropdown-item" href="/allba/${sitename}/login">
+                    <a class="dropdown-item" href="/${c}/${sitename}/login">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Login
                     </a>
@@ -147,16 +147,16 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Somethings
                     </a>
-                    <a class="dropdown-item" href="/allba/${sitename}/modify">
+                    <a class="dropdown-item" href="/${c}/${sitename}/modify">
                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit
                     </a>
-                    <a class="dropdown-item" href="/allba/${sitename}/bookmark">
+                    <a class="dropdown-item" href="/${c}/${sitename}/bookmark">
                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                         Favorites
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/allba/${sitename}/logout">
+                    <a class="dropdown-item" href="/${c}/${sitename}/logout">
                         <!-- <a class="dropdown-item" href="/allba/${sitename}/logout" data-toggle="modal" data-target="#logoutModal">-->
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout

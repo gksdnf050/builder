@@ -46,7 +46,7 @@ public class AllbaMemberController {
 			session.setAttribute("allbamember", login);
 		}
 
-		return "redirect:/allba/{sitename}";
+		return "redirect:/{c}/{sitename}";
 	}
 
 	// 로그아웃 get
@@ -54,7 +54,7 @@ public class AllbaMemberController {
 	public String logout(HttpSession session) {
 
 		session.invalidate();
-		return "redirect:/allba/{sitename}";
+		return "redirect:/{c}/{sitename}";
 	}
 
 	// 회원가입 get
@@ -70,7 +70,7 @@ public class AllbaMemberController {
 	public String postRegister(@PathVariable("sitename") String sitename, AllbaMemberDTO dto) throws Exception {
 
 		service.register(sitename, dto);
-		return "redirect:/allba/{sitename}/login";
+		return "redirect:/{c}/{sitename}/login";
 	}
 
 	// 회원정보 수정get
@@ -92,6 +92,6 @@ public class AllbaMemberController {
 	public String postModify(@PathVariable("sitename") String sitename, AllbaMemberDTO dto) throws Exception {
 
 		service.postModify(sitename, dto);
-		return "redirect:/allba/{sitename}/login";
+		return "redirect:/{c}/{sitename}/login";
 	}
 }

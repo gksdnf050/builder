@@ -10,7 +10,7 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.boardid}">
+                                    <a href="/${c}/${sitename}/board/view?boardid=${dtos.boardid}">
                                         ${dtos.title}
                                     </a>
                                 </h2>
@@ -23,14 +23,14 @@
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
+                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
+                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
+                                        <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dtos.boardid}">삭제</a>
                                     </c:if>
                                                                     
                                 </p>                            

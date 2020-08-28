@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form action="/allba/${sitename}/board/modify" method="post" enctype="multipart/form-data">
+	<form action="/${c}/${sitename}/board/modify" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="boardid" value="${view.boardid}" /><br />
 		<c:forEach items="${fieldlist}" var="fieldlist">
                     	  

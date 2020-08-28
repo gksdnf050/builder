@@ -60,12 +60,12 @@
                         	
                         	<c:if test="${fieldlist.fieldtype eq 'file'}"> 
                         		 <div class="col-sm-1 py-2 text-right p-2">
-                            		<span class="text-md text-primary">파일</span>
+                            		<span class="text-md text-primary"></span>
                         		</div>
                         		<div class="col-sm-5 py-2 form-group">
                             		<img src="${view.image}" />
                         		</div> 
-                        	</c:if>
+                        	</c:if> 
                         	
                         	<c:if test="${fieldlist.fieldtype eq 'content'}"> 
                         		<div class="col-sm-1 py-2 text-right p-2">
@@ -89,17 +89,17 @@
                     <div class="row form-group mb-5">
                         <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">
-                            <a href="/allba/${sitename}/notebox/apply?boardid=${view.boardid}&touserid=${view.userid}" class="btn btn-primary btn-user btn-block">메시지 보내기</a>
+                            <a href="/${c}/${sitename}/notebox/apply?boardid=${view.boardid}&touserid=${view.userid}" class="btn btn-primary btn-user btn-block">메시지 보내기</a>
                         </div>
                         <div class="col-sm-3">&nbsp;</div>
                     </div>
                     
-                    <c:if test="${view.userid eq allbamember.userid}">
+                    <c:if test="${view.userid eq allbamember.userid || allbamember.management}">
                     
                     <div class="row form-group mb-5">
                         <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">
-                            <a href="/allba/${sitename}/board/modify?boardid=${view.boardid}" class="btn btn-primary btn-user btn-block">수정</a>
+                            <a href="/${c}/${sitename}/board/modify?boardid=${view.boardid}" class="btn btn-primary btn-user btn-block">수정</a>
                         </div>
                         <div class="col-sm-3">&nbsp;</div>
                     </div>
@@ -107,7 +107,7 @@
                     <div class="row form-group mb-5">
                         <div class="col-sm-3">&nbsp;</div>
                         <div class="col-sm-6">
-                            <a href="/allba/${sitename}/board/delete?boardid=${view.boardid}" class="btn btn-danger btn-user btn-block">삭제</a>
+                            <a href="/${c}/${sitename}/board/delete?boardid=${view.boardid}" class="btn btn-danger btn-user btn-block">삭제</a>
                         </div>
                         <div class="col-sm-3">&nbsp;</div>
                     </div>

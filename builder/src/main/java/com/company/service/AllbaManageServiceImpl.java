@@ -126,9 +126,9 @@ public class AllbaManageServiceImpl implements AllbaManageService {
 	}
 	//배너등록
 	@Override
-	public void registerbanner(String sitename, String banner) {
+	public void registerbanner(String sitename, String banner, String title, String link) {
 		// TODO Auto-generated method stub
-		dao.registerbanner(sitename, banner);
+		dao.registerbanner(sitename, banner, title, link);
 	}
 	//배너 리스트
 	@Override

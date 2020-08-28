@@ -6,7 +6,7 @@
         <title>Insert title here</title>
     </head>
     <body>
-        <a href="/allba/${sitename}/notebox/receivenotebox">받은 쪽지함</a>
+        <a href="/${c}/${sitename}/notebox/receivenotebox">받은 쪽지함</a>
         <a href="">보낸 쪽지함</a>
     </body>
 </html>

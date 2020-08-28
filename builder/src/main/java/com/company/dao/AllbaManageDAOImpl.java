@@ -251,11 +251,13 @@ public class AllbaManageDAOImpl implements AllbaManageDAO {
 	}
 	//배너 등록
 	@Override
-	public void registerbanner(String sitename, String banner) {
+	public void registerbanner(String sitename, String banner, String title, String link) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
 		data.put("banner", banner);
+		data.put("title", title);
+		data.put("link", link);
 		
 		
 		

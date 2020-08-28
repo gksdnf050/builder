@@ -24,12 +24,13 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 
 	//게시물 목록
 	@Override
-	public List<Map<String,String>> list(final String sitename, final String category, final String value, final String c) {
+	public List<Map<String,String>> list(final String sitename, final String category, final String value, final String c, final int start) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		
 		data.put("sitename", sitename);
 		data.put("value",value);
+		data.put("start",start);
 		if(category == null) {
 			
 
@@ -38,7 +39,7 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 			data.put("category",category);
 			if(c.equals("clothes")) {
 				return sql.selectList(namespace + ".categorylist2",data);
-			}else if(c.equals("allba")){
+			}else if(c.equals("allba") || c.equals(("motel"))){
 				return sql.selectList(namespace + ".categorylist",data);
 			}
 			else return null;
@@ -132,12 +133,12 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 	}
 	//게시물 검색
 	@Override
-	public  List<Map<String,String>> search(String sitename, String keyword) {
+	public  List<Map<String,String>> search(String sitename, String keyword, int stratValue) {
 		// TODO Auto-generated method stub
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
 		data.put("keyword", keyword);
-		
+		data.put("stratValue", stratValue);
 		return sql.selectList(namespace + ".search",data);
 	}
 	//게시물 즐겨찾기 등록
@@ -178,6 +179,35 @@ public class AllbaBoardDAOImpl implements AllbaBoardDAO {
 		HashMap data = new HashMap();
 		data.put("sitename", sitename);
 		return sql.selectList(namespace + ".selectlist",data);
+	}
+
+	//게시물 총 갯수
+	@Override
+	public int getTotalCount(String sitename, final String category, final String value) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		if(category == null) {
+		return sql.selectOne(namespace + ".totalCount", data);
+		}
+		else {
+			data.put("category", category);
+			data.put("value", value);
+			return sql.selectOne(namespace + ".totalCount2", data);
+		}
+	}
+
+	//검색 총 갯수
+	@Override
+	public int getSearchCount(String sitename, String keyword) {
+		// TODO Auto-generated method stub
+		HashMap data = new HashMap();
+		data.put("sitename", sitename);
+		data.put("keyword", keyword);
+		
+		
+		
+		return sql.selectOne(namespace + ".searchCount", data);
 	}
 
 	

@@ -24,8 +24,8 @@
                         <span> <img src="${dto.file}" /></span>
                     </div>
                     <c:if test="${allbamember.getManagement() eq 'true'}">
-                        <a href="/allba/${sitename}/event/modify?eventid=${dto.eventid}"> <button class="btn btn-primary btn-user">수정</button></a>
-                        <a href="/allba/${sitename}/event/delete?eventid=${dto.eventid}"> <button class="btn btn-secondary btn-user">삭제</button></a>
+                        <a href="/${c}/${sitename}/event/modify?eventid=${dto.eventid}"> <button class="btn btn-primary btn-user">수정</button></a>
+                        <a href="/${c}/${sitename}/event/delete?eventid=${dto.eventid}"> <button class="btn btn-secondary btn-user">삭제</button></a>
                     </c:if>
                 </div>
             </div>

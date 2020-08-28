@@ -37,7 +37,7 @@ public class AllbaController {
 		List<Map<String,String>> detail = service.detailcategory(sitename);
 		String logo = service.getlogo(sitename);
 		List list = service.listbanner(sitename);
-		List<Map<String, String>> dto = service2.list(sitename, null, null,c);
+		List<Map<String, String>> dto = service2.list(sitename, null, null,c,1);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("dto",dto);

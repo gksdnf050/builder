@@ -162,8 +162,8 @@
 	
 	<!-- 배너 등록 -->
 	<insert id="registerbanner" parameterType="hashMap">
-		insert into ${sitename}banner(file)
-		values(#{banner})
+		insert into ${sitename}banner(file, title, link)
+		values(#{banner}, #{title}, #{link})
 	</insert>
 	
 	

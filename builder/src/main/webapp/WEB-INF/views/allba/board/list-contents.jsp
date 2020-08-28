@@ -10,7 +10,7 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.boardid}">
+                                    <a href="/${c}/${sitename}/board/view?boardid=${dtos.boardid}">
                                         ${dtos.title}
                                     </a>
                                 </h2>
@@ -23,14 +23,14 @@
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.boardid}"><i class="fas fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dtos.boardid}"><i class="fas fa-star"></i></a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
+                                        <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dtos.boardid}"><i class="far fa-star"></i></a>
                                     </c:if>
                                                                     
                                 </p>                            
@@ -41,12 +41,28 @@
                             <div class="d-flex justify-content-between align-items-left">                                
                                 <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dtos.get("지역")}</button>
                                 <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dtos.get("시급")}원</button>
-                                <small class="ml-auto text-muted"> ${dtos.regdate}</small>
+                               
                             </div>
+                            	<p></p>
+                                <small class="ml-auto text-muted"> ${dtos.regdate}</small>
                         </div>
                     </div>
                 </div>
             </c:forEach>
         </div>
+    	<c:forEach var="counter" begin="1" end="${pagingCount}">
+    		<c:if test = "${cate == NULL && keyword == NULL }">
+    			<a href="/${c}/${sitename}/board?start=${counter}">${counter}</a>
+    		</c:if>
+    		<c:if test = "${cate != NULL}">
+    		<a href="/${c}/${sitename}/board?start=${counter}&category=${cate}&value=${val}">${counter}</a>
+    		</c:if>
+    		
+    		<c:if test = "${cate == NULL && keyword != NULL}">
+    		<a href="/${c}/${sitename}/board/search?keyword=${keyword}&start=${counter}">${counter}</a>
+    		</c:if>
+            	
+     </c:forEach>
     </div>
 </div>
+ 			

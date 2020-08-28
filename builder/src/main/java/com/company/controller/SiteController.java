@@ -110,15 +110,38 @@ public class SiteController {
 
 	// 사이트 수정post
 	@RequestMapping(value = "/dashboard/modifysite", method = RequestMethod.POST)
-	public String postModifySite(HttpServletRequest req, Model model) throws Exception {
-
+	public String postModifySite(HttpServletRequest req, MultipartFile file) throws Exception {
+		HttpSession session = req.getSession();
+		MemberDTO m = (MemberDTO) session.getAttribute("member");
+		
 		int siteid = Integer.parseInt(req.getParameter("siteid"));
+		String userid = m.getUserid();
+		String userpass = m.getUserpass();
 		String sitename = req.getParameter("sitename");
+		String topcategory = req.getParameter("topcategory");
 		String category = req.getParameter("category");
 		String status = req.getParameter("status");
-		String topcategory = req.getParameter("topcategory");
+		String siteemail = req.getParameter("siteemail");
+		String logo;
+		
+		if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			// 기존 파일을 삭제
+			new File(uploadPath + req.getParameter("logo")).delete();
 
-		service.modify(siteid, sitename, category, status, topcategory);
+			// 새로 첨부한 파일을 등록
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
+			String fileName = AllbaUploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(),
+					file.getBytes(), ymdPath);
+
+			 logo = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+
+		} else { // 새로운 파일이 등록되지 않았다면
+			// 기존 이미지를 그대로 사용
+			 logo = req.getParameter("logo");
+
+		}
+		service.modify(userid, userpass, sitename, category, status, topcategory, siteemail, logo, siteid);
 
 		return "redirect:/dashboard";
 

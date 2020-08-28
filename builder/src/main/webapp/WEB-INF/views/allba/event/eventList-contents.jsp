@@ -15,7 +15,7 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/event/view?eventid=${list.eventid}">${list.title}</a>
+                                    <a href="/${c}/${sitename}/event/view?eventid=${list.eventid}">${list.title}</a>
                                 </h2>                     
                             </div>
                         </div>

@@ -35,24 +35,33 @@ public class AllbaBoardController {
 
 	// 게시물 목록
 	@RequestMapping(value = "/{sitename}/board", method = RequestMethod.GET)
-	public String list(@PathVariable("c")String c, @PathVariable("sitename") String sitename, Model model, HttpServletRequest req)
+	public String list(@PathVariable("c")String c, @PathVariable("sitename") String sitename, @RequestParam(name = "start", defaultValue = "1") int start, Model model, HttpServletRequest req)
 			throws Exception {
 		HttpSession session = req.getSession();
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
 
 		String category = req.getParameter("category");
 		String value = req.getParameter("value");
-
-		List<Map<String, String>> dto = service.list(sitename, category, value,c);
-
+		final int stratValue = (start - 1) * 8;
+		List<Map<String, String>> dto = service.list(sitename, category, value,c, stratValue);
+		int totalCount = service.getTotalCount(sitename,category,value);
 		if (m != null) {
 			List<Integer> bi = service.getbookmarkid(sitename, m.getUserid());
 			model.addAttribute("bi", bi);
 		}
-
+		model.addAttribute("totalCount",totalCount);
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("dtos", dto);
-
+		model.addAttribute("cate", category);
+		model.addAttribute("val", value);
+		int pagingCount = 0;
+		if(totalCount % 8 != 0) {
+			pagingCount = totalCount / 8 + 1;
+		}else {
+			pagingCount = totalCount / 8;
+		}
+		model.addAttribute("pagingCount", pagingCount);
+		
 		return "allba/board/list";
 	}
 
@@ -197,15 +206,14 @@ public class AllbaBoardController {
 
 	// 게시물 검색
 	@RequestMapping(value = "/{sitename}/board/search", method = RequestMethod.GET)
-	public String getSearch(@PathVariable("sitename") String sitename, @RequestParam("keyword") String keyword,
+	public String getSearch(@PathVariable("sitename") String sitename,@RequestParam(name = "start", defaultValue = "1") int start, @RequestParam("keyword") String keyword,
 			Model model, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession();
 		AllbaMemberDTO m = (AllbaMemberDTO) session.getAttribute("allbamember");
+		final int stratValue = (start - 1) * 8;
+		
 
-		String category = req.getParameter("category");
-		String value = req.getParameter("value");
-
-		List<Map<String, String>> dto = service.search(sitename, keyword);
+		List<Map<String, String>> dto = service.search(sitename, keyword, stratValue);
 
 		if (m != null) {
 			List<Integer> bi = service.getbookmarkid(sitename, m.getUserid());
@@ -214,8 +222,19 @@ public class AllbaBoardController {
 
 		model.addAttribute("sitename", sitename);
 		model.addAttribute("dtos", dto);
+		model.addAttribute("keyword", keyword);
 		
-
+		int totalCount = service.getSearchCount(sitename,keyword);
+		int pagingCount = 0;
+		if(totalCount % 8 != 0) {
+			pagingCount = totalCount / 8 + 1;
+		}else {
+			pagingCount = totalCount / 8;
+		}
+		
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("pagingCount", pagingCount);
+		
 		return "allba/board/list";
 	}
 

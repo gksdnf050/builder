@@ -21,7 +21,7 @@
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">필드를 등록하세요</h1>
                 </div>
 
-                <form class="user mb-3" action="/allba/${sitename}/manage/registerfield" method="post" enctype="multipart/form-data">
+                <form class="user mb-3" action="/${c}/${sitename}/manage/registerfield" method="post" enctype="multipart/form-data">
                     <c:forEach items="${fieldlist}" var="fieldlist" varStatus="status">
                         <c:if test="${fieldlist.fieldtype eq 'hidden'}">
                             <input type="hidden" name="fieldname${status.count}" />
@@ -31,14 +31,14 @@
                                 <div class="col-sm-1 py-2 text-right p-2">
                                     <span class="text-md text-primary">${fieldlist.fieldname}</span>
                                 </div>
-                                <c:if test="${fieldlist.fieldtype ne 'select'}"> <input type="hidden" name="fieldname${status.count}" /><a href="/allba/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a> </c:if>
+                                <c:if test="${fieldlist.fieldtype ne 'select'}"> <input type="hidden" name="fieldname${status.count}" /><a href="/${c}/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a> </c:if>
                                 <c:if test="${fieldlist.fieldtype eq 'select' }">
                                     <div class="col-sm-4 py-2 form-group">
                                         <input type="text" name="fieldname${status.count}" />
                                         <input type="hidden" name="parent${status.count}" value="${fieldlist.fieldname}" />
                                         <input type="hidden" name="depth${status.count}" value="2" />
                                         <input type="hidden" name="fieldtype${status.count}" value="" />
-                                        <button type="submit" class="btn btn-primary">등록하기</button><a href="/allba/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a>
+                                        <button type="submit" class="btn btn-primary">등록하기</button><a href="/${c}/${sitename}/manage/deletefield?fieldid=${fieldlist.fieldid}&fieldname=${fieldlist.fieldname}">삭제</a>
                                     </div>
                                     <div class="col-sm-2 py-2 text-right p-2">
                                         <span class="text-md text-primary">${fieldlist.fieldname} 선택 목록 : </span>

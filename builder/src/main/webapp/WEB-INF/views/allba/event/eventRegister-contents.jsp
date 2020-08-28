@@ -8,7 +8,7 @@
                 <div class="text-center">
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">이벤트를 등록해주세요 </h1>
                 </div>
-				<form action="/allba/${sitename}/event/register" method="post" enctype="multipart/form-data">
+				<form action="/${c}/${sitename}/event/register" method="post" enctype="multipart/form-data">
                     <div class="row form-group mb-3">
                     	  
                     	                   

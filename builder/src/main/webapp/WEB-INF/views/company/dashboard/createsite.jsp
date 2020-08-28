@@ -15,7 +15,7 @@
 	 var sub = document.getElementById("category");
 	 var select = e.value;
 	 if(select == "people"){
-		sub.innerHTML = "<select name='category'><option value=''>취업</option><option value='allba'>알바</option></select>"
+		sub.innerHTML = "<select name='category'><option value='allba'>알바</option></select>"
 		 
 	 }
 	 if(select == "product"){

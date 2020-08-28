@@ -107,7 +107,7 @@
 	<select id="view" parameterType="int"
 		resultType="com.company.dto.SiteDTO">
 		select
-		siteid, userid, sitename, category, status, topcategory
+		*
 		from site
 		where siteid = #{siteid}
 	</select>
@@ -116,11 +116,12 @@
 	<update id="modifysite" parameterType="hashMap">
 		update site
 		set
-		status =
-		#{status},
+		status = #{status},
 		sitename = #{sitename},
 		category = #{category},
-		topcategory = #{topcategory}
+		topcategory = #{topcategory},
+		siteemail = #{siteemail},
+		logo = #{logo}
 		where siteid
 		=#{siteid}
 	</update>

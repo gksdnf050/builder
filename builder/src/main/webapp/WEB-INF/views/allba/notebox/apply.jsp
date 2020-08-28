@@ -9,7 +9,7 @@
 <body>
 
 
-	<form action="/allba/${sitename}/notebox/apply" method="post" enctype="multipart/form-data">
+	<form action="/${c}/${sitename}/notebox/apply" method="post" enctype="multipart/form-data">
 	
 		<input type="hidden" name="fromuserid" value="${allbamember.getUserid()}" /><br />
 		<input type="hidden" name="touserid" value="${touserid}" /><br />

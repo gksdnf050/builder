@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script>
 
+function change(){
+	if(document.getElementById("mark").style.display ==''){
+		document.getElementById("mark").style.display ='none';
+		document.getElementById("table").style.display ='block';
+		$('#mark').children().hide();
+		$('#table').children().show();
+	}else{
+		document.getElementById("mark").style.display ='';
+		$('#mark').children().show();
+		$('#table').children().hide();
+	}
+}
+
+</script>
 <div class=" bg-light" style="min-height: 80%;">
     <div class="container" style="max-width: 1920px;">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 font-weight-bold">${sitename} <font class="font-italic font-weight-light text-primary text-sm text-blue-">BETA</font></h1>
-            <a href="/allba/${sitename}/test" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>이전버전보기</a>
+            <a href="/${c}/${sitename}/test" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>이전버전보기</a>
         </div>
 
         <div class="row">                
@@ -17,11 +32,14 @@
                     <div class="card-body">
                         <div class="text-center">
                             <c:forEach items="${list}" var="list">
+                            	<a target="_blank" rel="nofollow" href="${list.link}">해당 광고 자세히보기 (해당 링크로 페이지 이동됨)
                                 <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 30rem;" src="${list.file}" alt="광고배너 이미지 영역입니다" />
+                           		</a>
+                           		 <p>${list.title}</p>
                             </c:forEach>
                         </div>
-                        <p>광고제목이 들어가는 영역입니다 (추가예정)</p>
-                        <a target="_blank" rel="nofollow" href="#">해당 광고 자세히보기 (선택사항, 관리자가 광고링크를 등록시 해당 링크로 페이지 이동됨)</a>
+                       
+                        
                     </div>
                 </div>
             </div>
@@ -33,6 +51,15 @@
             </div>
         </div>
         
+        <button onClick="change()">변경</button>
+        <div id ="table">
+        	 <c:forEach items="${dto}" var="dto">
+        		<a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">
+                                        ${dto.title}
+                                    </a>
+             </c:forEach>
+        </div>
+        <div id="mark">
         <div class="row">            
             <c:forEach items="${dto}" var="dto">
                 <div class="col-md-3">
@@ -42,7 +69,7 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/board/view?boardid=${dto.boardid}">
+                                    <a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">
                                         ${dto.title}
                                     </a>
                                 </h2>
@@ -55,14 +82,14 @@
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dto.boardid}"><i class="fas fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dto.boardid}"><i class="fas fa-star"></i></a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
+                                        <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
                                     </c:if>
                                                                     
                                 </p>                            
@@ -73,12 +100,16 @@
                             <div class="d-flex justify-content-between align-items-left">                                
                                 <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dto.get("지역")}</button>
                                 <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dto.get("시급")}원</button>
-                                <small class="ml-auto text-muted"> ${dto.regdate}</small>
+                                
+                                
                             </div>
+                            <p></p>
+                            <small class="ml-auto text-muted"> ${dto.regdate}</small>
                         </div>
                     </div>
                 </div>
             </c:forEach>
+        </div>
         </div>
 
         <div class="d-sm-flex align-items-center justify-content-between mb-2 py-2">

@@ -4,8 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <style>#table { display: none; }</style>
+		
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <!-- This is Header. icluding css, js, something like that  -->
         <%@ include file="/WEB-INF/views/allba/_mixins/header.jsp" %>
+      
     </head>
     <body id="page-top">
         <!-- Page Wrapper -->

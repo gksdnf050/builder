@@ -67,7 +67,7 @@ public class AllbaManageController {
 					req.getParameter("parent"));
 		}
 
-		return "redirect:/allba/{sitename}/manage/registercategory";
+		return "redirect:/{c}/{sitename}/manage/registercategory";
 	}
 
 	// 필드 등록get
@@ -107,7 +107,7 @@ public class AllbaManageController {
 					req.getParameter("fieldtype"), req.getParameter("parent"));
 		}
 
-		return "redirect:/allba/{sitename}/manage/registerfield";
+		return "redirect:/{c}/{sitename}/manage/registerfield";
 	}
 
 	// 필드 삭제
@@ -118,7 +118,7 @@ public class AllbaManageController {
 
 		service.deletefield(sitename, fieldid, fieldname);
 
-		return "redirect:/allba/{sitename}/manage/registerfield";
+		return "redirect:/{c}/{sitename}/manage/registerfield";
 	}
 
 	// 카테고리 삭제
@@ -129,7 +129,7 @@ public class AllbaManageController {
 
 		service.deletecategory(sitename, categoryid, categoryname);
 
-		return "redirect:/allba/{sitename}/manage/registercategory";
+		return "redirect:/{c}/{sitename}/manage/registercategory";
 	}
 
 	// 이벤트 페이지
@@ -193,7 +193,7 @@ public class AllbaManageController {
 		}
 		service.posteventmodify(sitename, dto);
 
-		return "redirect:/allba/{sitename}/event";
+		return "redirect:/{c}/{sitename}/event";
 	}
 
 	// 이벤트 삭제
@@ -204,7 +204,7 @@ public class AllbaManageController {
 
 		service.eventdelete(sitename, eventid);
 
-		return "redirect:/allba/{sitename}/event";
+		return "redirect:/{c}/{sitename}/event";
 	}
 
 	// 이벤트 등록 페이지 get
@@ -235,7 +235,7 @@ public class AllbaManageController {
 		String title = req.getParameter("title");
 
 		service.registerevent(sitename, file2, title);
-		return "redirect:/allba/{sitename}/event";
+		return "redirect:/{c}/{sitename}/event";
 	}
 
 	// q&a 페이지 get
@@ -265,7 +265,7 @@ public class AllbaManageController {
 		List<Map<String, String>> selectlist = service.selectlist(sitename);
 		service.change(sitename, vals, selectlist);
 
-		return "redirect:/allba/{sitename}/manage/changefield";
+		return "redirect:/{c}/{sitename}/manage/changefield";
 
 	}
 
@@ -285,7 +285,8 @@ public class AllbaManageController {
 	@RequestMapping(value = "/{sitename}/manage/registerbanner", method = RequestMethod.POST)
 	public String postbanner(@PathVariable("sitename") String sitename, HttpServletRequest req,
 			MultipartFile file) throws Exception {
-
+		String title = req.getParameter("title");
+		String link = req.getParameter("link");
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = AllbaUploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -300,8 +301,8 @@ public class AllbaManageController {
 		String banner = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		
 		
-		service.registerbanner(sitename, banner);
-		return "redirect:/allba/{sitename}/manage/registerbanner";
+		service.registerbanner(sitename, banner, title, link);
+		return "redirect:/{c}/{sitename}/manage/registerbanner";
 	} 
 	
 	// 배너 삭제
@@ -312,7 +313,7 @@ public class AllbaManageController {
 
 			service.bannerdelete(sitename, bannerid);
 
-			return "redirect:/allba/{sitename}/manage/registerbanner";
+			return "redirect:/{c}/{sitename}/manage/registerbanner";
 		}
 	
 	

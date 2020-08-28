@@ -15,10 +15,12 @@
                 </div>
                   <c:forEach items="${list}" var="list">
                     <img src="${list.file}">
-                    <a href="/allba/${sitename}/manage/deletebanner?bannerid=${list.bannerid}">삭제</a>
+                    <a href="/${c}/${sitename}/manage/deletebanner?bannerid=${list.bannerid}">삭제</a>
                   </c:forEach>
 
                   <form method = "post" enctype="multipart/form-data">
+                  	제목<input type="text" name="title" />
+                  	링크<input type="text" name="link" />
                     <input type="file" name="file" />
                     <button type="submit" >등록</button>  
                   </form> 

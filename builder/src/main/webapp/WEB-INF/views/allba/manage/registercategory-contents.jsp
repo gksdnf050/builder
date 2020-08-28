@@ -21,7 +21,7 @@
                     <h1 class="font-weight-bold mb-5 text-gray-800 text-xl">카테고리를 등록하세요</h1>
                 </div>
 
-                <form class="user mb-3" action="/allba/${sitename}/manage/registercategory" method="post" enctype="multipart/form-data">
+                <form class="user mb-3" action="/${c}/${sitename}/manage/registercategory" method="post" enctype="multipart/form-data">
                     <c:forEach items="${category}" var="category" varStatus="status">
                         <div class="row form-group mb-3">
                             <div class="col-sm-1 py-2 text-right p-2">
@@ -31,14 +31,14 @@
                                 <input type="text" name="categoryname${status.count}" />
                                 <input type="hidden" name="parent${status.count}" value="${category.categoryname}" />
                                 <input type="hidden" name="depth${status.count}" value="2" />
-                                <button type="submit" class="btn btn-primary">등록하기</button><a href="/allba/${sitename}/manage/deletecategory?categoryid=${category.categoryid}&categoryname=${category.categoryname}">삭제</a>
+                                <button type="submit" class="btn btn-primary">등록하기</button><a href="/${c}/${sitename}/manage/deletecategory?categoryid=${category.categoryid}&categoryname=${category.categoryname}">삭제</a>
                             </div>
                             <div class="col-sm-2 py-2 text-right p-2">
                                 <span class="text-md text-primary">${category.categoryname} 카테고리 목록 : </span>
                             </div>
                             <div class="col-sm-4 py-2 text-left p-2">
                                 <c:forEach items="${detail}" var="detail">
-                                    <c:if test="${detail.parent eq category.categoryname}"> ${detail.categoryname}<a href="/allba/${sitename}/manage/deletecategory?categoryid=${detail.categoryid}&categoryname=${detail.categoryname}">삭제</a> </c:if>
+                                    <c:if test="${detail.parent eq category.categoryname}"> ${detail.categoryname}<a href="/${c}/${sitename}/manage/deletecategory?categoryid=${detail.categoryid}&categoryname=${detail.categoryname}">삭제</a> </c:if>
                                 </c:forEach>
                             </div>
                         </div>

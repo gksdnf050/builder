@@ -10,7 +10,7 @@
                         <div class="card-body">                            
                             <div class="d-flex justify-content-between align-items-left">
                                 <h2 class="text-primary">
-                                    <a href="/allba/${sitename}/board/view?boardid=${dtos.getBoardid()}">
+                                    <a href="/${c}/${sitename}/board/view?boardid=${dtos.getBoardid()}">
                                         ${dtos.getTitle()}
                                     </a>
                                 </h2>
@@ -23,14 +23,14 @@
                                                 </c:if>
                                             </c:forEach>
                                             <c:if test="${not loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
                                             </c:if>
                                             <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/allba/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"><i class="fas fa-star"></i></a>
+                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dtos.getBoardid()}"><i class="fas fa-star"></i></a>
                                             </c:if>
                                     </c:if>
                                     <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/allba/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
+                                        <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dtos.getBoardid()}"><i class="far fa-star"></i></a>
                                     </c:if>
                                                                     
                                 </p>                            
@@ -56,9 +56,9 @@
 검색결과
 <p>
 <c:forEach items="${dtos}" var="dtos">
-${dtos.location} <a href="/allba/${sitename}/board/view?boardid=${dtos.getBoardid()}">${dtos.getTitle()} </a> ${dtos.money} ${dtos.regdate}<br/>
+${dtos.location} <a href="/${c}/${sitename}/board/view?boardid=${dtos.getBoardid()}">${dtos.getTitle()} </a> ${dtos.money} ${dtos.regdate}<br/>
 </c:forEach>
 </p>
-<a href="/allba/${sitename}/board/write">글 작성</a> <br/>
+<a href="/${c}/${sitename}/board/write">글 작성</a> <br/>
 </body>
 </html>

@@ -10,8 +10,37 @@
 		*
 		from 
 		${sitename}board
+		ORDER BY boardid DESC
+		LIMIT #{start}, 8
 	</select>
-
+	
+	<!-- 게시물 갯수 -->
+	<select id="totalCount" resultType="int">
+		select
+		count(*)
+		from 
+		${sitename}board
+	</select>
+	<!-- 카테고리게시물 갯수 -->
+	<select id="totalCount2" resultType="int">
+		select
+		count(*)
+		from 
+		${sitename}board
+		where
+		${category} = #{value}
+	</select>
+	<!-- 검색 갯수 -->
+	<select id="searchCount" resultType="int">
+		select
+		count(*)
+		from 
+		${sitename}board
+		where 
+		title LIKE concat('%', #{keyword}, '%') 
+ 		or content LIKE concat('%', #{keyword}, '%')
+	</select>
+	
 	<!-- 카테고리별 게시물 목록 -->
 	<select id="categorylist" parameterType="hashMap" resultType="HashMap">
 		select
@@ -20,6 +49,8 @@
 		${sitename}board
 		where
 		${category} = #{value}
+		ORDER BY boardid DESC
+		LIMIT #{start}, 8
 	</select>
 	<!-- 카테고리별 게시물 목록2 -->
 	<select id="categorylist2" parameterType="hashMap" resultType="HashMap">
@@ -28,7 +59,9 @@
 		from 
 		${sitename}board
 		where
-		category = #{category} and detailcategory = #{value}
+		종류 = #{category} and 세부종류 = #{value}
+		ORDER BY boardid DESC
+		LIMIT #{start}, 8
 	</select>
 	
 	<!-- 필드 목록 가져오기 -->
@@ -155,7 +188,8 @@
 		where 
 		title LIKE concat('%', #{keyword}, '%') 
  		or content LIKE concat('%', #{keyword}, '%')
-
+		ORDER BY boardid DESC
+		LIMIT #{stratValue}, 8
 	</select>
 	
 	<!-- 게시물  즐겨찾기 등록 -->

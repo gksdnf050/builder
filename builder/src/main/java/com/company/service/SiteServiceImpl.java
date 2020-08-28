@@ -43,9 +43,9 @@ public class SiteServiceImpl implements SiteService {
 	}
 	//사이트 수정post
 	@Override
-	public void modify(int siteid, String sitename, String category, String status, final String topcategory) {
+	public void modify(final String userid, final String userpass, final String sitename, final String category, final String status, final String topcategory, final String siteemail, final String logo, final int siteid) {
 		// TODO Auto-generated method stub
-		dao.modify(siteid, sitename, category, status, topcategory);
+		dao.modify(userid, userpass, sitename, category, status, topcategory, siteemail, logo, siteid);
 	}
 
 }
