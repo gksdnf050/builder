@@ -48,10 +48,12 @@ function change(){
         <div class="col-lg-12 mb-4">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800 font-weight-bold">어떤 알바가 등록되어있을까요?<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
+                <div>
+                    <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onClick="change()">리스트 변경</button>
+                </div>
             </div>
         </div>
         
-        <button onClick="change()">변경</button>
         <div id ="table" class="row">
         	 <c:forEach items="${dto}" var="dto">
                 <div class="card shadow mb-4">
@@ -206,9 +208,6 @@ function change(){
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </div>
 
