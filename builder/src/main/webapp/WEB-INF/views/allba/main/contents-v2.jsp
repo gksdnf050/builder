@@ -54,8 +54,8 @@ function change(){
             </div>
         </div>
         
-        <div id ="table" class="row">
-        	 <c:forEach items="${dto}" var="dto">
+        
+            <div id ="table" class="row">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">어떤 알바가 등록되어있는지 확인해보세요!!.</h6>
@@ -63,6 +63,7 @@ function change(){
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                
                                 <thead>
                                     <tr>   
                                         <th>회사명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -73,6 +74,7 @@ function change(){
                                         <th>즐겨찾기</th>
                                     </tr>
                                 </thead>
+                                <c:forEach items="${dto}" var="dto">
                                 <tbody class="text-justify" style="line-height:1rem;">                    
                                     <tr>                      
                                         <td><a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">${dto.title}</a></td>
@@ -103,12 +105,12 @@ function change(){
                                         </td>
                                     </tr>
                                 </tbody>
+                                </c:forEach>
                             </table>
                         </div>
                     </div>
                 </div>
-             </c:forEach>
-        </div>
+            </div>
         <div id="mark">
             <div class="row">            
                 <c:forEach items="${dto}" var="dto">
