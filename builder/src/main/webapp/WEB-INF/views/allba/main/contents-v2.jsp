@@ -52,64 +52,110 @@ function change(){
         </div>
         
         <button onClick="change()">변경</button>
-        <div id ="table">
+        <div id ="table" class="row">
         	 <c:forEach items="${dto}" var="dto">
-        		<a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">
-                                        ${dto.title}
-                                    </a>
-             </c:forEach>
-        </div>
-        <div id="mark">
-        <div class="row">            
-            <c:forEach items="${dto}" var="dto">
-                <div class="col-md-3">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="${dto.image}" class="bd-placeholder-img card-img-top" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">                        
-                        <!-- <rect width="100%" height="100%" fill="#55595c" /> -->                        
-                        <div class="card-body">                            
-                            <div class="d-flex justify-content-between align-items-left">
-                                <h2 class="text-primary">
-                                    <a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">
-                                        ${dto.title}
-                                    </a>
-                                </h2>
-                                <p class="ml-auto">
-                                    <c:if test="${bi != NULL}">                                    
-                                        <c:set var="loop_flag" value="false" />
-                                            <c:forEach items="${bi}" var="bi">
-                                                <c:if test="${bi == dto.boardid}">
-                                                    <c:set var="loop_flag" value="true" />
-                                                </c:if>
-                                            </c:forEach>
-                                            <c:if test="${not loop_flag }">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">어떤 알바가 등록되어있는지 확인해보세요!!.</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>   
+                                        <th>회사명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>내용 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>시급</th>
+                                        <th>등록일</th>
+                                        <th>즐겨찾기</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-justify" style="line-height:1rem;">                    
+                                    <tr>                      
+                                        <td><a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">${dto.title}</a></td>
+                                        <td>
+                                            <!-- <img src="${dto.image}" class="bd-placeholder-img card-img-top" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> -->
+                                            ${dto.content}</td>
+                                        <td>${dto.get("지역")}</td>
+                                        <td>${dto.get("시급")}원</td>
+                                        <td>${dto.regdate}</td>
+                                        <td>
+                                            <c:if test="${bi != NULL}">                                    
+                                                <c:set var="loop_flag" value="false" />
+                                                    <c:forEach items="${bi}" var="bi">
+                                                        <c:if test="${bi == dto.boardid}">
+                                                            <c:set var="loop_flag" value="true" />
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <c:if test="${not loop_flag }">
+                                                        <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
+                                                    </c:if>
+                                                    <c:if test="${loop_flag }">
+                                                        <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dto.boardid}"><i class="fas fa-star"></i></a>
+                                                    </c:if>
+                                            </c:if>
+                                            <c:if test="${bi == NULL}">
                                                 <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
                                             </c:if>
-                                            <c:if test="${loop_flag }">
-                                                <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dto.boardid}"><i class="fas fa-star"></i></a>
-                                            </c:if>
-                                    </c:if>
-                                    <c:if test="${bi == NULL}">
-                                        <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
-                                    </c:if>
-                                                                    
-                                </p>                            
-                            </div>                            
-                            <p class="mt-2 card-text text-truncate" style=" white-space: nowrap;">
-                                ${dto.content}
-                            </p>                            
-                            <div class="d-flex justify-content-between align-items-left">                                
-                                <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dto.get("지역")}</button>
-                                <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dto.get("시급")}원</button>
-                                
-                                
-                            </div>
-                            <p></p>
-                            <small class="ml-auto text-muted"> ${dto.regdate}</small>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </c:forEach>
+             </c:forEach>
         </div>
+        <div id="mark">
+            <div class="row">            
+                <c:forEach items="${dto}" var="dto">
+                    <div class="col-md-3">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="${dto.image}" class="bd-placeholder-img card-img-top" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">                        
+                            <!-- <rect width="100%" height="100%" fill="#55595c" /> -->                        
+                            <div class="card-body">                            
+                                <div class="d-flex justify-content-between align-items-left">
+                                    <h2 class="text-primary">
+                                        <a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">
+                                            ${dto.title}
+                                        </a>
+                                    </h2>
+                                    <p class="ml-auto">
+                                        <c:if test="${bi != NULL}">                                    
+                                            <c:set var="loop_flag" value="false" />
+                                                <c:forEach items="${bi}" var="bi">
+                                                    <c:if test="${bi == dto.boardid}">
+                                                        <c:set var="loop_flag" value="true" />
+                                                    </c:if>
+                                                </c:forEach>
+                                                <c:if test="${not loop_flag }">
+                                                    <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
+                                                </c:if>
+                                                <c:if test="${loop_flag }">
+                                                    <a class="text-lg" href="/${c}/${sitename}/bookmark/delete?boardid=${dto.boardid}"><i class="fas fa-star"></i></a>
+                                                </c:if>
+                                        </c:if>
+                                        <c:if test="${bi == NULL}">
+                                            <a class="text-lg" href="/${c}/${sitename}/board/regbookmark?boardid=${dto.boardid}"><i class="far fa-star"></i></a>
+                                        </c:if>
+                                                                        
+                                    </p>                            
+                                </div>                            
+                                <p class="mt-2 card-text text-truncate" style=" white-space: nowrap;">
+                                    ${dto.content}
+                                </p>                            
+                                <div class="d-flex justify-content-between align-items-left">                                
+                                    <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dto.get("지역")}</button>
+                                    <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dto.get("시급")}원</button>
+                                </div>
+                                <p></p>
+                                <small class="ml-auto text-muted"> ${dto.regdate}</small>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
 
         <div class="d-sm-flex align-items-center justify-content-between mb-2 py-2">
