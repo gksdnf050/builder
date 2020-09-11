@@ -50,19 +50,25 @@
                 </div>
             </c:forEach>
         </div>
-    	<c:forEach var="counter" begin="1" end="${pagingCount}">
-    		<c:if test = "${cate == NULL && keyword == NULL }">
-    			<a href="/${c}/${sitename}/board?start=${counter}">${counter}</a>
-    		</c:if>
-    		<c:if test = "${cate != NULL}">
-    		<a href="/${c}/${sitename}/board?start=${counter}&category=${cate}&value=${val}">${counter}</a>
-    		</c:if>
-    		
-    		<c:if test = "${cate == NULL && keyword != NULL}">
-    		<a href="/${c}/${sitename}/board/search?keyword=${keyword}&start=${counter}">${counter}</a>
-    		</c:if>
-            	
-     </c:forEach>
+        <div class="row align-items-center">
+            <div class="col-md-5 align-items-right text-right">•</div>
+            <div class="col-md-2 align-items-center text-center">
+                <c:forEach var="counter" begin="1" end="${pagingCount}">
+                    <c:if test = "${cate == NULL && keyword == NULL }">                       
+                        <a href="/${c}/${sitename}/board?start=${counter}" class="font-weight-bold text-primary">${counter}</a>
+                    </c:if>
+                    <c:if test = "${cate != NULL}">                        
+                        <a href="/${c}/${sitename}/board?start=${counter}&category=${cate}&value=${val}" class="font-weight-bold text-primary">${counter}</a>
+                    </c:if>                    
+                    <c:if test = "${cate == NULL && keyword != NULL}">
+                        <c:if test = "{$counter}">tttt</c:if>
+                        <a href="/${c}/${sitename}/board/search?keyword=${keyword}&start=${counter}" class="font-weight-bold text-primary">${counter}</a>
+                    </c:if>
+                    &nbsp;
+                </c:forEach>
+            </div>
+            <div class="col-md-5 align-items-left text-left">•</div>
+        </div>
     </div>
 </div>
  			
