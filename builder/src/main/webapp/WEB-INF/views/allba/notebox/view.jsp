@@ -1,17 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-		
-		메시지 보낸사람: ${dto.fromuserid }
-		제목: ${dto.title }
-		내용: ${dto.content }
-	<!--  
+    <head>
+        <meta charset="UTF-8" />
+        <title>Insert title here</title>
+    </head>
+    <body>
+        메시지 보낸사람: ${dto.fromuserid } 제목: ${dto.title } 내용: ${dto.content }
+        <!--  
 		<a href="${c}/${sitename}/notebox/reply/?touserid=${dto.userid}&formuserid=${dto.fromuserid}">답장하기</a> -->
-</body>
+    </body>
 </html>
