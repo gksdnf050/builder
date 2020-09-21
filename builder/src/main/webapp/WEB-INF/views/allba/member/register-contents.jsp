@@ -27,7 +27,7 @@
                             <span class="text-md text-primary">비밀번호 확인</span>
                         </div>
                         <div class="col-sm-10 py-2 form-group">
-                            <input class="form-control form-control-user" placeholder="비밀번호를 한번더 입력해주세요." />
+                            <input type="password" class="form-control form-control-user" placeholder="비밀번호를 한번더 입력해주세요." />
                         </div>
                     </div>
                     <div class="row form-group mb-5">

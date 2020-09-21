@@ -11,12 +11,14 @@
   <h1 style = "text-align : center"><a href="/"> <img src="../../resources/logo/logo.jpg/"/></a></h1>
   <div class = 'topnav'>
   <a href="/dashboard">대쉬보드</a>
+  <!--  
   <a href="#">템플릿</a>
-  
+  -->
   
   <c:if test="${member != null}">
 			<a href="/logout" style  = "float : right">로그아웃</a>
-			<a href="/modify" style = "float : right">회원정보수정</a>
+			<!-- 
+			<a href="/modify" style = "float : right">회원정보수정</a> -->
 	</c:if>
 	<c:if test="${member == null}">
 			<a href="/login" style  = "float : right">로그인</a>

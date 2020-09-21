@@ -40,8 +40,9 @@
                             </p>                            
                             <div class="d-flex justify-content-between align-items-left">                                
                                 <button type="button" class="ml-1 btn btn-sm btn-primary" disabled>지역 : ${dtos.get("지역")}</button>
+                                <!--  
                                 <button type="button" class="ml-1 btn btn-sm btn-secondary" disabled>시급 : ${dtos.get("시급")}원</button>
-                               
+                               -->
                             </div>
                             	<p></p>
                                 <small class="ml-auto text-muted"> ${dtos.regdate}</small>

@@ -18,7 +18,7 @@
                             <span class="text-md text-primary"><label>제목</label></span>
                         </div>
                         <div class="col-sm-11 py-2 form-group">
-                            <input name="${fieldlist.fieldname}" type="text" class="form-control" name="title" placeholder="제목을 입력해주세요." />
+                            <input type="text" class="form-control" name="title" placeholder="제목을 입력해주세요." />
                         </div>
 
                         <div class="col-sm-1 py-2 text-right p-2">

@@ -19,14 +19,14 @@
                                     <div class="container">
                                         <div class="row">
                                             <h4>
-                                                공고 :
-                                                <a href="/${c}/${sitename}/board/view?boardid=${dto.getBoardid()}">${dto.getBoardid()}</a>
+                                                게시글 :
+                                                <a href="/${c}/${sitename}/board/view?boardid=${dto.getBoardid()}">${dto.getTitle()}</a>
                                             </h4>
                                         </div>
                                         <div class="row">
                                             <h4>
                                                 메세지내용 :
-                                                <a href="/${c}/${sitename}/notebox/view?noteboxid=${dto.getNoteboxid()}">${dto.getTitle()} </a>
+                                                ${dto.getContent()}
                                             </h4>
                                         </div>
                                     </div>

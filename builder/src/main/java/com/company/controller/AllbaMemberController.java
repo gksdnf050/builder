@@ -31,7 +31,7 @@ public class AllbaMemberController {
 
 	// 로그인 post
 	@RequestMapping(value = "/{sitename}/login", method = RequestMethod.POST)
-	public String postLogin(@PathVariable("sitename") String sitename, AllbaMemberDTO dto, HttpServletRequest req,
+	public String postLogin(@PathVariable("c")String c, @PathVariable("sitename") String sitename, AllbaMemberDTO dto, HttpServletRequest req,
 			RedirectAttributes rttr) throws Exception {
 
 		HttpSession session = req.getSession();
@@ -42,8 +42,8 @@ public class AllbaMemberController {
 			session.setAttribute("allbamember", null);
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/allba/{sitename}/login";
-		} else {
-			session.setAttribute("allbamember", login);
+		} else {		
+				session.setAttribute("allbamember", login);
 		}
 
 		return "redirect:/{c}/{sitename}";

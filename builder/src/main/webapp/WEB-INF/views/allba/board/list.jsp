@@ -20,7 +20,7 @@
                     <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
 
                     <div class="container-fluid">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">아르바이트 모집공고 <font class="font-italic font-weight-light text-primary text-sm text-blue-">!</font></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">게시판 <font class="font-italic font-weight-light text-primary text-sm text-blue-">!</font></h1>
                     </div>
                 </div>
                 <!-- End of Main Content -->

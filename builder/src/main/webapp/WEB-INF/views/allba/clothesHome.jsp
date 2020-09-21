@@ -12,7 +12,7 @@
       
     </head>
     <body id="page-top">
-        <!-- Page Wrapper -->	
+        <!-- Page Wrapper -->
         <div id="wrapper">
             <!--  This is Sidebar. -->
             <%@ include file="/WEB-INF/views/allba/_mixins/sidebar.jsp" %>
@@ -28,7 +28,7 @@
                     <!---->
                     <!-- Put the contents Here-->
                     	
-                    	<%@ include file="/WEB-INF/views/allba/main/contents-v2.jsp" %>
+                    	<%@ include file="/WEB-INF/views/allba/main/contents-v4.jsp" %>
                		<!--  contents.jsp include 하는 부분 뺌 -->
                		
                		<!---->

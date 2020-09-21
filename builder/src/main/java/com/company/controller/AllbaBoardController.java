@@ -86,6 +86,7 @@ public class AllbaBoardController {
 	@RequestMapping(value = "/{sitename}/board/write", method = RequestMethod.POST)
 	public String postWrite(@PathVariable("c")String c, @PathVariable("sitename") String sitename, HttpServletRequest req, MultipartFile file)
 			throws Exception {
+		
 		int temp = 0;
 		String[] str;
 		List<Map<String, String>> fieldlist = service.fieldlist(sitename);
@@ -115,7 +116,7 @@ public class AllbaBoardController {
 		str[temp] = (File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 
 		service.write(sitename, list, str);
-		System.out.println(c);
+		
 		return "redirect:/{c}/{sitename}/board";
 
 	}

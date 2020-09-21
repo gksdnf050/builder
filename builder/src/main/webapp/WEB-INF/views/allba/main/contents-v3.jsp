@@ -51,7 +51,7 @@ function change(){
 
         <div class="col-lg-12 mb-4">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800 font-weight-bold">어떤 알바가 등록되어있을까요?<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
+                <h1 class="h3 mb-0 text-gray-800 font-weight-bold">어떤 숙소가 등록되어있을까요?<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
                 <div >
                     <button id ="name" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onClick="change()">카드형식</button>
                 </div>
@@ -62,11 +62,11 @@ function change(){
             <div id ="table" class="row">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">어떤 알바가 등록되어있는지 확인해보세요!!.</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">어떤 숙소가 등록되어있는지 확인해보세요!!.</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="" style="width:100%; cellspacing:0; table-layout: fixed;">
+                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
                                 <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"></table> -->
                                 
                                 <thead>
@@ -82,15 +82,12 @@ function change(){
                                     </tr>
                                 </thead>
                                 <c:forEach items="${dto}" var="dto">
-                                <tbody class="text-justify" style="line-height:50%; table-layout:fixed;" >                    
+                                <tbody class="text-justify" style="line-height:1rem;">                    
                                     <tr>                      
                                         <td><a href="/${c}/${sitename}/board/view?boardid=${dto.boardid}">${dto.title}</a></td>
-                                        <td width="100" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap">
+                                        <td>
                                             <!-- <img src="${dto.image}" class="bd-placeholder-img card-img-top" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> -->
-                                          
-                                            	${dto.content}
-                                        </td>
-                                           
+                                            ${dto.content}</td>
                                         <td>${dto.get("지역")}</td>
                                       <!--  
                                         <td>${dto.get("시급")}원</td>
@@ -177,7 +174,7 @@ function change(){
         </div>
 
         <div class="d-sm-flex align-items-center justify-content-between mb-2 py-2">
-            <h1 class="h3 mb-1 text-gray-800 font-weight-bold"><br/>내가 할 수 있는 일은 어떤게 있을까요?<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
+            <h1 class="h3 mb-1 text-gray-800 font-weight-bold"><br/>내가  머물 곳은 어떤게 있을까요?<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
         </div>
 
 

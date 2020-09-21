@@ -41,14 +41,14 @@
             </div>
         </li>
 
-        <!-- Nav Item - Alerts -->
+        <!-- Nav Item - Alerts --> <!-- Counter - Alerts -->  <!-- Dropdown - Alerts 
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+               
                 <span class="badge badge-danger badge-counter">3+</span>
             </a>
-            <!-- Dropdown - Alerts -->
+          
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <span class="dropdown-header">
                     지원한 알바생 목록
@@ -89,7 +89,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
         </li>
-
+-->
         <!-- Nav Item - Messages -->
 
         <li class="nav-item dropdown no-arrow mx-1">
@@ -143,14 +143,11 @@
                 </c:if>
 
                 <c:if test="${allbamember != null}">
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Somethings
-                    </a>
+                <!-- 
                     <a class="dropdown-item" href="/${c}/${sitename}/modify">
                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit
-                    </a>
+                    </a> -->
                     <a class="dropdown-item" href="/${c}/${sitename}/bookmark">
                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                         Favorites

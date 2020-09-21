@@ -20,7 +20,7 @@
                     <%@ include file="/WEB-INF/views/allba/_mixins/topbar.jsp" %>
 
                     <div class="container-fluid">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">광고배너 등록하기<font class="font-italic font-weight-light text-primary text-sm text-blue-">BETA</font></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">광고배너 등록하기<font class="font-italic font-weight-light text-primary text-sm text-blue-"></font></h1>
                     </div>
                 </div>
                 <!-- End of Main Content -->

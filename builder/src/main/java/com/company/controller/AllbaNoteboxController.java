@@ -42,7 +42,7 @@ public class AllbaNoteboxController {
 
 		service.apply(sitename, dto);
 
-		return "allba/notebox/applycomplete";
+		return "redirect:/{c}/{sitename}/board";
 	}
 	//쪽지함
 		@RequestMapping(value = "/{sitename}/notebox", method = RequestMethod.GET)
@@ -85,7 +85,7 @@ public class AllbaNoteboxController {
 			
 			service.deletenote(sitename, noteboxid);
 			
-			return "allba/notebox/notebox";
+			return "redirect:/{c}/{sitename}/notebox/receivenotebox";
 		}
 		
 }

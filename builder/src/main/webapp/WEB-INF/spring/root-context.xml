@@ -43,7 +43,7 @@
 		<!-- 업로드 패스 설정 -->
 	<bean class="java.lang.String" id="uploadPath">
 		<constructor-arg
-			value="C:\Users\gksdn\git\builder\builder\src\main\webapp\resources"/>
+			value="C:\company\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\builder\resources\"/>
 			
 	</bean>
 </beans>

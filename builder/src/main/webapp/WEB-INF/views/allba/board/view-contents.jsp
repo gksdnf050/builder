@@ -72,7 +72,7 @@
                             		<span class="text-md text-primary">모집 내용</span>
                         		</div>
                         		<div class="col-sm-11 py-2 form-group">
-                            		<span>${view.content}</span>
+                            		<pre>${view.content}</pre>
                         		</div>
                         	</c:if>
                         	

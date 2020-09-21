@@ -21,7 +21,7 @@
                         <span class="text-md text-primary">내용</span>
                     </div>
                     <div class="col-sm-11 py-2 form-group">
-                        <span> <img src="${dto.file}" /></span>
+                        <span> <img width="500" height="500" src="${dto.file}" /></span>
                     </div>
                     <c:if test="${allbamember.getManagement() eq 'true'}">
                         <a href="/${c}/${sitename}/event/modify?eventid=${dto.eventid}"> <button class="btn btn-primary btn-user">수정</button></a>

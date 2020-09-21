@@ -6,7 +6,7 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/${c}/${sitename}">
         <div class="sidebar-brand-icon rotate-n-15">
             <!--Logo-->
-            <img src="${logo}" /> <br />
+            <img src="${logo}" width="70" height="70" /> <br />
         </div>
         <div class="sidebar-brand-text mx-3 text-lg">${sitename}<!-- <sup></sup> --></div>
     </a>
@@ -24,7 +24,7 @@
 
     <!-- Board -->
     <div class="sidebar-heading">
-        <a href="/${c}/${sitename}/board" class="text-white">채용정보</a>
+        <a href="/${c}/${sitename}/board" class="text-white">게시판</a>
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
     <!--    <li class="nav-item">
@@ -59,7 +59,7 @@
     <li class="nav-item">
         <div class="nav-link collapsed">
             <a href="/${c}/${sitename}/board/write" class="w-100 text-white d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-                <span class="text-center">아르바이트 공고 작성</span>
+                <span class="text-center">게시글 작성</span>
             </a>
         </div>
     </li>
