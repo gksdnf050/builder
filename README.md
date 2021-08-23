@@ -26,7 +26,7 @@ Spring Framework를 사용하여 만든 웹사이트 빌더입니다.
 - Spring   
 백엔드 개발 프레임워크   
 - MariaDB   
-데이터베이스 관리 시스템   
+데이터베이스  
 - Git   
 형상관리 도구   
 - Jsp / BootStrap / HTML5 / Vanillla JS  
