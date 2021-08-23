@@ -29,7 +29,7 @@ Spring Framework를 사용하여 만든 웹사이트 빌더입니다.
 데이터베이스 관리 시스템   
 - Git   
 형상관리 도구   
-- BootStrap / HTML5 / Vanillla JS
+- Jsp / BootStrap / HTML5 / Vanillla JS
 프론트 디자인 프레임워크   
 
 # 팀원   
